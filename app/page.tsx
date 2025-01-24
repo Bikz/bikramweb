@@ -26,7 +26,7 @@ export default function HomePage() {
         <div className="space-y-4">
           {/* Mysty Health */}
           <Link
-            href="/projects/mysty-health"
+            href="/projects/mysti-health"
             className="block bg-neutral-100 dark:bg-neutral-900 p-4 rounded transition hover:scale-[1.01]"
           >
             <h3 className="font-bold text-lg">Mysty Health</h3>
@@ -50,10 +50,10 @@ export default function HomePage() {
 
           {/* RepoPrompter */}
           <Link
-            href="/projects/repoprompter"
+            href="/projects/repo-prompter"
             className="block bg-neutral-100 dark:bg-neutral-900 p-4 rounded transition hover:scale-[1.01]"
           >
-            <h3 className="font-bold text-lg">Repoprompter</h3>
+            <h3 className="font-bold text-lg">Repo Prompter</h3>
             <p className="text-sm mt-1">
               Transforms your code repositories into prompts for LLMs, making
               AI-assisted coding more efficient.
