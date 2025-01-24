@@ -29,6 +29,14 @@ export default function MystiHealthPage() {
         <li>Custom multi-agent pipieline</li>
         <li>LangChain, Pinecone, GPT</li>
       </ul>
+      <a
+  href="https://mysti.ai"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block mt-4 px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded hover:bg-blue-500"
+>
+  Learn More
+</a>
     </section>
   )
 }

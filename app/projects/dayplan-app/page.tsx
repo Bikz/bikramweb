@@ -28,6 +28,7 @@ export default function DayplanAppPage() {
         <li>SwiftUI for iOS front-end</li>
         <li>OpenAI GPT for language processing</li>
       </ul>
+      
     </section>
   )
 }

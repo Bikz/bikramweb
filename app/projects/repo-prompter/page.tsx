@@ -28,6 +28,14 @@ export default function RepoPrompterPage() {
         <li>Tauri and Svelte for desktop app</li>
         <li>Cloudflare workers for backend</li>
       </ul>
+      <a
+  href="https://repoprompter.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block mt-4 px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded hover:bg-blue-500"
+>
+  Learn More
+</a>
     </section>
   )
 }
