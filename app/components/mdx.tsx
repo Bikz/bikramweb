@@ -1,10 +1,11 @@
+// app/components/mdx.tsx
 'use client'
 
-import React from 'react'
-import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 import Link from 'next/link'
 import Image from 'next/image'
 import { highlight } from 'sugar-high'
+import React from 'react'
 
 function Code({ children, ...props }) {
   const codeHTML = highlight(children)
@@ -21,7 +22,6 @@ function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
 
 function slugify(str: string) {
   return str
-    .toString()
     .toLowerCase()
     .trim()
     .replace(/\s+/g, '-')
@@ -56,8 +56,7 @@ const components = {
 
 /**
  * Renders the *serialized* MDX content from the server.
- * Must be a client component (hence 'use client') 
- * and import MDXRemote from 'next-mdx-remote' (NOT /rsc).
+ * We expect a prop called `source` of type MDXRemoteSerializeResult
  */
 export function CustomMDX({ source }: { source: MDXRemoteSerializeResult }) {
   return <MDXRemote {...source} components={components} />

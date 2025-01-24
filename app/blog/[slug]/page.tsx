@@ -1,70 +1,71 @@
+// app/blog/[slug]/page.tsx
 import { notFound } from 'next/navigation'
-import { getBlogPosts, formatDate } from 'app/blog/utils'
+import type { Metadata } from 'next'
 import { baseUrl } from 'app/sitemap'
-import { serialize } from 'next-mdx-remote/serialize'
+import { getBlogPosts, formatDate } from 'app/blog/utils'
 import { CustomMDX } from 'app/components/mdx'
 
-/** 
- * Type for the dynamic route param 
+/**
+ * If you use dynamic routes, you might also be generating static params
+ * so we keep this function async for compatibility.
  */
-type BlogParams = {
-  slug: string
+export async function generateStaticParams() {
+  return getBlogPosts().map((post) => ({
+    slug: post.slug
+  }))
 }
 
 /**
- * Next.js uses this to statically generate each route at build time, e.g. "/blog/spaces-vs-tabs".
- * Must return an array of objects with the shape { slug: string }.
+ * In Next.js 15, `generateMetadata` must accept and (optionally) await `params`
+ * and `searchParams` if they rely on request-specific data. Making it async
+ * ensures the type definitions align with the Next.js 15 requirements.
  */
-export async function generateStaticParams(): Promise<BlogParams[]> {
-  const posts = getBlogPosts()
-  return posts.map((post) => ({ slug: post.slug }))
-}
-
-/** 
- * generateMetadata can be async, so we await no data but simply keep it consistent. 
- * Using "params" here must be done in an async function so that "params" is properly resolved.
- */
-export async function generateMetadata({ params }: { params: BlogParams }) {
+export async function generateMetadata({
+  params,
+  searchParams
+}: {
+  params: { slug: string },
+  searchParams?: { [key: string]: string | string[] | undefined }
+}): Promise<Metadata> {
   const post = getBlogPosts().find((p) => p.slug === params.slug)
-  if (!post) return
+  if (!post) notFound()
 
-  const { title, publishedAt: publishedTime, summary: description, image } = post.metadata
-  const ogImage = image
-    ? image
-    : `${baseUrl}/og?title=${encodeURIComponent(title)}`
+  const { title, publishedAt, summary, image } = post.metadata
+  const ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`
 
   return {
     title,
-    description,
+    description: summary,
     openGraph: {
       title,
-      description,
+      description: summary,
       type: 'article',
-      publishedTime,
+      publishedTime: publishedAt,
       url: `${baseUrl}/blog/${params.slug}`,
-      images: [{ url: ogImage }],
+      images: [{ url: ogImage }]
     },
     twitter: {
       card: 'summary_large_image',
       title,
-      description,
-      images: [ogImage],
-    },
+      description: summary,
+      images: [ogImage]
+    }
   }
 }
 
-/** 
- * The page itself. Must be async if we do any I/O like "await serialize(...)". 
+/**
+ * The page component must also be async if it uses `params` or other
+ * request-based data so that the types match Next.js 15’s updated definitions.
  */
-export default async function BlogPostPage({ params }: { params: BlogParams }) {
-  // Find the post from your local MDX files
+export default async function BlogPage({
+  params,
+  searchParams
+}: {
+  params: { slug: string },
+  searchParams?: { [key: string]: string | string[] | undefined }
+}) {
   const post = getBlogPosts().find((p) => p.slug === params.slug)
-  if (!post) {
-    notFound()
-  }
-
-  // Serialize the raw MDX so it can be rendered client-side
-  const mdxSource = await serialize(post.content)
+  if (!post) notFound()
 
   return (
     <section>
@@ -81,16 +82,15 @@ export default async function BlogPostPage({ params }: { params: BlogParams }) {
             description: post.metadata.summary,
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+              : `${baseUrl}/og?title=${encodeURIComponent(post.metadata.title)}`,
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
               '@type': 'Person',
-              name: 'My Portfolio',
-            },
-          }),
+              name: 'Bikram Brar'
+            }
+          })
         }}
       />
-
       <h1 className="title font-semibold text-2xl tracking-tighter">
         {post.metadata.title}
       </h1>
@@ -99,10 +99,8 @@ export default async function BlogPostPage({ params }: { params: BlogParams }) {
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>
-
       <article className="prose">
-        {/* Client Component that renders the serialized MDX */}
-        <CustomMDX source={mdxSource} />
+        <CustomMDX source={post.content} />
       </article>
     </section>
   )
