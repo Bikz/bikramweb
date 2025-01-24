@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import ThemeToggle from './ThemeToggle'
 import React from 'react'
 
 const navItems = [
@@ -30,10 +29,6 @@ export function Navbar() {
                 {label}
               </Link>
             ))}
-          </div>
-          {/* Theme Toggle */}
-          <div className="ml-auto">
-            <ThemeToggle />
           </div>
         </nav>
       </div>

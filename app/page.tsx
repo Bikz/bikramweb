@@ -11,7 +11,7 @@ export default function HomePage() {
       </h1>
 
       <p className="mb-4 text-neutral-800 dark:text-neutral-200">
-        Hi! I’m Bikram, a Senior Product Manager and AI developer with a passion
+        Hi! I'm Bikram, a Senior Product Manager and AI developer with a passion
         for building products that solve real-world problems.
       </p>
       <p className="mb-8 text-neutral-800 dark:text-neutral-200">
@@ -24,12 +24,12 @@ export default function HomePage() {
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-3">Featured AI Projects</h2>
         <div className="space-y-4">
-          {/* Mysty Health */}
+          {/* Mysti Health */}
           <Link
             href="/projects/mysti-health"
             className="block bg-neutral-100 dark:bg-neutral-900 p-4 rounded transition hover:scale-[1.01]"
           >
-            <h3 className="font-bold text-lg">Mysty Health</h3>
+            <h3 className="font-bold text-lg">Mysti Health</h3>
             <p className="text-sm mt-1">
               A personal AI health agent that syncs with Apple/Google Health and
               provides personalized health recommendations.
@@ -48,7 +48,7 @@ export default function HomePage() {
             </p>
           </Link>
 
-          {/* RepoPrompter */}
+          {/* Commenting out RepoPrompter temporarily
           <Link
             href="/projects/repo-prompter"
             className="block bg-neutral-100 dark:bg-neutral-900 p-4 rounded transition hover:scale-[1.01]"
@@ -59,6 +59,7 @@ export default function HomePage() {
               AI-assisted coding more efficient.
             </p>
           </Link>
+          */}
         </div>
       </div>
 
