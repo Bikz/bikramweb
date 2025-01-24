@@ -18,6 +18,28 @@ This repository houses my personal portfolio website.
 - **About** – My personal background, including experience with AI, large language models, and product management.
 - **Travel** – A simple photo gallery of places I’ve visited around the world.
 
+## Development
+
+### Installation
+
+pnpm install
+
+### Running
+
+pnpm dev
+
+### Building
+
+pnpm build
+
+### Deploying
+
+pnpm export
+
+### Cloudflare
+
+Currently set up to auto deploy to Cloudflare.
+
 ## Contact
 
 - **X** – https://x.com/bikbrar
