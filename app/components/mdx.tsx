@@ -1,13 +1,16 @@
 // app/components/mdx.tsx
-'use client'
 
+import React from 'react'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import Link from 'next/link'
 import Image from 'next/image'
 import { highlight } from 'sugar-high'
-import React from 'react'
 
-function Code({ children, ...props }) {
+function Code({
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLElement> & { children: string }) {
   const codeHTML = highlight(children)
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
 }
@@ -45,7 +48,9 @@ function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
 const components = {
   code: Code,
   a: CustomLink,
-  Image: (props: any) => <Image alt={props.alt} className="rounded-lg" {...props} />,
+  Image: (props: any) => (
+    <Image alt={props.alt} className="rounded-lg" {...props} />
+  ),
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
@@ -55,9 +60,14 @@ const components = {
 }
 
 /**
- * Renders the *serialized* MDX content from the server.
- * We expect a prop called `source` of type MDXRemoteSerializeResult
+ * Renders the MDX content from the server.
+ * Since we're using RSC version, this component should be server-side.
  */
-export function CustomMDX({ source }: { source: MDXRemoteSerializeResult }) {
-  return <MDXRemote {...source} components={components} />
+export function CustomMDX({ source }: { source: string }) {
+  return (
+    <MDXRemote
+      source={source}
+      components={components}
+    />
+  )
 }

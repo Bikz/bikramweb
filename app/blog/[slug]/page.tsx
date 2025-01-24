@@ -20,13 +20,13 @@ export async function generateStaticParams() {
  * and `searchParams` if they rely on request-specific data. Making it async
  * ensures the type definitions align with the Next.js 15 requirements.
  */
-export async function generateMetadata({
-  params,
-  searchParams
-}: {
-  params: { slug: string },
-  searchParams?: { [key: string]: string | string[] | undefined }
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>,
+    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const post = getBlogPosts().find((p) => p.slug === params.slug)
   if (!post) notFound()
 
@@ -55,15 +55,15 @@ export async function generateMetadata({
 
 /**
  * The page component must also be async if it uses `params` or other
- * request-based data so that the types match Next.js 15’s updated definitions.
+ * request-based data so that the types match Next.js 15's updated definitions.
  */
-export default async function BlogPage({
-  params,
-  searchParams
-}: {
-  params: { slug: string },
-  searchParams?: { [key: string]: string | string[] | undefined }
-}) {
+export default async function BlogPage(
+  props: {
+    params: Promise<{ slug: string }>,
+    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
+  }
+) {
+  const params = await props.params;
   const post = getBlogPosts().find((p) => p.slug === params.slug)
   if (!post) notFound()
 
