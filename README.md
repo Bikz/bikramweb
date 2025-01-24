@@ -1,42 +1,24 @@
-# Portfolio Blog Starter
+# Bikram Brar - Personal Portfolio
 
-This is a porfolio site template complete with a blog. Includes:
+This repository houses my personal portfolio website.
 
-- MDX and Markdown support
-- Optimized for SEO (sitemap, robots, JSON-LD schema)
-- RSS Feed
-- Dynamic OG images
-- Syntax highlighting
-- Tailwind v4
-- Vercel Speed Insights / Web Analytics
-- Geist font
+## Key features
 
-## Demo
+- **Dark/Light mode toggle** for better accessibility.
+- **MDX and Markdown** support in the blog.
+- **SEO optimizations** (robots, sitemap, JSON-LD).
+- **RSS feed** at `/rss` for blog updates.
+- **TailwindCSS v4** for styling.
 
-https://portfolio-blog-starter.vercel.app
+## Sections
 
-## How to Use
+- **Home** – Overview of who I am, featuring my background and highlights of recent AI projects.
+- **Projects** – Dedicated page listing all projects, linking to detail pages (Mysti Health, Dayplan App, Repo Prompter, etc.).
+- **Blog** – Technical musings, personal thoughts, and articles written in MDX.
+- **About** – My personal background, including experience with AI, large language models, and product management.
+- **Travel** – A simple photo gallery of places I’ve visited around the world.
 
-You can choose from one of the following two methods to use this repository:
+## Contact
 
-### One-Click Deploy
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/blog&project-name=blog&repository-name=blog)
-
-### Clone and Deploy
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
-
-```bash
-pnpm create next-app --example https://github.com/vercel/examples/tree/main/solutions/blog blog
-```
-
-Then, run Next.js in development mode:
-
-```bash
-pnpm dev
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/templates) ([Documentation](https://nextjs.org/docs/app/building-your-application/deploying)).
+- **X** – https://x.com/bikbrar
+- **GitHub** – https://github.com/Bikz
