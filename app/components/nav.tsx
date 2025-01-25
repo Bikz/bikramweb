@@ -13,23 +13,21 @@ const navItems = [
 
 export function Navbar() {
   return (
-    <aside className="-ml-[8px] mb-16 tracking-tight">
-      <div className="lg:sticky lg:top-20">
+    <aside className="mb-16 tracking-tight">
+      <div className="flex justify-center">
         <nav
-          className="flex flex-row items-center relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
+          className="flex flex-row items-center space-x-2"
           id="nav"
         >
-          <div className="flex flex-row space-x-2 pr-4">
-            {navItems.map(({ path, label }) => (
-              <Link
-                key={path}
-                href={path}
-                className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 py-1 px-2"
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
+          {navItems.map(({ path, label }) => (
+            <Link
+              key={path}
+              href={path}
+              className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 py-1 px-2"
+            >
+              {label}
+            </Link>
+          ))}
         </nav>
       </div>
     </aside>
