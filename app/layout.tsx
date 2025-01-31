@@ -1,6 +1,5 @@
 import './global.css'
 import type { Metadata } from 'next'
-import { Navbar } from './components/nav'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import Footer from './components/footer'
@@ -14,15 +13,17 @@ const cx = (...classes: string[]) => classes.filter(Boolean).join(' ')
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Bikram Brar Portfolio',
+    template: '%s | Bikram Brar Portfolio',
   },
-  description: 'This is my portfolio.',
+  description:
+    'Welcome to Bikram Brar’s personal portfolio site. Explore his AI projects, blog posts, and product management highlights.',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Bikram Brar Portfolio',
+    description:
+      'Explore Bikram’s AI projects, blog posts, and his background in product management & development.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Bikram Brar Portfolio',
     locale: 'en_US',
     type: 'website',
   },
@@ -46,29 +47,29 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/*
-        Tailwind's dark classes will depend on body.dark or html.dark 
-        (by default Next Themes will put the class on the <body>).
-      */}
       <body
         className={cx(
-          'antialiased text-black bg-white dark:text-white dark:bg-black',
+          'antialiased text-black bg-white dark:text-white dark:bg-black overflow-x-hidden',
           GeistSans.variable,
           GeistMono.variable
         )}
       >
-        {/*
-          Wrap everything in ThemeProvider so it can apply the theme classes.
-        */}
         <ThemeProvider>
-          <div className="max-w-xl mx-4 mt-8 lg:mx-auto">
-            <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-              <Navbar />
-              {children}
-              <Footer />
-              <Analytics />
-              <SpeedInsights />
-            </main>
+          {/* 
+            We’re no longer rendering <Navbar /> here, 
+            so the hero can control how it’s displayed. 
+          */}
+          {children}
+
+          {/* 
+            Footer + analytics in a narrower container below 
+            (outside the hero, so everything below the fold is 
+            in a normal width).
+          */}
+          <div className="max-w-3xl mx-auto w-full px-4 mt-8">
+            <Footer />
+            <Analytics />
+            <SpeedInsights />
           </div>
         </ThemeProvider>
       </body>
