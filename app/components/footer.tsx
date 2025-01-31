@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 
 function ArrowIcon() {
@@ -18,6 +20,9 @@ function ArrowIcon() {
 }
 
 export default function Footer() {
+  // Generate the year on the client so it won’t mismatch SSR
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="mb-16">
       <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
@@ -46,8 +51,10 @@ export default function Footer() {
           </a>
         </li>
       </ul>
+
+      {/* Use the client-derived currentYear to avoid hydration mismatch */}
       <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {new Date().getFullYear()} Bikram Brar
+        © {currentYear} Bikram Brar
       </p>
     </footer>
   )

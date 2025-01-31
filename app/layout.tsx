@@ -7,6 +7,7 @@ import { ThemeProvider } from './components/ThemeProvider'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from './sitemap'
+import { Navbar } from './components/nav'
 
 const cx = (...classes: string[]) => classes.filter(Boolean).join(' ')
 
@@ -49,23 +50,20 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cx(
-          'antialiased text-black bg-white dark:text-white dark:bg-black overflow-x-hidden',
+          'antialiased text-black bg-white dark:text-white dark:bg-black',
+          'overflow-x-hidden', // no horizontal scroll
           GeistSans.variable,
           GeistMono.variable
         )}
       >
         <ThemeProvider>
-          {/* 
-            We’re no longer rendering <Navbar /> here, 
-            so the hero can control how it’s displayed. 
-          */}
-          {children}
+          {/* Sticky nav pinned to top on every page */}
+          <Navbar />
 
-          {/* 
-            Footer + analytics in a narrower container below 
-            (outside the hero, so everything below the fold is 
-            in a normal width).
-          */}
+          {/* Main content - each page or the hero, etc. */}
+          <main>{children}</main>
+
+          {/* Footer container */}
           <div className="max-w-3xl mx-auto w-full px-4 mt-8">
             <Footer />
             <Analytics />
