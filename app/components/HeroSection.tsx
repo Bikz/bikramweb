@@ -6,14 +6,14 @@ import Link from 'next/link'
 
 export default function HeroSection() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const heroRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     function handleResize() {
-      if (heroRef.current) {
+      if (sectionRef.current) {
         setDimensions({
-          width: heroRef.current.offsetWidth,
-          height: heroRef.current.offsetHeight,
+          width: sectionRef.current.offsetWidth,
+          height: sectionRef.current.offsetHeight,
         })
       }
     }
@@ -24,17 +24,19 @@ export default function HeroSection() {
 
   return (
     <section
-      ref={heroRef}
-      className="
+      ref={sectionRef}
+      className={`
         relative 
-        w-screen            /* Full browser width */
-        min-h-screen        /* At least one screen tall */
-        overflow-hidden
+        h-screen
+        -mx-4      /* break out of the .px-4 container from layout */
+        md:-mx-8   /* you can tweak if needed */
+        lg:-mx-0   /* or -mx-16, etc. for even larger break-out */
+        pt-20      /* leave room for sticky nav so text not hidden */
+        overflow-hidden 
         bg-white dark:bg-black
-        pt-12               /* Leaves room for the sticky nav at the top */
-      "
+      `}
     >
-      {/* Canvas behind everything */}
+      {/* Full-width grid background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <InteractiveGrid
           width={dimensions.width}
@@ -44,22 +46,11 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Hero content centered */}
-      <div className="
-        relative 
-        z-10 
-        flex 
-        flex-col 
-        items-center 
-        justify-center 
-        text-center 
-        px-4 
-        py-12
-      ">
+      {/* Hero content, centered horizontally by flex-col items-center */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
         <h1 className="mb-6 text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
           Welcome to My Portfolio
         </h1>
-
         <p className="mb-4 text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-2xl">
           Hi! I’m Bikram, a Senior Product Manager and AI developer with a
           passion for building products that solve real-world problems.
@@ -72,37 +63,32 @@ export default function HeroSection() {
         </p>
 
         {/* Featured AI Projects */}
-        <div className="mt-8 max-w-4xl w-full">
-          <h2 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-white">
-            Featured AI Projects
-          </h2>
-          <div className="flex flex-row flex-wrap gap-6 justify-center">
-            <Link
-              href="/projects/mysti-health"
-              className="bg-white dark:bg-neutral-900 w-64 p-4 rounded border 
-                         border-neutral-200 dark:border-neutral-700 
-                         shadow-sm hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-bold text-lg mb-2">Mysti Health</h3>
-              <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed">
-                A personal AI health agent that syncs with Apple/Google Health
-                and provides personalized health recommendations.
-              </p>
-            </Link>
+        <div className="mt-8 flex flex-row flex-wrap gap-6 justify-center">
+          <Link
+            href="/projects/mysti-health"
+            className="bg-white dark:bg-neutral-900 w-64 p-4 rounded border 
+                       border-neutral-200 dark:border-neutral-700 
+                       shadow-sm hover:shadow-md transition-shadow"
+          >
+            <h3 className="font-bold text-lg mb-2">Mysti Health</h3>
+            <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed">
+              A personal AI health agent that syncs with Apple/Google Health
+              and provides personalized health recommendations.
+            </p>
+          </Link>
 
-            <Link
-              href="/projects/dayplan-app"
-              className="bg-white dark:bg-neutral-900 w-64 p-4 rounded border 
-                         border-neutral-200 dark:border-neutral-700 
-                         shadow-sm hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-bold text-lg mb-2">Dayplan App</h3>
-              <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed">
-                SwiftUI productivity app that uses voice input and AI
-                to automatically organize and prioritize tasks.
-              </p>
-            </Link>
-          </div>
+          <Link
+            href="/projects/dayplan-app"
+            className="bg-white dark:bg-neutral-900 w-64 p-4 rounded border 
+                       border-neutral-200 dark:border-neutral-700 
+                       shadow-sm hover:shadow-md transition-shadow"
+          >
+            <h3 className="font-bold text-lg mb-2">Dayplan App</h3>
+            <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed">
+              SwiftUI productivity app that uses voice input and AI
+              to automatically organize and prioritize tasks.
+            </p>
+          </Link>
         </div>
       </div>
     </section>

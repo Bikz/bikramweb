@@ -57,14 +57,19 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider>
-          {/* Sticky nav pinned to top on every page */}
+          {/* Sticky nav pinned across all pages */}
           <Navbar />
 
-          {/* Main content - each page or the hero, etc. */}
-          <main>{children}</main>
+          {/* 
+            Wrap the site’s main content in a container. 
+            Any full-width sections (e.g. Hero) can override this as needed.
+          */}
+          <div className="max-w-4xl mx-auto px-4 mt-4">
+            <main>{children}</main>
+          </div>
 
-          {/* Footer container */}
-          <div className="max-w-3xl mx-auto w-full px-4 mt-8">
+          {/* Footer & analytics (no container, or you can also wrap it if you prefer) */}
+          <div className="max-w-3xl mx-auto w-full px-4 mt-12">
             <Footer />
             <Analytics />
             <SpeedInsights />

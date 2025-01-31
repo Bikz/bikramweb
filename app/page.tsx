@@ -1,23 +1,25 @@
-// app/page.tsx (server component by default)
-import { BlogPosts } from 'app/components/posts'
-import ExperienceTimeline from 'app/components/experience-timeline'
-import HeroSection from './components/HeroSection' // a new client component
+// app/page.tsx
 import React from 'react'
+import HeroSection from './components/HeroSection'
+import ExperienceTimeline from './components/experience-timeline'
+import { BlogPosts } from './components/posts'
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-
-      {/* The rest of the site below the fold */}
-      <section className="px-4 mt-16 max-w-4xl mx-auto">
+      {/* 
+        The layout wraps this in a container, 
+        so just put your below-the-fold content directly here. 
+      */}
+      <section className="mt-16">
         <h2 className="text-xl font-semibold mb-3 text-center">
           Work Experience
         </h2>
         <ExperienceTimeline />
       </section>
 
-      <section className="px-4 mt-16 max-w-4xl mx-auto">
+      <section className="mt-16">
         <h2 className="text-xl font-semibold mb-3 text-center">
           Latest Blog Posts
         </h2>
