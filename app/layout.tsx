@@ -57,18 +57,9 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider>
-          {/* Sticky nav pinned across all pages */}
           <Navbar />
-
-          {/* 
-            Main container for all pages. 
-            The hero can “break out” with -mx-4 if it wants full width.
-          */}
-          <div className="max-w-4xl mx-auto px-4 mt-4">
-            <main>{children}</main>
-          </div>
-
-          {/* Footer, analytics, etc. */}
+          {/* Render the page content directly */}
+          {children}
           <div className="max-w-3xl mx-auto w-full px-4 mt-12">
             <Footer />
             <Analytics />

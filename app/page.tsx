@@ -6,23 +6,25 @@ import { BlogPosts } from './components/posts'
 export default function HomePage() {
   return (
     <>
-      {/* Full-width hero with grid behind it */}
+      {/* Render the hero section full-width */}
       <HeroSection />
 
-      {/* Below-the-fold, centered in layout */}
-      <section className="mt-16">
-        <h2 className="text-xl font-semibold mb-3 text-center">
-          Work Experience
-        </h2>
-        <ExperienceTimeline />
-      </section>
+      {/* Wrap subsequent sections in a container */}
+      <div className="max-w-4xl mx-auto px-4 mt-16">
+        <section>
+          <h2 className="text-xl font-semibold mb-3 text-center">
+            Work Experience
+          </h2>
+          <ExperienceTimeline />
+        </section>
 
-      <section className="mt-16">
-        <h2 className="text-xl font-semibold mb-3 text-center">
-          Latest Blog Posts
-        </h2>
-        <BlogPosts />
-      </section>
+        <section className="mt-16">
+          <h2 className="text-xl font-semibold mb-3 text-center">
+            Latest Blog Posts
+          </h2>
+          <BlogPosts />
+        </section>
+      </div>
     </>
   )
 }

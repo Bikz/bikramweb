@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   darkMode: 'class',
   content: [
@@ -9,6 +11,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Add the neutral palette to make classes like bg-neutral-50 available
+      colors: {
+        neutral: colors.neutral,
+      },
       animation: {
         fadeIn: 'fadeIn 0.5s ease-in',
       },
