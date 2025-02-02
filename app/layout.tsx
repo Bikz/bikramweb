@@ -61,14 +61,14 @@ export default function RootLayout({
           <Navbar />
 
           {/* 
-            Wrap the site’s main content in a container. 
-            Any full-width sections (e.g. Hero) can override this as needed.
+            Main container for all pages. 
+            The hero can “break out” with -mx-4 if it wants full width.
           */}
           <div className="max-w-4xl mx-auto px-4 mt-4">
             <main>{children}</main>
           </div>
 
-          {/* Footer & analytics (no container, or you can also wrap it if you prefer) */}
+          {/* Footer, analytics, etc. */}
           <div className="max-w-3xl mx-auto w-full px-4 mt-12">
             <Footer />
             <Analytics />

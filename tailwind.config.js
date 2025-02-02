@@ -1,8 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: 'class',
-    content: [
+  darkMode: 'class',
+  content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    // Remove if not using the old pages folder:
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
@@ -19,6 +20,5 @@ module.exports = {
       },
     },
   },
-  
   plugins: [],
-} 
+}

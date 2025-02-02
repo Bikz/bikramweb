@@ -29,8 +29,8 @@ export default function HeroSection() {
         relative 
         h-screen
         -mx-4      /* break out of the .px-4 container from layout */
-        md:-mx-8   /* you can tweak if needed */
-        lg:-mx-0   /* or -mx-16, etc. for even larger break-out */
+        md:-mx-8   
+        lg:-mx-0   
         pt-20      /* leave room for sticky nav so text not hidden */
         overflow-hidden 
         bg-white dark:bg-black
@@ -49,7 +49,7 @@ export default function HeroSection() {
       {/* Hero content, centered horizontally by flex-col items-center */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
         <h1 className="mb-6 text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
-          Welcome to My Portfolio
+          Bikram Brar
         </h1>
         <p className="mb-4 text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-2xl">
           Hi! I’m Bikram, a Senior Product Manager and AI developer with a
