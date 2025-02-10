@@ -3,7 +3,6 @@ import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-// Register ScrollTrigger once on the client side
 gsap.registerPlugin(ScrollTrigger)
 
 type TimelineItem = {
@@ -70,7 +69,6 @@ export default function ExperienceTimeline() {
   useEffect(() => {
     if (!containerRef.current) return
 
-    // Animate each ".timeline-item" as it scrolls into view
     const elements = containerRef.current.querySelectorAll('.timeline-item')
     gsap.from(elements, {
       scrollTrigger: {
@@ -97,7 +95,8 @@ export default function ExperienceTimeline() {
               </span>
             )}
           </div>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">
+          {/* Date line now uses dark:text-neutral-300 */}
+          <p className="text-sm text-neutral-600 dark:text-neutral-300 mb-2">
             {item.dateRange}
           </p>
           <ul className="list-disc list-inside text-neutral-800 dark:text-neutral-200">

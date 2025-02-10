@@ -1,4 +1,3 @@
-/* /app/global.css */
 @import "tailwindcss";
 
 /* Custom Global Styles */
@@ -19,16 +18,19 @@
   --sh-entity: #e25a1c;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
-  html {
-    color-scheme: dark;
-  }
+/* Remove `@media (prefers-color-scheme: dark)` block;
+   Let next-themes handle dark mode with the .dark class. */
+
+.dark {
+  /* Optional: If you want different highlight colors in dark mode: */
+  --sh-class: #4c97f8;
+  --sh-identifier: white;
+  --sh-keyword: #f47067;
+  --sh-string: #0fa295;
+  --sh-comment: #a19595;
+  --sh-jsxliterals: #6266d1;
+  --sh-property: #e25a1c;
+  --sh-entity: #e25a1c;
 }
 
 html {
@@ -50,12 +52,13 @@ html {
 
 .prose a {
   @apply underline transition-all underline-offset-2;
-  /* Use explicit CSS for text-decoration-color instead of @apply */
-  text-decoration-color: #9ca3af; /* Tailwind's neutral-400 */
+  /* Neutral-400 for underline color in light mode */
+  text-decoration-color: #9ca3af;
 }
 
 .dark .prose a {
-  text-decoration-color: #52525b; /* Tailwind's neutral-600 */
+  /* Neutral-600 for underline color in dark mode */
+  text-decoration-color: #52525b;
 }
 
 .prose pre {

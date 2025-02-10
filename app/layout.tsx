@@ -48,9 +48,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {/* Next Themes will add .dark to <html> if user sets dark mode or system is dark. */}
       <body
         className={cx(
-          'antialiased text-black bg-white dark:text-white dark:bg-black',
+          'antialiased',
           'overflow-x-hidden', // no horizontal scroll
           GeistSans.variable,
           GeistMono.variable
@@ -58,7 +59,6 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Navbar />
-          {/* Render the page content directly */}
           {children}
           <div className="max-w-3xl mx-auto w-full px-4 mt-12">
             <Footer />
