@@ -39,7 +39,7 @@ function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
     return React.createElement(
       `h${level}`,
       { id: slug },
-      [<a key={`link-${slug}`} href={`#${slug}`} className="anchor" />],
+      <a key={`link-${slug}`} href={`#${slug}`} className="anchor" />,
       children
     )
   }

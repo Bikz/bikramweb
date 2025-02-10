@@ -4,7 +4,7 @@ export default function RepoPrompterPage() {
   return (
     <section className="animate-fadeIn">
       <h1 className="mb-6 text-2xl font-semibold tracking-tighter">
-      Repo Prompter
+        Repo Prompter
       </h1>
       <p className="mb-4">
         Repo Prompter helps developers turn their code repositories into rich,
@@ -17,25 +17,28 @@ export default function RepoPrompterPage() {
         Repo Prompter automates that step, empowering you to focus on the actual
         problem-solving rather than data wrangling.
       </p>
+
       <h2 className="text-lg font-medium mt-8 mb-2">Key Features</h2>
       <ul className="list-disc list-inside mb-4">
         <li>Automated repository scanning & context extraction</li>
         <li>Generates high-level or file-specific prompts</li>
         <li>Works with popular LLMS like Deepseek, Claude, LLaMA, and GPT</li>
       </ul>
+
       <h2 className="text-lg font-medium mt-8 mb-2">Tech Stack</h2>
       <ul className="list-disc list-inside mb-4">
         <li>Tauri and Svelte for desktop app</li>
         <li>Cloudflare workers for backend</li>
       </ul>
+
       <a
-  href="https://repoprompter.com"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-block mt-4 px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded hover:bg-blue-500"
->
-  Learn More
-</a>
+        href="https://repoprompter.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block mt-4 px-6 py-3 text-sm font-medium text-white bg-neutral-900 rounded-md hover:bg-neutral-700 transition-colors"
+      >
+        Learn More
+      </a>
     </section>
   )
 }

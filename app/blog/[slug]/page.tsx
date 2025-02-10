@@ -16,18 +16,17 @@ export async function generateStaticParams() {
 }
 
 /**
- * In Next.js 15, `generateMetadata` must accept and (optionally) await `params`
- * and `searchParams` if they rely on request-specific data. Making it async
- * ensures the type definitions align with the Next.js 15 requirements.
+ * In Next.js 15, `generateMetadata` must accept (and optionally await) `params`
+ * if they rely on request-specific data. Making it async ensures the type definitions align.
  */
 export async function generateMetadata(
   props: {
-    params: Promise<{ slug: string }>,
-    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
+    params: { slug: string },
+    searchParams?: { [key: string]: string | string[] | undefined }
   }
 ): Promise<Metadata> {
-  const params = await props.params;
-  const post = getBlogPosts().find((p) => p.slug === params.slug)
+  const { slug } = props.params
+  const post = getBlogPosts().find((p) => p.slug === slug)
   if (!post) notFound()
 
   const { title, publishedAt, summary, image } = post.metadata
@@ -41,7 +40,7 @@ export async function generateMetadata(
       description: summary,
       type: 'article',
       publishedTime: publishedAt,
-      url: `${baseUrl}/blog/${params.slug}`,
+      url: `${baseUrl}/blog/${slug}`,
       images: [{ url: ogImage }]
     },
     twitter: {
@@ -59,12 +58,12 @@ export async function generateMetadata(
  */
 export default async function BlogPage(
   props: {
-    params: Promise<{ slug: string }>,
-    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
+    params: { slug: string },
+    searchParams?: { [key: string]: string | string[] | undefined }
   }
 ) {
-  const params = await props.params;
-  const post = getBlogPosts().find((p) => p.slug === params.slug)
+  const { slug } = props.params
+  const post = getBlogPosts().find((p) => p.slug === slug)
   if (!post) notFound()
 
   return (

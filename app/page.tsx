@@ -1,30 +1,20 @@
-import React from 'react'
+import { getBlogPosts } from './blog/utils'
 import HeroSection from './components/HeroSection'
-import ExperienceTimeline from './components/experience-timeline'
-import { BlogPosts } from './components/posts'
+import HomePageContent from './components/HomePageContent'
 
 export default function HomePage() {
+  // 1) Fetch blog posts on the server (using `fs`) 
+  const allBlogs = getBlogPosts()
+
+  // 2) Render your HeroSection (can remain server or client),
+  //    and pass blog data to a *client* child for animations.
   return (
     <>
-      {/* Render the hero section full-width */}
+      {/* Full-width hero section */}
       <HeroSection />
 
-      {/* Wrap subsequent sections in a container */}
-      <div className="max-w-4xl mx-auto px-4 mt-16">
-        <section>
-          <h2 className="text-xl font-semibold mb-3 text-center">
-            Work Experience
-          </h2>
-          <ExperienceTimeline />
-        </section>
-
-        <section className="mt-16">
-          <h2 className="text-xl font-semibold mb-3 text-center">
-            Latest Blog Posts
-          </h2>
-          <BlogPosts />
-        </section>
-      </div>
+      {/* Container for subsequent sections (client animations) */}
+      <HomePageContent blogs={allBlogs} />
     </>
   )
 }
