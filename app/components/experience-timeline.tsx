@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -87,19 +88,21 @@ export default function ExperienceTimeline() {
     <div ref={containerRef} className="space-y-6">
       {timelineData.map((item, index) => (
         <div key={index} className="timeline-item flex flex-col">
+          {/* Title + optional company */}
           <div className="flex flex-row items-baseline gap-2">
             <h3 className="font-semibold text-lg">{item.title}</h3>
             {item.company && (
-              <span className="text-sm text-neutral-500 dark:text-neutral-400">
-                @ {item.company}
-              </span>
+              <span className="text-sm">@ {item.company}</span>
             )}
           </div>
-          {/* Date line now uses dark:text-neutral-300 */}
-          <p className="text-sm text-neutral-600 dark:text-neutral-300 mb-2">
+
+          {/* Date range as small text, but no explicit color class */}
+          <p className="text-sm mb-2">
             {item.dateRange}
           </p>
-          <ul className="list-disc list-inside text-neutral-800 dark:text-neutral-200">
+
+          {/* Bullets inherit global color */}
+          <ul className="list-disc list-inside">
             {item.bullets.map((bullet, bIndex) => (
               <li key={bIndex}>{bullet}</li>
             ))}
