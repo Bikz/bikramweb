@@ -6,11 +6,7 @@ import { ReactNode } from 'react'
 export function ThemeProvider({ children }: { children: ReactNode }) {
   return (
     <NextThemesProvider
-      /** 
-       * This ensures Tailwind's `dark:` classes are applied based on 
-       * <body class="dark"> or <html class="dark">. 
-       */
-      attribute="class"
+      attribute="class"    // Tells Next Themes to toggle .dark on <html>
       defaultTheme="system"
       enableSystem
       disableTransitionOnChange

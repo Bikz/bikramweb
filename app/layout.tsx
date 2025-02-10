@@ -9,7 +9,10 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from './sitemap'
 import { Navbar } from './components/nav'
 
-const cx = (...classes: string[]) => classes.filter(Boolean).join(' ')
+// Merge multiple classes
+function cx(...classes: (string | false | undefined)[]) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -21,8 +24,7 @@ export const metadata: Metadata = {
     'Welcome to Bikram Brar’s personal portfolio site. Explore his AI projects, blog posts, and product management highlights.',
   openGraph: {
     title: 'Bikram Brar Portfolio',
-    description:
-      'Explore Bikram’s AI projects, blog posts, and his background in product management & development.',
+    description: 'Explore Bikram’s AI projects, blog posts, and background.',
     url: baseUrl,
     siteName: 'Bikram Brar Portfolio',
     locale: 'en_US',
@@ -47,14 +49,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+    // NextThemes adds or removes 'dark' class on <html> to match OS or user toggle
     <html lang="en" suppressHydrationWarning>
-      {/* Next Themes will add .dark to <html> if user sets dark mode or system is dark. */}
       <body
         className={cx(
-          'antialiased',
-          'overflow-x-hidden', // no horizontal scroll
-          GeistSans.variable,
-          GeistMono.variable
+          'min-h-screen',
+          'bg-white text-neutral-800',       // Light default
+          'dark:bg-black dark:text-neutral-100', // Dark overrides
+          'antialiased overflow-x-hidden',  // Utility classes
+          GeistSans.variable, GeistMono.variable
         )}
       >
         <ThemeProvider>

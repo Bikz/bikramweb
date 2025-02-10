@@ -37,7 +37,6 @@ export default function HeroSection() {
         relative
         -mx-4 md:-mx-8 lg:-mx-0
         pt-20 overflow-hidden
-        bg-white dark:bg-black
       `}
     >
       {/* Full‐width interactive dot background */}
