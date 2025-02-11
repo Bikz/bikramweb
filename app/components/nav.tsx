@@ -8,9 +8,11 @@ import ThemeToggle from './ThemeToggle' // <--- Importing the theme toggle
 const navItems = [
   { path: '/', label: 'home' },
   { path: '/projects', label: 'projects' },
-  { path: '/blog', label: 'blog' },
-  { path: '/about', label: 'about' },
+  
   { path: '/travel', label: 'travel' },
+  { path: '/blog', label: 'blog' },
+  { path: '/about', label: '[ contact ]' },
+
 ]
 
 export function Navbar() {
