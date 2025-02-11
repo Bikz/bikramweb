@@ -16,12 +16,11 @@ type TimelineItem = {
 const timelineData: TimelineItem[] = [
   {
     title: 'Independent Product Developer & AI Experimenter',
-    company: '',
     dateRange: 'Jan 2024 - Present',
     bullets: [
       'Dedicated 2024 to deepening AI expertise and building real-world software solutions.',
-      'Created apps (Mysti.ai, Dayplan App, RepoPrompter.com) that addressed personal pain points and delivered real utility.',
-      'Integrated cutting-edge technologies using retrieval-augmented generation (RAG), agent-based systems, and multi-model orchestration to power AI-driven experiences.',
+      'Created apps (Mysti.ai, Dayplan App, RepoPrompter.com) that addressed personal pain points.',
+      'Integrated cutting-edge technologies like RAG, multi-agent orchestration, GPT APIs, etc.',
     ],
   },
   {
@@ -29,9 +28,9 @@ const timelineData: TimelineItem[] = [
     company: 'ODAIA Intelligence',
     dateRange: 'Dec 2022 - Dec 2023',
     bullets: [
-      'Delivered first 3rd-party integration (Veeva CRM), boosting sales rep efficiency by 10–20%.',
-      'Led development of a curated scheduling engine used by thousands of pharma sales reps weekly.',
-      'Built product capabilities that increased revenue, improved user experience, and supported Series B funding efforts.',
+      'Delivered first 3rd-party integration (Veeva CRM), boosting sales rep efficiency 10–20%.',
+      'Led dev of a scheduling engine used by thousands of pharma sales reps weekly.',
+      'Built product capabilities that increased revenue and supported Series B funding efforts.',
     ],
   },
   {
@@ -40,8 +39,8 @@ const timelineData: TimelineItem[] = [
     dateRange: 'Dec 2020 - Nov 2022',
     bullets: [
       'Consulted as a Product Manager across multiple clients (Hard Rock, CPPIB, Quest, etc.).',
-      "Helped unify Hard Rock's hotels, cafes, and casinos under one global loyalty program (600k+ downloads).",
-      'Oversaw end-to-end product delivery—from requirements gathering to user testing—for Hard Rock\'s mobile app.',
+      'Helped unify Hard Rock’s hotels, cafes, and casinos under one loyalty program (600k+ downloads).',
+      'Oversaw end-to-end product delivery—from requirements to user testing—for Hard Rock’s mobile app.',
     ],
   },
   {
@@ -49,8 +48,8 @@ const timelineData: TimelineItem[] = [
     company: 'Empire Life',
     dateRange: 'Mar 2020 - Dec 2020',
     bullets: [
-      'Quickly scaled up digital capabilities amidst COVID-19',
-      'Created group benefits portal for plan admins',
+      'Scaled up digital capabilities amidst COVID-19.',
+      'Created group benefits portal for plan admins.',
     ],
   },
   {
@@ -58,8 +57,8 @@ const timelineData: TimelineItem[] = [
     company: 'Bank of Montreal',
     dateRange: 'Jun 2017 - Mar 2020',
     bullets: [
-      'Sudo APM supporting new mobile banking app',
-      'Various projects across peer-to-peer payments, AI, personal finance, open banking, and more',
+      'Worked on new mobile banking app, peer-to-peer payments, AI features, personal finance, etc.',
+      'Supported open banking initiatives and key digital transformation projects.',
     ],
   },
 ]
@@ -70,44 +69,45 @@ export default function ExperienceTimeline() {
   useEffect(() => {
     if (!containerRef.current) return
 
-    const elements = containerRef.current.querySelectorAll('.timeline-item')
-    const animation = gsap.from(elements, {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top 80%',
-      },
-      y: 50,
-      opacity: 0,
-      stagger: 0.2,
-      duration: 0.8,
-      ease: 'power2.out',
-    })
+    const ctx = gsap.context(() => {
+      gsap.from('.timeline-item', {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 90%', // fades in a bit earlier
+        },
+        opacity: 0,
+        y: 20,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: 'power2.out',
+      })
+    }, containerRef)
 
-    return () => {
-      // Kill the animation and its ScrollTrigger
-      animation.kill()
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
+    return () => ctx.revert()
   }, [])
 
   return (
-    <div ref={containerRef} className="space-y-6">
+    <div ref={containerRef} className="space-y-6 mt-4">
       {timelineData.map((item, index) => (
-        <div key={index} className="timeline-item flex flex-col">
-          {/* Title + optional company */}
-          <div className="flex flex-row items-baseline gap-2">
+        <div
+          key={index}
+          className="
+            timeline-item 
+            border border-red-500  /* debug border, remove later */
+            p-4 
+            text-neutral-800 dark:text-neutral-100
+            rounded 
+          "
+        >
+          <div className="flex flex-row flex-wrap items-baseline gap-2 mb-1">
             <h3 className="font-semibold text-lg">{item.title}</h3>
             {item.company && (
-              <span className="text-sm">@ {item.company}</span>
+              <span className="text-sm">
+                @ {item.company}
+              </span>
             )}
           </div>
-
-          {/* Date range as small text, but no explicit color class */}
-          <p className="text-sm mb-2">
-            {item.dateRange}
-          </p>
-
-          {/* Bullets inherit global color */}
+          <p className="text-sm mb-2">{item.dateRange}</p>
           <ul className="list-disc list-inside">
             {item.bullets.map((bullet, bIndex) => (
               <li key={bIndex}>{bullet}</li>
