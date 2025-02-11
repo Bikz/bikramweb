@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useRef } from 'react'
+import Link from 'next/link'
 
 function ArrowIcon() {
   return (
@@ -24,37 +25,35 @@ export default function Footer() {
   const currentYearRef = useRef(new Date().getFullYear())
 
   return (
-    <footer className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
-        {/* RSS Link */}
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="/rss"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">RSS</p>
-          </a>
-        </li>
-        {/* GitHub Link */}
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/Bikz"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">GitHub</p>
-          </a>
-        </li>
-      </ul>
-
-      {/* Suppress hydration warning so the year won't mismatch if the server had a different date. */}
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300" suppressHydrationWarning>
-        © {currentYearRef.current} Bikram Brar
+    <footer className="container mx-auto py-8 px-4 mt-8">
+      <div className="flex justify-center space-x-4">
+        <Link 
+          href="https://www.linkedin.com/in/bikrambrar/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-gray-600 hover:text-black"
+        >
+          LinkedIn
+        </Link>
+        <Link 
+          href="https://x.com/bikbrar" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-gray-600 hover:text-black"
+        >
+          X
+        </Link>
+        <Link 
+          href="https://github.com/Bikz" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-gray-600 hover:text-black"
+        >
+          GitHub
+        </Link>
+      </div>
+      <p className="mt-4 text-center text-sm text-gray-500">
+        &copy; {currentYearRef.current} Bikram Brar. All rights reserved.
       </p>
     </footer>
   )

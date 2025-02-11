@@ -12,5 +12,9 @@ import ProjectsClient from './ProjectsClient'
  * This avoids running Framer Motion on the server.
  */
 export default function ProjectsPage() {
-  return <ProjectsClient />
+  return (
+    <div className="container mx-auto py-8 px-4">
+      <ProjectsClient />
+    </div>
+  )
 }

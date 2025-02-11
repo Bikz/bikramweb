@@ -69,7 +69,7 @@ export default async function Page(
 ) {
   const { slug } = await props.params;
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 px-4">
       <h1 className="text-2xl font-bold">Blog post: {slug}</h1>
       <p>This is a placeholder blog post for {slug}.</p>
     </div>
