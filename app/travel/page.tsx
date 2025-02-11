@@ -18,7 +18,7 @@ function getTravelPhotos() {
 export default function TravelPage() {
   const photos = getTravelPhotos()
   return (
-    <div className="container mx-auto py-8 px-4">
+    <div className="container mx-auto max-w-4xl py-8 px-4">
       <TravelGallery photos={photos} />
     </div>
   )
