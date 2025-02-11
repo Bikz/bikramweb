@@ -1,4 +1,5 @@
 // app/blog/[slug]/page.tsx
+import React from 'react';
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { baseUrl } from 'app/sitemap'
@@ -10,27 +11,33 @@ import { CustomMDX } from 'app/components/mdx'
  * so we keep this function async for compatibility.
  */
 export async function generateStaticParams() {
-  return getBlogPosts().map((post) => ({
-    slug: post.slug
-  }))
+  // Hard-coded list of blog post slugs
+  return [
+    { slug: 'vim' },
+    { slug: 'spaces-vs-tabs' },
+    { slug: 'static-typing' },
+  ];
 }
 
 /**
- * In Next.js 15, `generateMetadata` must accept (and optionally await) `params`
- * if they rely on request-specific data. Making it async ensures the type definitions align.
+ * In Next.js 15, `generateMetadata` can be async to match
+ * the new type definitions, but the key is just destructuring
+ * { params } as a plain object, not a Promise.
  */
 export async function generateMetadata(
   props: {
-    params: { slug: string },
-    searchParams?: { [key: string]: string | string[] | undefined }
+    params: Promise<{ slug: string }>
   }
 ): Promise<Metadata> {
-  const { slug } = props.params
+  const params = await props.params;
+  const { slug } = params;
   const post = getBlogPosts().find((p) => p.slug === slug)
   if (!post) notFound()
 
   const { title, publishedAt, summary, image } = post.metadata
-  const ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`
+  const ogImage = image
+    ? image
+    : `${baseUrl}/og?title=${encodeURIComponent(title)}`
 
   return {
     title,
@@ -41,66 +48,30 @@ export async function generateMetadata(
       type: 'article',
       publishedTime: publishedAt,
       url: `${baseUrl}/blog/${slug}`,
-      images: [{ url: ogImage }]
+      images: [{ url: ogImage }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description: summary,
-      images: [ogImage]
-    }
+      images: [ogImage],
+    },
   }
 }
 
 /**
  * The page component must also be async if it uses `params` or other
  * request-based data so that the types match Next.js 15's updated definitions.
+ * Again, just accept { params, searchParams } as a normal object.
  */
-export default async function BlogPage(
-  props: {
-    params: { slug: string },
-    searchParams?: { [key: string]: string | string[] | undefined }
-  }
+export default async function Page(
+  props: { params: Promise<{ slug: string }> }
 ) {
-  const { slug } = props.params
-  const post = getBlogPosts().find((p) => p.slug === slug)
-  if (!post) notFound()
-
+  const { slug } = await props.params;
   return (
-    <section>
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${baseUrl}${post.metadata.image}`
-              : `${baseUrl}/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${baseUrl}/blog/${post.slug}`,
-            author: {
-              '@type': 'Person',
-              name: 'Bikram Brar'
-            }
-          })
-        }}
-      />
-      <h1 className="title font-semibold text-2xl tracking-tighter">
-        {post.metadata.title}
-      </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.metadata.publishedAt)}
-        </p>
-      </div>
-      <article className="prose">
-        <CustomMDX source={post.content} />
-      </article>
-    </section>
-  )
+    <div className="container mx-auto py-8">
+      <h1 className="text-2xl font-bold">Blog post: {slug}</h1>
+      <p>This is a placeholder blog post for {slug}.</p>
+    </div>
+  );
 }

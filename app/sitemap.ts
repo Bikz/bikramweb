@@ -1,3 +1,7 @@
+// Added static export configuration for sitemap
+export const dynamic = "force-static"
+export const revalidate = 0
+
 import { getBlogPosts } from 'app/blog/utils'
 
 export const baseUrl = 'https://portfolio-blog-starter.vercel.app'
