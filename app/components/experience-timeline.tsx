@@ -29,7 +29,7 @@ const timelineData: TimelineItem[] = [
     dateRange: 'Dec 2022 - Dec 2023',
     bullets: [
       'Delivered first 3rd-party integration (Veeva CRM), boosting sales rep efficiency 10–20%.',
-      'Led dev of a scheduling engine used by thousands of pharma sales reps weekly.',
+      'Led development of a scheduling engine used by thousands of pharma sales reps weekly.',
       'Built product capabilities that increased revenue and supported Series B funding efforts.',
     ],
   },
@@ -40,7 +40,7 @@ const timelineData: TimelineItem[] = [
     bullets: [
       'Consulted as a Product Manager across multiple clients (Hard Rock, CPPIB, Quest, etc.).',
       'Helped unify Hard Rock’s hotels, cafes, and casinos under one loyalty program (600k+ downloads).',
-      'Oversaw end-to-end product delivery—from requirements to user testing—for Hard Rock’s mobile app.',
+      'Oversaw end-to-end product delivery—from requirements gathering to user testing—for Hard Rock’s mobile app.',
     ],
   },
   {
@@ -73,7 +73,7 @@ export default function ExperienceTimeline() {
       gsap.from('.timeline-item', {
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 90%', // fades in a bit earlier
+          start: 'top 90%',
         },
         opacity: 0,
         y: 20,
@@ -93,7 +93,6 @@ export default function ExperienceTimeline() {
           key={index}
           className="
             timeline-item 
-            border border-red-500  /* debug border, remove later */
             p-4 
             text-neutral-800 dark:text-neutral-100
             rounded 
@@ -101,11 +100,7 @@ export default function ExperienceTimeline() {
         >
           <div className="flex flex-row flex-wrap items-baseline gap-2 mb-1">
             <h3 className="font-semibold text-lg">{item.title}</h3>
-            {item.company && (
-              <span className="text-sm">
-                @ {item.company}
-              </span>
-            )}
+            {item.company && <span className="text-sm">@ {item.company}</span>}
           </div>
           <p className="text-sm mb-2">{item.dateRange}</p>
           <ul className="list-disc list-inside">

@@ -1,47 +1,21 @@
-'use client'
-import React from 'react'
-import Image from 'next/image'
+import fs from 'fs'
+import path from 'path'
+import TravelGallery from './TravelGallery'
+
+// Server component to get travel photos
+function getTravelPhotos() {
+  const travelDir = path.join(process.cwd(), 'public/travel')
+  const files = fs.readdirSync(travelDir)
+  
+  return files
+    .filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file))
+    .map(file => ({
+      src: `/travel/${file}`,
+      alt: file.split('.')[0].split('-').join(' ').replace(/\b\w/g, l => l.toUpperCase()),
+    }))
+}
 
 export default function TravelPage() {
-  const travelPhotos = [
-    {
-      src: '/travel/paris.jpg',
-      alt: 'Eiffel Tower in Paris',
-    },
-    {
-      src: '/travel/tokyo.jpg',
-      alt: 'Shibuya Crossing in Tokyo',
-    },
-    {
-      src: '/travel/newyork.jpg',
-      alt: 'Times Square in New York City',
-    },
-  ]
-
-  return (
-    <section className="animate-fadeIn">
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        Travel Gallery
-      </h1>
-      <p className="mb-4">
-        Traveling is one of my biggest passions. I love immersing myself in new
-        cultures and exploring iconic landmarks around the world.
-      </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {travelPhotos.map((photo, idx) => (
-          <div
-            key={idx}
-            className="relative w-full h-64 bg-neutral-100 dark:bg-neutral-800"
-          >
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              fill
-              className="object-cover rounded"
-            />
-          </div>
-        ))}
-      </div>
-    </section>
-  )
+  const photos = getTravelPhotos()
+  return <TravelGallery photos={photos} />
 }
