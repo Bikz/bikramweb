@@ -1,0 +1,9 @@
+name = "bikram-portfolio"
+compatibility_date = "2025-02-11"
+
+[build]
+command = "pnpm build && pnpm export"
+
+[site]
+bucket = "./out"
+entry-point = "."
