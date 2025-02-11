@@ -40,8 +40,8 @@ const timelineData: TimelineItem[] = [
     dateRange: 'Dec 2020 - Nov 2022',
     bullets: [
       'Consulted as a Product Manager across multiple clients (Hard Rock, CPPIB, Quest, etc.).',
-      'Helped unify Hard Rock’s hotels, cafes, and casinos under one global loyalty program (600k+ downloads).',
-      'Oversaw end-to-end product delivery—from requirements gathering to user testing—for Hard Rock’s mobile app.',
+      "Helped unify Hard Rock's hotels, cafes, and casinos under one global loyalty program (600k+ downloads).",
+      'Oversaw end-to-end product delivery—from requirements gathering to user testing—for Hard Rock\'s mobile app.',
     ],
   },
   {
@@ -71,7 +71,7 @@ export default function ExperienceTimeline() {
     if (!containerRef.current) return
 
     const elements = containerRef.current.querySelectorAll('.timeline-item')
-    gsap.from(elements, {
+    const animation = gsap.from(elements, {
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top 80%',
@@ -82,6 +82,12 @@ export default function ExperienceTimeline() {
       duration: 0.8,
       ease: 'power2.out',
     })
+
+    return () => {
+      // Kill the animation and its ScrollTrigger
+      animation.kill()
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
   }, [])
 
   return (

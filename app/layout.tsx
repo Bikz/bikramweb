@@ -9,7 +9,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from './sitemap'
 import { Navbar } from './components/nav'
 
-// Merge multiple classes
 function cx(...classes: (string | false | undefined)[]) {
   return classes.filter(Boolean).join(' ')
 }
@@ -49,16 +48,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    // NextThemes adds or removes 'dark' class on <html> to match OS or user toggle
     <html lang="en" suppressHydrationWarning>
+      {/* NextThemes will add/remove .dark on <html> 
+         but we also do body-level classes for the main site styling. */}
       <body
         className={cx(
           'min-h-screen',
           'bg-white text-neutral-800',       // Light default
           'dark:bg-black dark:text-neutral-100', // Dark overrides
-          'antialiased overflow-x-hidden',  // Utility classes
+          'antialiased overflow-x-hidden',  
           GeistSans.variable, GeistMono.variable
         )}
+        suppressHydrationWarning
       >
         <ThemeProvider>
           <Navbar />

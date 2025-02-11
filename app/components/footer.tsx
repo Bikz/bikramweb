@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useRef } from 'react'
 
 function ArrowIcon() {
   return (
@@ -20,8 +20,8 @@ function ArrowIcon() {
 }
 
 export default function Footer() {
-  // This ensures the current year is derived on client side:
-  const currentYear = new Date().getFullYear()
+  // Use a ref so it's stable across renders (no mismatch)
+  const currentYearRef = useRef(new Date().getFullYear())
 
   return (
     <footer className="mb-16">
@@ -52,8 +52,9 @@ export default function Footer() {
         </li>
       </ul>
 
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {currentYear} Bikram Brar
+      {/* Suppress hydration warning so the year won't mismatch if the server had a different date. */}
+      <p className="mt-8 text-neutral-600 dark:text-neutral-300" suppressHydrationWarning>
+        © {currentYearRef.current} Bikram Brar
       </p>
     </footer>
   )
