@@ -7,8 +7,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   return (
     <NextThemesProvider
       attribute="class"
-      enableSystem={false}
-      // By omitting defaultTheme, Next Themes uses 'light' if no localStorage key is found
+      // System-based dark/light mode automatically
+      enableSystem={true}
+      defaultTheme="system"
+      // We omit localStorage override entirely, so it always matches device
+      storageKey={undefined} 
       disableTransitionOnChange
     >
       {children}

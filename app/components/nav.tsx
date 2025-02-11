@@ -3,16 +3,13 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { cx } from '../lib/utils'
-import ThemeToggle from './ThemeToggle' // <--- Importing the theme toggle
 
 const navItems = [
   { path: '/', label: 'home' },
   { path: '/projects', label: 'projects' },
-  
   { path: '/travel', label: 'travel' },
   { path: '/blog', label: 'blog' },
   { path: '/about', label: '[ contact ]' },
-
 ]
 
 export function Navbar() {
@@ -27,12 +24,11 @@ export function Navbar() {
       "
     >
       <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
-        {/* Logo + Theme Toggle together */}
+        {/* Simple Logo with no theme toggle */}
         <div className="flex items-center space-x-2">
           <Link href="/" className="text-lg font-semibold transition-all">
             Bikram Brar
           </Link>
-          <ThemeToggle />
         </div>
 
         {/* Hamburger for mobile */}
