@@ -20,10 +20,10 @@ export const metadata: Metadata = {
     template: '%s | Bikram Brar Portfolio',
   },
   description:
-    'Welcome to Bikram Brar’s personal portfolio site. Explore his AI projects, blog posts, and product management highlights.',
+    'Welcome to Bikram Brar\'s personal portfolio site. Explore his AI projects, blog posts, and product management highlights.',
   openGraph: {
     title: 'Bikram Brar Portfolio',
-    description: 'Explore Bikram’s AI projects, blog posts, and background.',
+    description: 'Explore Bikram\'s AI projects, blog posts, and background.',
     url: baseUrl,
     siteName: 'Bikram Brar Portfolio',
     locale: 'en_US',
@@ -40,6 +40,35 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: '/global/favicon_io/favicon.ico',
+    shortcut: '/global/favicon_io/favicon.ico',
+    apple: '/global/favicon_io/apple-touch-icon.png',
+    other: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        url: '/global/favicon_io/favicon-16x16.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        url: '/global/favicon_io/favicon-32x32.png',
+      },
+      {
+        rel: 'android-chrome',
+        sizes: '192x192',
+        url: '/global/favicon_io/android-chrome-192x192.png',
+      },
+      {
+        rel: 'android-chrome',
+        sizes: '512x512',
+        url: '/global/favicon_io/android-chrome-512x512.png',
+      },
+    ],
+  },
 }
 
 export default function RootLayout({
@@ -49,6 +78,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="manifest" href="/global/favicon_io/site.webmanifest" />
+      </head>
       {/* NextThemes will add/remove .dark on <html> 
          but we also do body-level classes for the main site styling. */}
       <body
