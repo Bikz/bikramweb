@@ -14,6 +14,7 @@ export default function HeroSection() {
         // Measure the hero container. If zero, fall back to window dimensions.
         const measuredWidth = sectionRef.current.offsetWidth || window.innerWidth
         const measuredHeight = sectionRef.current.offsetHeight || window.innerHeight
+        
         setDimensions({
           width: measuredWidth,
           height: measuredHeight,
@@ -32,12 +33,12 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      style={{ height: 'calc(100vh - 64px)' }}
+      style={{ minHeight: 'calc(100vh - 64px)' }}
       className={`
         relative
         -mx-4 md:-mx-8 lg:-mx-0
-        pt-20 overflow-hidden
-        overflow-y-auto md:overflow-y-hidden
+        pt-20 md:pt-0 overflow-hidden
+        flex md:items-center md:justify-center
       `}
     >
       {/* Full‐width interactive dot background */}
@@ -50,7 +51,7 @@ export default function HeroSection() {
       </div>
 
       {/* Hero content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-full py-8 md:py-0 text-center px-4 max-w-5xl mx-auto">
+      <div className="relative z-10 w-full flex flex-col items-center py-8 md:py-0 text-center px-8 sm:px-4 max-w-5xl mx-auto">
         <h1 className="mb-4 text-3xl sm:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
           Bikram Brar
         </h1>
@@ -63,7 +64,7 @@ export default function HeroSection() {
         </p>
 
         {/* Featured Projects */}
-        <div className="mt-4 md:mt-8 flex flex-wrap gap-4 md:gap-6 justify-center">
+        <div className="mt-4 md:mt-8 flex flex-wrap gap-6 justify-center px-0">
           <Link
             href="/projects/mysti-health"
             className="
@@ -71,6 +72,7 @@ export default function HeroSection() {
               w-full sm:w-64 p-4 rounded-md border border-neutral-200 dark:border-neutral-700 
               bg-white dark:bg-neutral-900
               hover:scale-105 hover:shadow-lg transition-all
+              mx-2 sm:mx-0
             "
           >
             <h3 className="text-lg font-bold mb-1 text-neutral-900 dark:text-white group-hover:text-blue-600">
@@ -89,6 +91,7 @@ export default function HeroSection() {
               w-full sm:w-64 p-4 rounded-md border border-neutral-200 dark:border-neutral-700 
               bg-white dark:bg-neutral-900
               hover:scale-105 hover:shadow-lg transition-all
+              mx-2 sm:mx-0
             "
           >
             <h3 className="text-lg font-bold mb-1 text-neutral-900 dark:text-white group-hover:text-blue-600">
@@ -107,6 +110,7 @@ export default function HeroSection() {
               w-full sm:w-64 p-4 rounded-md border border-neutral-200 dark:border-neutral-700 
               bg-white dark:bg-neutral-900
               hover:scale-105 hover:shadow-lg transition-all
+              mx-2 sm:mx-0
             "
           >
             <h3 className="text-lg font-bold mb-1 text-neutral-900 dark:text-white group-hover:text-blue-600">

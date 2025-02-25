@@ -41,8 +41,12 @@ export default function InteractiveGrid({
 
     // Init on mount
     handleChange(mq)
+    
     mq.addEventListener('change', handleChange as EventListener)
-    return () => mq.removeEventListener('change', handleChange as EventListener)
+    
+    return () => {
+      mq.removeEventListener('change', handleChange as EventListener)
+    }
   }, [])
 
   function drawDots() {
@@ -111,6 +115,7 @@ export default function InteractiveGrid({
   useEffect(() => {
     drawDots()
     window.addEventListener('mousemove', handleMouseMove)
+    
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
     }
@@ -122,7 +127,10 @@ export default function InteractiveGrid({
       width={width}
       height={height}
       className="pointer-events-none absolute top-0 left-0"
-      style={{ width: '100%', height: '100%' }}
+      style={{ 
+        width: '100%', 
+        height: '100%' 
+      }}
     />
   )
 }
