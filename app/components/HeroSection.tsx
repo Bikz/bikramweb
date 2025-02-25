@@ -54,7 +54,7 @@ export default function HeroSection() {
           Bikram Brar
         </h1>
         <p className="mb-6 text-neutral-700 dark:text-neutral-300 max-w-2xl leading-relaxed">
-          Hi! I’m Bikram, a Senior Product Manager and AI developer with a
+          Hi! I'm Bikram, a Senior Product Manager and AI developer with a
           passion for building products that solve real-world problems. At the
           end of December 2023, I left my Senior PM role to spend all of 2024
           diving deeper into AI, becoming a better developer, and building apps
@@ -96,6 +96,24 @@ export default function HeroSection() {
             <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed">
               A SwiftUI productivity app that uses voice input + AI
               to automatically organize and prioritize tasks.
+            </p>
+          </Link>
+
+          <Link
+            href="/projects/repoprompter"
+            className="
+              group
+              w-64 p-4 rounded-md border border-neutral-200 dark:border-neutral-700 
+              bg-white dark:bg-neutral-900
+              hover:scale-105 hover:shadow-lg transition-all
+            "
+          >
+            <h3 className="text-lg font-bold mb-1 text-neutral-900 dark:text-white group-hover:text-blue-600">
+              Repo Prompter
+            </h3>
+            <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed">
+              An Electron app that helps developers create optimized LLM prompts
+              from code repositories and apply AI changes.
             </p>
           </Link>
         </div>

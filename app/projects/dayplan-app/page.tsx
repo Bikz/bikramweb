@@ -34,24 +34,30 @@ export default function DayplanAppPage() {
         </ul>
 
         {/* Screenshot Gallery */}
-        <h2 className="text-lg font-medium mt-8 mb-2">Screenshots</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="relative w-full h-64 bg-neutral-100 dark:bg-neutral-800">
-            <Image
-              src="/dayplan/dayplan1.png"
-              alt="Dayplan App screenshot 1"
-              fill
-              className="object-cover rounded"
-            />
-          </div>
-          <div className="relative w-full h-64 bg-neutral-100 dark:bg-neutral-800">
-            <Image
-              src="/dayplan/dayplan2.png"
-              alt="Dayplan App screenshot 2"
-              fill
-              className="object-cover rounded"
-            />
-          </div>
+        <h2 className="text-lg font-medium mt-8 mb-2">Preview</h2>
+        <div className="relative w-full h-80 md:h-96 bg-neutral-100 dark:bg-neutral-800 mb-6">
+          <Image
+            src="/projects/dayplan.png"
+            alt="Dayplan App screenshot"
+            fill
+            className="object-cover rounded"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+
+        <h2 className="text-lg font-medium mt-8 mb-2">Try Dayplan</h2>
+        <p className="mb-4">
+          Interested in transforming how you manage your daily tasks? Dayplan is designed to make your life easier by turning your spoken thoughts into an organized plan of action.
+        </p>
+        <div className="flex justify-center mt-6 mb-4">
+          <a 
+            href="https://trydayplan.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+          >
+            Check Out Dayplan
+          </a>
         </div>
       </section>
     </div>

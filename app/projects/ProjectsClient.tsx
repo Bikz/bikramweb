@@ -51,20 +51,20 @@ export default function ProjectsClient() {
           </Link>
         </motion.div>
 
-        {/* If you want to re-enable Repo Prompter */}
-        {/* <motion.div
+        {/* Repo Prompter */}
+        <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className="block bg-neutral-100 dark:bg-neutral-900 p-4 rounded transition"
         >
-          <Link href="/projects/repo-prompter">
+          <Link href="/projects/repoprompter">
             <h3 className="font-bold text-lg">Repo Prompter</h3>
             <p className="text-sm mt-1">
-              Helps developers turn their code repositories
-              into context-aware prompts for LLMs.
+              Electron app that helps developers turn code repositories
+              into optimized prompts for LLMs and apply AI changes.
             </p>
           </Link>
-        </motion.div> */}
+        </motion.div>
       </div>
     </section>
   )
