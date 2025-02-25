@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 
 export const metadata = {
-  title: 'Repo Prompter',
+  title: 'Repoprompter',
 }
 
 export default function RepoPrompterPage() {
@@ -10,10 +10,10 @@ export default function RepoPrompterPage() {
     <div className="container mx-auto max-w-4xl py-8 px-4">
       <section className="animate-fadeIn">
         <h1 className="mb-6 text-2xl font-semibold tracking-tighter">
-          Repo Prompter
+          Repoprompter
         </h1>
         <p className="mb-4">
-          Repo Prompter is an Electron app that helps developers turn their code repositories into rich,
+          Repoprompter is an Electron app that helps developers turn their code repositories into rich,
           context-aware prompts for Large Language Models. Users can select a repository, then easily choose 
           specific folders and files to create optimized prompts for sharing with LLM models.
         </p>
@@ -42,16 +42,16 @@ export default function RepoPrompterPage() {
         <div className="relative w-full h-80 md:h-96 bg-neutral-100 dark:bg-neutral-800 mb-6">
           <Image
             src="/projects/repoprompter.png"
-            alt="Repo Prompter App screenshot"
+            alt="Repoprompter App screenshot"
             fill
             className="object-cover rounded"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
 
-        <h2 className="text-lg font-medium mt-8 mb-2">Try Repo Prompter</h2>
+        <h2 className="text-lg font-medium mt-8 mb-2">Try Repoprompter</h2>
         <p className="mb-4">
-          Looking to streamline your AI-assisted coding workflow? Repo Prompter makes it easy to create context-rich 
+          Looking to streamline your AI-assisted coding workflow? Repoprompter makes it easy to create context-rich 
           prompts from your codebase and apply AI-suggested changes with minimal friction.
         </p>
         <div className="flex justify-center mt-6 mb-4">
@@ -61,7 +61,7 @@ export default function RepoPrompterPage() {
             rel="noopener noreferrer"
             className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
           >
-            Check Out Repo Prompter
+            Check Out Repoprompter
           </a>
         </div>
       </section>

@@ -109,7 +109,7 @@ export default function HeroSection() {
             "
           >
             <h3 className="text-lg font-bold mb-1 text-neutral-900 dark:text-white group-hover:text-blue-600">
-              Repo Prompter
+              Repoprompter
             </h3>
             <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed">
               An Electron app that helps developers create optimized LLM prompts

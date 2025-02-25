@@ -58,7 +58,7 @@ export default function ProjectsClient() {
           className="block bg-neutral-100 dark:bg-neutral-900 p-4 rounded transition"
         >
           <Link href="/projects/repoprompter">
-            <h3 className="font-bold text-lg">Repo Prompter</h3>
+            <h3 className="font-bold text-lg">Repoprompter</h3>
             <p className="text-sm mt-1">
               Electron app that helps developers turn code repositories
               into optimized prompts for LLMs and apply AI changes.
