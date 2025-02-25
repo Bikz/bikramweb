@@ -10,7 +10,7 @@ export default function AboutPage() {
           {/* Profile image - update the src if you have a specific image */}
           <div className="flex-shrink-0">
             <img
-              src="/profile.jpg"
+              src="/contact/bikram.jpg"
               alt="Profile picture"
               className="w-40 h-40 rounded-full object-cover"
             />
@@ -31,7 +31,7 @@ export default function AboutPage() {
             <div className="mt-4 flex flex-wrap gap-4">
               {/* Primary button styling for Email, works in light and dark mode */}
               <Link
-                href="mailto:your.email@example.com"
+                href="mailto:mail@bikrambrar.com"
                 className="inline-block px-6 py-3 font-medium text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-700 transition-colors dark:bg-blue-500 dark:hover:bg-blue-600"
               >
                 Email Me
