@@ -51,12 +51,12 @@ export default function MystiHealthPage() {
           Interested in a holistic approach to managing your health? Mysti Health combines AI intelligence with personalized 
           health tracking to help you achieve your wellness goals with less effort and better results.
         </p>
-        <div className="flex justify-center mt-6 mb-4">
+        <div className="flex justify-center mt-10 mb-4">
           <a 
             href="https://mysti.ai" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+            className="px-4 py-2 text-sm bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-medium rounded-lg transition-colors duration-200"
           >
             Check Out Mysti Health
           </a>

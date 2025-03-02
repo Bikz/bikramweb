@@ -54,12 +54,12 @@ export default function RepoPrompterPage() {
           Looking to streamline your AI-assisted coding workflow? Repoprompter makes it easy to create context-rich 
           prompts from your codebase and apply AI-suggested changes with minimal friction.
         </p>
-        <div className="flex justify-center mt-6 mb-4">
+        <div className="flex justify-center mt-10 mb-4">
           <a 
             href="https://repoprompter.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+            className="px-4 py-2 text-sm bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-medium rounded-lg transition-colors duration-200"
           >
             Check Out Repoprompter
           </a>

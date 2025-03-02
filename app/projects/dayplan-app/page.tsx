@@ -49,12 +49,12 @@ export default function DayplanAppPage() {
         <p className="mb-4">
           Interested in transforming how you manage your daily tasks? Dayplan is designed to make your life easier by turning your spoken thoughts into an organized plan of action.
         </p>
-        <div className="flex justify-center mt-6 mb-4">
+        <div className="flex justify-center mt-10 mb-4">
           <a 
             href="https://trydayplan.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+            className="px-4 py-2 text-sm bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-medium rounded-lg transition-colors duration-200"
           >
             Check Out Dayplan
           </a>
