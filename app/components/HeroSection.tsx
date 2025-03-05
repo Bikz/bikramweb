@@ -56,14 +56,20 @@ export default function HeroSection() {
           Bikram Brar
         </h1>
         <p className="mb-6 text-neutral-700 dark:text-neutral-300 max-w-2xl leading-relaxed">
-          Hi! I'm Bikram, a Senior Product Manager and AI developer with a
+          Hi! I'm Bikram, a Product Engineer with a
           passion for building products that solve real-world problems. At the
           end of December 2023, I left my Senior PM role to spend all of 2024
           diving deeper into AI, becoming a better developer, and building apps
           that bring real utility to the world.
+          <br />
+          <br />
         </p>
 
         {/* Featured Projects */}
+         <h2 className="text-lg font-semibold mb-2 text-neutral-900 dark:text-white">
+          Stuff I've Built:
+        </h2>
+       
         <div className="mt-4 md:mt-8 flex flex-wrap gap-6 justify-center px-0">
           <Link
             href="/projects/mysti-health"
@@ -82,6 +88,8 @@ export default function HeroSection() {
               A personal AI health agent that syncs with Apple/Google Health
               and provides personalized recommendations.
             </p>
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2 italic">React Native</p>
+
           </Link>
 
           <Link
@@ -101,6 +109,7 @@ export default function HeroSection() {
               A SwiftUI productivity app that uses voice input + AI
               to automatically organize and prioritize tasks.
             </p>
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2 italic">Swift</p>
           </Link>
 
           <Link
@@ -120,6 +129,8 @@ export default function HeroSection() {
               An Electron app that helps developers create optimized LLM prompts
               from code repositories and apply AI changes.
             </p>
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2 italic">React Electron</p>
+
           </Link>
         </div>
       </div>

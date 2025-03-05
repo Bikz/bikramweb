@@ -1,7 +1,7 @@
 # Symbols & Context
 
 1. Project Title: 
-   - "BikramBrar Web" or "My Profile" or "My Portfolio."
+   - "BikramBrar Web" or "Bikram Brar Portfolio"
    - Used in page headers or metadata.
 
 2. Pages & Routing:
@@ -10,20 +10,28 @@
    - `/blog` 
    - `/about` 
    - `/travel`
-   - (We have hidden `/projects/repo-prompter` for now.)
 
-3. Removed Components:
-   - `ThemeToggle.tsx` references removed in Nav. 
-   - The file itself still exists but is unused, in case we want to re-enable it in the future.
+3. Hero Layout (Home Page):
+   - **HeroSection.tsx**: Large introduction banner.
 
-4. Hero Layout (Home Page):
-   - Full screen section for “Welcome to My Profile” heading + short intro paragraphs + “Featured AI Projects” near the bottom.
-   - Next sections: Work Experience, Blog.
+4. **SkillHighlightsSection.tsx**:
+   - A new section that presents engineering and product management skills side by side, with bullet points.
 
-5. Hidden/Commented-Out Project:
-   - **Repo Prompter** on the home page and in the project listing, until it’s ready for prime time.
+5. **UserJourneySection.tsx**:
+   - Diagram or timeline for empathy-driven product building.
 
-6. Images for Project Pages:
-   - Mysti Health: recommended to store images under `/public/mystihealth/`
-   - Dayplan App: recommended to store images under `/public/dayplan/`
-   - Example usage with `Image` from `next/image`, using `fill` to scale properly.
+6. **ExperienceTimeline.tsx**:
+   - Enhanced with company logos, bold data-based accomplishments, and highlight transitions between roles.
+
+7. Additional Components:
+   - **HomePageContent**: Displaying work experience timeline + blog posts below the new sections.
+   - **Theme** usage, next-themes, etc.
+   - SEO & Build Tools with `next.config.js`, `robots.txt`, `sitemap.ts`.
+
+8. Images:
+   - Logos for companies in `/public/companies/*.png`
+   - Additional images for travel, projects, contact, etc.
+
+9. Additional:
+   - `FILE_STRUCTURE.md` documents the file layout.
+   - We aim to keep code modular, well-commented, under ~200 lines per file where possible.

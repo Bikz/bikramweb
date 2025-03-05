@@ -1,59 +1,93 @@
-
 # File Structure
 
-/Users/bikrambrar/Documents/Code/bikramweb
+/Users/bikrambrar/Developer/bikramweb
 ├── app
-│   ├── projects
-│   │   ├── repo-prompter
-│   │   │   └── page.tsx
-│   │   ├── mysti-health
-│   │   │   └── page.tsx
-│   │   ├── dayplan-app
-│   │   │   └── page.tsx
-│   │   └── page.tsx
-│   ├── rss
-│   │   └── route.ts
 │   ├── about
 │   │   └── page.tsx
 │   ├── blog
-│   │   ├── posts
-│   │   │   ├── spaces-vs-tabs.mdx
-│   │   │   ├── nextjs15.mdx
-│   │   │   ├── vim.mdx
-│   │   │   └── static-typing.mdx
 │   │   ├── [slug]
 │   │   │   └── page.tsx
-│   │   ├── utils.ts
-│   │   └── page.tsx
+│   │   ├── posts
+│   │   │   ├── spaces-vs-tabs.mdx
+│   │   │   ├── static-typing.mdx
+│   │   │   └── vim.mdx
+│   │   ├── page.tsx
+│   │   └── utils.ts
 │   ├── components
-│   │   ├── nav.tsx          <-- Updated with ThemeToggle
-│   │   ├── mdx.tsx
-│   │   ├── experience-timeline.tsx  <-- Enhanced with GSAP animations
+│   │   ├── experience-timeline.tsx
 │   │   ├── footer.tsx
-│   │   ├── ThemeToggle.tsx
+│   │   ├── HeroSection.tsx
+│   │   ├── HomePageContent.tsx
+│   │   ├── mdx.tsx
+│   │   ├── nav.tsx
+│   │   ├── posts.tsx
+│   │   ├── SkillHighlightsSection.tsx
 │   │   ├── ThemeProvider.tsx
-│   │   ├── HeroSection.tsx  <-- Updated to include a 3D Canvas & Contact button
-│   │   ├── My3DCanvas.tsx   <-- NEW React Three Fiber component
-│   │   ├── ContactModal.tsx <-- NEW Radix UI Dialog
-│   │   └── posts.tsx
+│   │   ├── ThemeToggle.tsx
+│   │   ├── UserJourneySection.tsx
 │   ├── lib
 │   │   └── utils.ts
-│   ├── og
-│   │   └── route.tsx
+│   ├── projects
+│   │   ├── dayplan-app
+│   │   │   └── page.tsx
+│   │   ├── mysti-health
+│   │   │   └── page.tsx
+│   │   ├── repoprompter
+│   │   │   └── page.tsx
+│   │   ├── page.tsx
+│   │   └── ProjectsClient.tsx
 │   ├── travel
-│   │   └── page.tsx
-│   ├── robots.ts
+│   │   ├── page.tsx
+│   │   └── TravelGallery.tsx
 │   ├── global.css
 │   ├── InteractiveGrid.tsx
-│   ├── sitemap.ts
 │   ├── layout.tsx
-│   ├── page.tsx            <-- Uses Framer Motion fade-in
-│   └── not-found.tsx
-├── pnpm-lock.yaml
-├── tailwind.config.js
-├── SYMBOLS.md
+│   ├── not-found.tsx
+│   ├── page.tsx
+│   ├── sitemap.ts
+│   └── wrangler.toml
+├── public
+│   ├── companies
+│   │   ├── bmo.png
+│   │   ├── empire.png
+│   │   ├── hard-rock.png
+│   │   ├── independent.png
+│   │   └── odaia.png
+│   ├── contact
+│   │   └── bikram.jpg
+│   ├── global
+│   │   ├── favicon_io
+│   │   │   ├── about.txt
+│   │   │   ├── android-chrome-192x192.png
+│   │   │   ├── android-chrome-512x512.png
+│   │   │   ├── apple-touch-icon.png
+│   │   │   ├── favicon-16x16.png
+│   │   │   ├── favicon-32x32.png
+│   │   │   ├── favicon.ico
+│   │   │   └── site.webmanifest
+│   │   └── error-404-page-not-found.jpg
+│   ├── projects
+│   │   ├── dayplan.png
+│   │   └── mysti.png
+│   ├── travel
+│   │   ├── budapest.jpeg
+│   │   ├── Cali.jpeg
+│   │   ├── Cartagena.jpeg
+│   │   ├── Chicago.jpeg
+│   │   ├── honolulu.jpeg
+│   │   ├── IMG_3659.jpeg
+│   │   ├── Lisbon.jpeg
+│   │   ├── rome.jpeg
+│   │   ├── spain.jpeg
+│   │   └── Vancouver.jpeg
+│   ├── robots.txt
+│   └── rss.xml
+├── .nvmrc
 ├── next.config.js
+├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.js
 ├── README.md
-├── package.json   <-- Updated with R3F, Radix UI
-├── tsconfig.json
-└── postcss.config.js
+├── SYMBOLS.md
+├── tailwind.config.js
+└── tsconfig.json
