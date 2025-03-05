@@ -1,8 +1,7 @@
 /**
  * experience-timeline.tsx
  * A timeline component that shows work experience with logos,
- * bullet points with data highlights, and a bit of extra styling
- * to illustrate role transitions (e.g. BA -> PM -> AI).
+ * bullet points with data highlights, and highlight transitions.
  */
 
 'use client'
@@ -33,7 +32,7 @@ const timelineData: TimelineItem[] = [
       '**Integrated cutting-edge AI** (RAG, GPT APIs) to deliver innovative features.',
     ],
     logo: '/companies/independent.png',
-    transitionHighlight: false,
+    transitionHighlight: true,  // Now highlighting the newest role
   },
   {
     title: 'Senior Product Manager',
@@ -79,7 +78,7 @@ const timelineData: TimelineItem[] = [
       'Supported open banking initiatives, driving a **15%** increase in digital adoption.',
     ],
     logo: '/companies/bmo.png',
-    transitionHighlight: true, // highlight transition from BA to PM
+    transitionHighlight: false, // remove highlight from oldest
   },
 ]
 
@@ -125,7 +124,6 @@ export default function ExperienceTimeline() {
           >
             <div className="flex flex-col md:flex-row items-start md:items-center md:justify-between gap-4 mb-2">
               <div className="flex flex-row items-center gap-3">
-                {/* Logo if available */}
                 {item.logo && (
                   <div className="relative w-10 h-10">
                     <Image
@@ -139,7 +137,9 @@ export default function ExperienceTimeline() {
                 <div>
                   <h3 className="font-semibold text-lg">
                     {item.title}
-                    {item.company && <span className="ml-2 text-sm">@ {item.company}</span>}
+                    {item.company && (
+                      <span className="ml-2 text-sm">@ {item.company}</span>
+                    )}
                   </h3>
                 </div>
               </div>
@@ -150,7 +150,6 @@ export default function ExperienceTimeline() {
               {item.bullets.map((bullet, bIndex) => (
                 <li
                   key={bIndex}
-                  // dangerouslySetInnerHTML to parse any bold markdown **text**
                   dangerouslySetInnerHTML={{ __html: bullet }}
                   className="leading-relaxed"
                 />
