@@ -3,7 +3,7 @@
 /Users/bikrambrar/Developer/bikramweb
 ├── app
 │   ├── about
-│   │   └── page.tsx
+│   │   └── page.tsx  ← Updated to include personal background and fun tidbit
 │   ├── blog
 │   │   ├── [slug]
 │   │   │   └── page.tsx
@@ -24,7 +24,7 @@
 │   │   ├── SkillHighlightsSection.tsx
 │   │   ├── ThemeProvider.tsx
 │   │   ├── ThemeToggle.tsx
-│   │   ├── UserJourneySection.tsx
+│   │   └── UserJourneySection.tsx
 │   ├── lib
 │   │   └── utils.ts
 │   ├── projects
