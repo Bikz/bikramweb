@@ -28,28 +28,38 @@ export default function AboutPage() {
             </h1>
             <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
               My journey began in the world of gaming—where a fascination with strategy
-              and immersive experiences sparked my transition into coding.
-              Over time, that same passion fueled my focus on empathy-based design
-              and product management, always keeping user needs front and center.
-              Today, I embrace the potential of AI engineering to deliver innovative solutions
-              and help shape the products of tomorrow.
+              and immersive experiences sparked my transition into coding. Over time,
+              that same passion fueled my focus on empathy-based design and product
+              management, always keeping user needs front and center. Today, I embrace
+              the potential of AI engineering to deliver innovative solutions and help
+              shape the products of tomorrow.
             </p>
+
             <p className="mb-4 text-gray-700 dark:text-gray-300">
-              Before focusing on AI, I led product teams, built end-to-end solutions,
-              and championed cross-functional collaboration in domains like health,
-              tech, and creative media. By blending user empathy with technical expertise,
-              I aim to create products that truly make a difference.
+              I strongly believe technology should be fun, frictionless, and seamlessly
+              woven into daily life—improving quality of life rather than complicating it.
+              By focusing on user experience, I aim to design solutions that simply work,
+              bringing delight and simplicity to the forefront. Whether I'm prototyping
+              a new feature or refining a product strategy, I'm always driven by the
+              question: "How can we make this experience more natural, enjoyable, and
+              impactful for people?"
             </p>
+
             <p className="mb-4 text-gray-700 dark:text-gray-300">
-              When I’m not planning sprints or tinkering with code, you can find me
-              experimenting with new coffee brews or leveling up in my favorite RPG.
-              I believe these little passions and curiosities outside of work keep me grounded
-              and continuously inspired.
+              When I’m not immersed in AI experiments or designing product roadmaps,
+              you’ll often find me chatting with fellow builders, diving into hackathons,
+              or exploring the latest developments at crypto conferences. I also love
+              traveling—seeking out new perspectives, cultures, and a bit of adventure
+              that fuels my creativity.
             </p>
+
             <p className="mb-4 text-gray-700 dark:text-gray-300">
-              Feel free to reach out to chat about AI, product strategy,
-              or even gaming recommendations. Let’s build, innovate, and explore together!
+              If you share a passion for user experience, emerging tech, or just want
+              to talk about building frictionless solutions, feel free to reach out.
+              Let’s push boundaries, innovate together, and make technology more fun
+              for everyone.
             </p>
+
             <div className="mt-4 flex flex-wrap gap-4">
               <Link
                 href="mailto:mail@bikrambrar.com"

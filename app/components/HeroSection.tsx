@@ -88,7 +88,7 @@ export default function HeroSection() {
               A personal AI health agent that syncs with Apple/Google Health
               and provides personalized recommendations.
             </p>
-            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2 italic">React Native</p>
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2 italic">React Native →</p>
 
           </Link>
 
@@ -109,7 +109,7 @@ export default function HeroSection() {
               A SwiftUI productivity app that uses voice input + AI
               to automatically organize and prioritize tasks.
             </p>
-            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2 italic">Swift</p>
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2 italic">Swift →</p>
           </Link>
 
           <Link
@@ -129,7 +129,7 @@ export default function HeroSection() {
               An Electron app that helps developers create optimized LLM prompts
               from code repositories and apply AI changes.
             </p>
-            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2 italic">React Electron</p>
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2 italic">React Electron →</p>
 
           </Link>
         </div>
