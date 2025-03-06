@@ -28,29 +28,34 @@ export default function AboutPage() {
             max-w-screen-lg mx-auto
           "
         >
-          {/* Heading */}
-          <h1 className="mb-2 text-3xl font-bold tracking-tighter text-gray-900 dark:text-white text-center">
-            Hi, I'm Bikram Brar
-          </h1>
-          <p className="mb-8 text-center text-sm text-gray-500 dark:text-gray-400">
-            Senior Product Manager & AI Enthusiast
-          </p>
-
-          <section className="animate-fadeIn flex flex-col md:flex-row items-start md:items-center gap-8">
+          {/* Profile and Heading at the top */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-10">
             {/* Profile image with subtle border/shadow */}
-            <div className="flex-shrink-0 mx-auto md:mx-0">
+            <div className="flex-shrink-0">
               <img
                 src="/contact/bikram.jpg"
                 alt="Profile picture"
                 className="
-                  w-40 h-40
+                  w-48 h-48 sm:w-56 sm:h-56
                   rounded-full object-cover
                   border border-gray-200 dark:border-gray-700
                   shadow-sm
                 "
               />
             </div>
+            
+            {/* Heading */}
+            <div className="flex flex-col justify-center">
+              <h1 className="mb-3 text-4xl sm:text-5xl font-bold tracking-tighter text-gray-900 dark:text-white text-center">
+                Hi, I'm Bikram Brar
+              </h1>
+              <p className="text-lg sm:text-xl text-gray-500 dark:text-gray-400 text-center">
+                Senior Product Manager & AI Enthusiast
+              </p>
+            </div>
+          </div>
 
+          <section className="animate-fadeIn">
             <div className="flex-1">
               <p className="mb-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 My journey began in the world of gaming—where a fascination with strategy
@@ -76,8 +81,8 @@ export default function AboutPage() {
               </p>
 
               <p className="mb-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-                When I’m not immersed in AI experiments or designing product roadmaps,
-                you’ll often find me chatting with fellow builders, diving into hackathons,
+                When I'm not immersed in AI experiments or designing product roadmaps,
+                you'll often find me chatting with fellow builders, diving into hackathons,
                 or exploring the latest developments at crypto conferences. I also love
                 traveling—seeking out new perspectives, cultures, and a bit of adventure
                 that fuels my creativity.
@@ -86,12 +91,12 @@ export default function AboutPage() {
               <p className="mb-4 text-gray-700 dark:text-gray-300 leading-relaxed">
                 If you share a passion for user experience, emerging tech, or just want
                 to talk about building frictionless solutions, feel free to reach out.
-                Let’s push boundaries, innovate together, and make technology more fun
+                Let's push boundaries, innovate together, and make technology more fun
                 for everyone.
               </p>
 
               {/* Buttons */}
-              <div className="mt-6 flex flex-wrap gap-4">
+              <div className="mt-6 flex flex-wrap gap-4 justify-center">
                 <Link
                   href="mailto:mail@bikrambrar.com"
                   className="
