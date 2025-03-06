@@ -2,9 +2,9 @@
  * UserJourneySection.tsx
  * ---------------------------------------
  * Title: User Journey Visualization
- * Description: Renders a more pronounced curved path using a cubic Bézier curve
- * and places user journey steps along it. The text labels and circles adapt to
- * both light and dark modes.
+ * Description: Renders a pronounced cubic Bézier path and places user
+ * journey steps along it. Each step label and a tooltip (on hover)
+ * provide more detail about the step. Spacing is tuned for clarity.
  */
 
 "use client";
@@ -19,7 +19,7 @@ type StepInfo = {
 export default function UserJourneySection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // The steps in the user journey
+  // The journey steps
   const journeySteps: StepInfo[] = [
     { title: "User Need", description: "Understand real user pain points." },
     { title: "Problem Framing", description: "Align scope & problem statement." },
@@ -29,13 +29,13 @@ export default function UserJourneySection() {
     { title: "Iterate", description: "Refine solution, pivot as needed." },
   ];
 
-  // Adjusted cubic Bézier control points [640 x 400] space for a more visible arc
+  // Cubic Bézier control points for a smooth arc in a 640 x 400 SVG
   const P0 = { x: 40,  y: 340 };
   const P1 = { x: 160, y: 380 };
   const P2 = { x: 480, y: 40 };
   const P3 = { x: 600, y: 80 };
 
-  // Computes a point (x, y) at parameter t on our Bézier curve
+  // Compute (x, y) at parameter t
   function interpolateCubicBezier(t: number) {
     const mt = 1 - t;
     const x =
@@ -53,7 +53,7 @@ export default function UserJourneySection() {
     return { x, y };
   }
 
-  // Calculate circle positions for each journey step
+  // Determine where to place each circle
   const circlePositions = journeySteps.map((_, i) => {
     const t = i / (journeySteps.length - 1);
     return interpolateCubicBezier(t);
@@ -72,7 +72,7 @@ export default function UserJourneySection() {
           viewBox="0 0 640 400"
           className="bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded"
         >
-          {/* Draw the path */}
+          {/* Draw Bézier curve */}
           <path
             d={`M${P0.x},${P0.y} C ${P1.x},${P1.y} ${P2.x},${P2.y} ${P3.x},${P3.y}`}
             stroke="#888"
@@ -80,7 +80,7 @@ export default function UserJourneySection() {
             fill="none"
           />
 
-          {/* Circles and text labels */}
+          {/* Circles + labels */}
           {circlePositions.map((pos, i) => (
             <g key={i}>
               <circle
@@ -94,7 +94,7 @@ export default function UserJourneySection() {
               />
               <text
                 x={pos.x}
-                y={pos.y - 24}
+                y={pos.y - 46} /* Shifted higher for clarity */
                 fontSize="12"
                 textAnchor="middle"
                 className="fill-current text-neutral-700 dark:text-neutral-300"
@@ -106,13 +106,13 @@ export default function UserJourneySection() {
           ))}
         </svg>
 
-        {/* Hover detail tooltip */}
+        {/* Hover detail tooltip at top-left */}
         {hoveredIndex !== null && (
           <div
             className="
               absolute
               top-0
-              right-0
+              left-0
               w-56
               p-4
               bg-white dark:bg-neutral-900
@@ -121,7 +121,7 @@ export default function UserJourneySection() {
               shadow-lg
               transition-all
             "
-            style={{ transform: "translateY(60px)" }}
+            style={{ transform: "translate(20px, 60px)" }}
           >
             <h3 className="font-semibold text-neutral-900 dark:text-white mb-1">
               {journeySteps[hoveredIndex].title}
