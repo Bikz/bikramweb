@@ -1,55 +1,63 @@
 /**
  * UserJourneySection.tsx
- * Draws a curved "hockey stick" path using a cubic Bézier and places steps along it.
+ * ---------------------------------------
+ * Title: User Journey Visualization
+ * Description: Renders a more pronounced curved path using a cubic Bézier curve
+ * and places user journey steps along it. The text labels and circles adapt to
+ * both light and dark modes.
  */
-'use client'
 
-import React, { useState } from 'react'
+"use client";
+
+import React, { useState } from "react";
 
 type StepInfo = {
-  title: string
-  description: string
-}
+  title: string;
+  description: string;
+};
 
 export default function UserJourneySection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // The steps in our journey
-  const steps: StepInfo[] = [
-    { title: 'User Need', description: 'Understand real user pain points.' },
-    { title: 'Problem Framing', description: 'Align scope & problem statement.' },
-    { title: 'Empathy Mapping', description: 'Walk in user’s shoes, gather insights.' },
-    { title: 'Hypothesis Testing', description: 'Prototype quickly, iterate on feedback.' },
-    { title: 'Launch', description: 'Ship MVP, gather real-world data.' },
-    { title: 'Iterate', description: 'Refine solution, pivot as needed.' },
-  ]
+  // The steps in the user journey
+  const journeySteps: StepInfo[] = [
+    { title: "User Need", description: "Understand real user pain points." },
+    { title: "Problem Framing", description: "Align scope & problem statement." },
+    { title: "Empathy Mapping", description: "Walk in user’s shoes, gather insights." },
+    { title: "Hypothesis Testing", description: "Prototype quickly, iterate on feedback." },
+    { title: "Launch", description: "Ship MVP, gather real-world data." },
+    { title: "Iterate", description: "Refine solution, pivot as needed." },
+  ];
 
-  // Our cubic Bézier control points in [640x400] space
-  const P0 = { x: 40,  y: 360 }
-  const P1 = { x: 200, y: 300 }
-  const P2 = { x: 420, y: 100 }
-  const P3 = { x: 600, y: 40 }
+  // Adjusted cubic Bézier control points [640 x 400] space for a more visible arc
+  const P0 = { x: 40,  y: 340 };
+  const P1 = { x: 160, y: 380 };
+  const P2 = { x: 480, y: 40 };
+  const P3 = { x: 600, y: 80 };
 
-  // Bézier interpolation
-  function getCubicPoint(t: number) {
-    // (1 - t)^3 * P0 + ...
-    const mt = 1 - t
-    const x = mt*mt*mt*P0.x
-      + 3*mt*mt*t*P1.x
-      + 3*mt*t*t*P2.x
-      + t*t*t*P3.x
-    const y = mt*mt*mt*P0.y
-      + 3*mt*mt*t*P1.y
-      + 3*mt*t*t*P2.y
-      + t*t*t*P3.y
-    return { x, y }
+  // Computes a point (x, y) at parameter t on our Bézier curve
+  function interpolateCubicBezier(t: number) {
+    const mt = 1 - t;
+    const x =
+      mt * mt * mt * P0.x +
+      3 * mt * mt * t * P1.x +
+      3 * mt * t * t * P2.x +
+      t * t * t * P3.x;
+
+    const y =
+      mt * mt * mt * P0.y +
+      3 * mt * mt * t * P1.y +
+      3 * mt * t * t * P2.y +
+      t * t * t * P3.y;
+
+    return { x, y };
   }
 
-  // We place circles at t = i/(steps.length-1)
-  const circlePositions = steps.map((_, i) => {
-    const t = i / (steps.length - 1)
-    return getCubicPoint(t)
-  })
+  // Calculate circle positions for each journey step
+  const circlePositions = journeySteps.map((_, i) => {
+    const t = i / (journeySteps.length - 1);
+    return interpolateCubicBezier(t);
+  });
 
   return (
     <section className="max-w-4xl mx-auto px-4 py-10 animate-fadeIn">
@@ -64,43 +72,47 @@ export default function UserJourneySection() {
           viewBox="0 0 640 400"
           className="bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded"
         >
-          {/* The Bézier path */}
+          {/* Draw the path */}
           <path
             d={`M${P0.x},${P0.y} C ${P1.x},${P1.y} ${P2.x},${P2.y} ${P3.x},${P3.y}`}
-            stroke="#999"
+            stroke="#888"
             strokeWidth="2"
             fill="none"
           />
-          {/* Circles + labels */}
+
+          {/* Circles and text labels */}
           {circlePositions.map((pos, i) => (
             <g key={i}>
               <circle
                 cx={pos.x}
                 cy={pos.y}
                 r={12}
-                fill={hoveredIndex === i ? '#555' : '#ccc'}
+                fill={hoveredIndex === i ? "#aaa" : "#ccc"}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: "pointer" }}
               />
               <text
-                x={pos.x + 15}
-                y={pos.y - 5}
-                fill="#555"
+                x={pos.x}
+                y={pos.y - 24}
                 fontSize="12"
+                textAnchor="middle"
+                className="fill-current text-neutral-700 dark:text-neutral-300"
+                style={{ pointerEvents: "none" }}
               >
-                {steps[i].title}
+                {journeySteps[i].title}
               </text>
             </g>
           ))}
         </svg>
 
-        {/* Hover detail card */}
+        {/* Hover detail tooltip */}
         {hoveredIndex !== null && (
           <div
             className="
               absolute
-              top-0 right-0
+              top-0
+              right-0
               w-56
               p-4
               bg-white dark:bg-neutral-900
@@ -109,13 +121,13 @@ export default function UserJourneySection() {
               shadow-lg
               transition-all
             "
-            style={{ transform: 'translateY(60px)' }}
+            style={{ transform: "translateY(60px)" }}
           >
             <h3 className="font-semibold text-neutral-900 dark:text-white mb-1">
-              {steps[hoveredIndex].title}
+              {journeySteps[hoveredIndex].title}
             </h3>
             <p className="text-sm text-neutral-600 dark:text-neutral-300">
-              {steps[hoveredIndex].description}
+              {journeySteps[hoveredIndex].description}
             </p>
           </div>
         )}
@@ -129,5 +141,5 @@ export default function UserJourneySection() {
         on feedback—always centering on user needs and tangible impact.
       </p>
     </section>
-  )
+  );
 }
