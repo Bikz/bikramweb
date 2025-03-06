@@ -1,5 +1,18 @@
+/**
+ * page.tsx (Dayplan App Project)
+ * Title: Dayplan App – Bikram Brar
+ * Description: Overview of the SwiftUI-based productivity app using voice input + AI prioritization.
+ */
+
 import React from 'react'
 import Image from 'next/image'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Dayplan App – Bikram Brar',
+  description:
+    'Learn about the SwiftUI-based Dayplan App that leverages AI for voice-to-task prioritization and scheduling.',
+}
 
 export default function DayplanAppPage() {
   return (
@@ -9,15 +22,15 @@ export default function DayplanAppPage() {
           Dayplan App
         </h1>
         <p className="mb-4">
-          Dayplan is a SwiftUI-based productivity app that transforms voice input
-          into prioritized tasks. Say your ideas or to-dos out loud, and the app
-          automatically assigns priorities, estimated durations, and suggested
-          time blocks.
+          Dayplan is a SwiftUI-based productivity app that transforms voice
+          input into prioritized tasks. Say your ideas or to-dos out loud, and
+          the app automatically assigns priorities, estimated durations, and
+          suggested time blocks.
         </p>
         <p className="mb-4">
           The goal is to help busy individuals quickly offload thoughts into an
-          organized, actionable plan without the friction of manual task entry and
-          sorting.
+          organized, actionable plan without the friction of manual task entry
+          and sorting.
         </p>
 
         <h2 className="text-lg font-medium mt-8 mb-2">Key Features</h2>
@@ -33,7 +46,6 @@ export default function DayplanAppPage() {
           <li>OpenAI GPT for language processing</li>
         </ul>
 
-        {/* Screenshot Gallery */}
         <h2 className="text-lg font-medium mt-8 mb-2">Preview</h2>
         <div className="relative w-full h-80 md:h-96 bg-neutral-100 dark:bg-neutral-800 mb-6">
           <Image
@@ -47,7 +59,9 @@ export default function DayplanAppPage() {
 
         <h2 className="text-lg font-medium mt-8 mb-2">Try Dayplan</h2>
         <p className="mb-4">
-          Interested in transforming how you manage your daily tasks? Dayplan is designed to make your life easier by turning your spoken thoughts into an organized plan of action.
+          Interested in transforming how you manage your daily tasks? Dayplan is
+          designed to make your life easier by turning your spoken thoughts into
+          an organized plan of action.
         </p>
         <div className="flex justify-center mt-10 mb-4">
           <a 

@@ -1,3 +1,9 @@
+/**
+ * HeroSection.tsx
+ * Title: Hero Section
+ * Description: The top hero banner introducing Bikram Brar, highlighting key AI projects.
+ */
+
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
@@ -11,7 +17,6 @@ export default function HeroSection() {
   useEffect(() => {
     function handleResize() {
       if (sectionRef.current) {
-        // Measure the hero container. If zero, fall back to window dimensions.
         const measuredWidth = sectionRef.current.offsetWidth || window.innerWidth
         const measuredHeight = sectionRef.current.offsetHeight || window.innerHeight
         
@@ -21,7 +26,6 @@ export default function HeroSection() {
         })
       }
     }
-    // Delay initial measurement to allow layout to settle.
     const timeoutId = setTimeout(handleResize, 100)
     window.addEventListener('resize', handleResize)
     return () => {
@@ -34,23 +38,20 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       style={{ minHeight: 'calc(100vh - 64px)' }}
-      className={`
+      className="
         relative
         -mx-4 md:-mx-8 lg:-mx-0
         pt-20 md:pt-0 overflow-hidden
         flex md:items-center md:justify-center
-      `}
+      "
     >
-      {/* Full‐width interactive dot background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <InteractiveGrid
           width={dimensions.width}
           height={dimensions.height}
-          // lineSpacing & highlightRadius are optional, see default props
         />
       </div>
 
-      {/* Hero content */}
       <div className="relative z-10 w-full flex flex-col items-center py-8 md:py-0 text-center px-8 sm:px-4 max-w-5xl mx-auto">
         <h1 className="mb-4 text-3xl sm:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
           Bikram Brar
@@ -65,8 +66,7 @@ export default function HeroSection() {
           <br />
         </p>
 
-        {/* Featured Projects */}
-         <h2 className="text-lg font-semibold mb-2 text-neutral-900 dark:text-white">
+        <h2 className="text-lg font-semibold mb-2 text-neutral-900 dark:text-white">
           Stuff I've Built:
         </h2>
        
@@ -89,7 +89,6 @@ export default function HeroSection() {
               and provides personalized recommendations.
             </p>
             <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2 italic">React Native →</p>
-
           </Link>
 
           <Link
@@ -130,7 +129,6 @@ export default function HeroSection() {
               from code repositories and apply AI changes.
             </p>
             <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2 italic">React Electron →</p>
-
           </Link>
         </div>
       </div>

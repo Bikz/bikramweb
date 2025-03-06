@@ -1,7 +1,6 @@
 /**
  * UserJourneySection.tsx
- * Hockey-stick style upward slope from bottom-left to top-right.
- * On hover, we still show the detail panel on the right, plus inline labels.
+ * Draws a curved "hockey stick" path using a cubic Bézier and places steps along it.
  */
 'use client'
 
@@ -15,27 +14,41 @@ type StepInfo = {
 export default function UserJourneySection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
+  // The steps in our journey
   const steps: StepInfo[] = [
     { title: 'User Need', description: 'Understand real user pain points.' },
     { title: 'Problem Framing', description: 'Align scope & problem statement.' },
     { title: 'Empathy Mapping', description: 'Walk in user’s shoes, gather insights.' },
     { title: 'Hypothesis Testing', description: 'Prototype quickly, iterate on feedback.' },
-    { title: 'Launch', description: 'Ship MVP, gather real-world usage data.' },
+    { title: 'Launch', description: 'Ship MVP, gather real-world data.' },
     { title: 'Iterate', description: 'Refine solution, pivot as needed.' },
   ]
 
-  // We'll place them along x from 40 -> 600, y from 360 -> 40
-  // So the slope goes upward
-  const circlePositions = steps.map((_, i) => {
-    const total = steps.length
-    const frac = i / (total - 1)
-    const startX = 40
-    const endX = 600
-    const startY = 360
-    const endY = 40
-    const x = startX + (endX - startX) * frac
-    const y = startY + (endY - startY) * frac
+  // Our cubic Bézier control points in [640x400] space
+  const P0 = { x: 40,  y: 360 }
+  const P1 = { x: 200, y: 300 }
+  const P2 = { x: 420, y: 100 }
+  const P3 = { x: 600, y: 40 }
+
+  // Bézier interpolation
+  function getCubicPoint(t: number) {
+    // (1 - t)^3 * P0 + ...
+    const mt = 1 - t
+    const x = mt*mt*mt*P0.x
+      + 3*mt*mt*t*P1.x
+      + 3*mt*t*t*P2.x
+      + t*t*t*P3.x
+    const y = mt*mt*mt*P0.y
+      + 3*mt*mt*t*P1.y
+      + 3*mt*t*t*P2.y
+      + t*t*t*P3.y
     return { x, y }
+  }
+
+  // We place circles at t = i/(steps.length-1)
+  const circlePositions = steps.map((_, i) => {
+    const t = i / (steps.length - 1)
+    return getCubicPoint(t)
   })
 
   return (
@@ -45,24 +58,22 @@ export default function UserJourneySection() {
       </h2>
 
       <div className="relative w-full h-[400px] overflow-hidden">
-        {/* Main SVG for hockey-stick line */}
         <svg
           width="100%"
           height="400"
           viewBox="0 0 640 400"
           className="bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded"
         >
-          {/* Upward path */}
+          {/* The Bézier path */}
           <path
-            d="M40,360 L600,40"
+            d={`M${P0.x},${P0.y} C ${P1.x},${P1.y} ${P2.x},${P2.y} ${P3.x},${P3.y}`}
             stroke="#999"
             strokeWidth="2"
             fill="none"
           />
-
+          {/* Circles + labels */}
           {circlePositions.map((pos, i) => (
             <g key={i}>
-              {/* The circle */}
               <circle
                 cx={pos.x}
                 cy={pos.y}
@@ -72,7 +83,6 @@ export default function UserJourneySection() {
                 onMouseLeave={() => setHoveredIndex(null)}
                 style={{ cursor: 'pointer' }}
               />
-              {/* Step label (above the circle) */}
               <text
                 x={pos.x + 15}
                 y={pos.y - 5}
@@ -85,7 +95,7 @@ export default function UserJourneySection() {
           ))}
         </svg>
 
-        {/* Hover display on the right */}
+        {/* Hover detail card */}
         {hoveredIndex !== null && (
           <div
             className="

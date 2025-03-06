@@ -1,3 +1,9 @@
+/**
+ * InteractiveGrid.tsx
+ * Title: Interactive Grid
+ * Description: Draws a dot grid background that highlights near the cursor, adapting to dark/light mode.
+ */
+
 'use client'
 
 import React, { useRef, useEffect, useState } from 'react'
@@ -5,31 +11,18 @@ import React, { useRef, useEffect, useState } from 'react'
 interface InteractiveGridProps {
   width: number
   height: number
-  /**
-   * The spacing (in px) between adjacent dots in the grid.
-   */
   lineSpacing?: number
-  /**
-   * The radius (in px) of the circular highlight region around the mouse.
-   */
   highlightRadius?: number
 }
 
-/**
- * A dot-grid background that highlights around the cursor,
- * and automatically follows OS-level dark/light preference
- * with a fade near the edges in both modes.
- */
 export default function InteractiveGrid({
   width,
   height,
-  lineSpacing = 25,     // smaller spacing for a denser grid
-  highlightRadius = 50, // bigger highlight radius
+  lineSpacing = 25,
+  highlightRadius = 50,
 }: InteractiveGridProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mousePos = useRef({ x: -9999, y: -9999 })
-
-  // Detect system dark mode with matchMedia
   const [isDark, setIsDark] = useState(false)
 
   useEffect(() => {
@@ -39,9 +32,7 @@ export default function InteractiveGrid({
       setIsDark(e.matches)
     }
 
-    // Init on mount
     handleChange(mq)
-    
     mq.addEventListener('change', handleChange as EventListener)
     
     return () => {
@@ -65,28 +56,21 @@ export default function InteractiveGrid({
 
         const highlightColor = '#47a3f3'
 
-        // highlight region around cursor
         if (dist < highlightRadius) {
           ctx.fillStyle = highlightColor
         } else {
-          // Fading near the edges in BOTH light & dark
-          // We'll do separate logic for the "base" color, then fade to an edge color
           const edgeDistance = Math.min(x, width - x, y, height - y)
-          const edgeThreshold = 100 // how many pixels from the edge
+          const edgeThreshold = 100
           const factor = Math.min(edgeDistance / edgeThreshold, 1)
 
           if (isDark) {
-            // #444 = rgb(68,68,68), fade to #000
             const baseGrayValue = 68
-            const edgeGrayValue = 0   // black
+            const edgeGrayValue = 0
             const dotGray = Math.round(
               baseGrayValue + (edgeGrayValue - baseGrayValue) * (1 - factor)
             )
             ctx.fillStyle = `rgb(${dotGray}, ${dotGray}, ${dotGray})`
           } else {
-            // #E0 = 224 fade to #FFF
-            // Actually we used #E0 -> #FFF before, but you had #224 => #255 logic
-            // Let's do #E0 => #FFF
             const baseGrayValue = 224
             const edgeGrayValue = 255
             const dotGray = Math.round(
@@ -111,11 +95,9 @@ export default function InteractiveGrid({
     drawDots()
   }
 
-  // Re-draw on dimension or dark-mode change
   useEffect(() => {
     drawDots()
     window.addEventListener('mousemove', handleMouseMove)
-    
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
     }

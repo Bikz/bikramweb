@@ -1,7 +1,12 @@
+/**
+ * posts.tsx
+ * Title: Blog Posts Component
+ * Description: Displays a list of blog posts with sorted by date, linking to each post's page.
+ */
+
 import Link from 'next/link'
 import { formatDate } from 'app/blog/utils'
 
-// Now we get `blogs` from props, instead of reading from fs here.
 export function BlogPosts({ blogs }: { blogs: any[] }) {
   const sorted = blogs.sort((a, b) => {
     if (

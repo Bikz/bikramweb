@@ -1,3 +1,9 @@
+/**
+ * HomePageContent.tsx
+ * Title: Home Page Content
+ * Description: Displays experience timeline and latest blog posts on the home page.
+ */
+
 'use client'
 
 import React from 'react'
@@ -5,11 +11,9 @@ import { motion } from 'framer-motion'
 import ExperienceTimeline from './experience-timeline'
 import { BlogPosts } from './posts'
 
-// We accept the blog data as a prop from the server.
 export default function HomePageContent({ blogs }: { blogs: any[] }) {
   return (
     <div className="max-w-4xl mx-auto px-4 mt-16">
-      {/* Work Experience Section */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -23,7 +27,6 @@ export default function HomePageContent({ blogs }: { blogs: any[] }) {
         <ExperienceTimeline />
       </motion.section>
 
-      {/* Latest Blog Posts Section */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

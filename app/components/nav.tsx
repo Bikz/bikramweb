@@ -1,3 +1,9 @@
+/**
+ * nav.tsx
+ * Title: Navbar Component
+ * Description: Responsive site navigation with hamburger menu and route links.
+ */
+
 'use client'
 
 import React, { useState } from 'react'
@@ -24,20 +30,17 @@ export function Navbar() {
       "
     >
       <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
-        {/* Simple Logo with no theme toggle */}
         <div className="flex items-center space-x-2">
           <Link href="/" className="text-lg font-semibold transition-all">
             Bikram Brar
           </Link>
         </div>
 
-        {/* Hamburger for mobile */}
         <button
           className="md:hidden p-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-900"
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label="Toggle Menu"
         >
-          {/* Icon can be a simple bar icon or a burger */}
           <svg
             className="w-5 h-5"
             fill="none"
@@ -57,7 +60,6 @@ export function Navbar() {
           </svg>
         </button>
 
-        {/* Desktop nav */}
         <nav className="hidden md:flex space-x-4">
           {navItems.map(({ path, label }) => (
             <Link
@@ -71,7 +73,6 @@ export function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
         <nav className="md:hidden flex flex-col px-4 pb-2 space-y-2 bg-white dark:bg-black border-t border-neutral-200 dark:border-neutral-800">
           {navItems.map(({ path, label }) => (

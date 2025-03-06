@@ -1,8 +1,13 @@
-/** @type {import('tailwindcss').Config} */
+/**
+ * tailwind.config.js
+ * Title: Tailwind Configuration
+ * Description: TailwindCSS config with dark mode, custom colors, and fadeIn keyframes.
+ */
+
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  darkMode: 'class',  // IMPORTANT: Must be "class"
+  darkMode: 'class',
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',

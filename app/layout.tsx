@@ -1,3 +1,9 @@
+/**
+ * layout.tsx
+ * Title: Root Layout
+ * Description: Global Next.js layout with SEO metadata, theme provider, and global styles.
+ */
+
 import './global.css'
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
@@ -15,17 +21,19 @@ function cx(...classes: (string | false | undefined)[]) {
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
+  // Updated site-wide default SEO
   title: {
-    default: 'Bikram Brar Portfolio',
-    template: '%s | Bikram Brar Portfolio',
+    default: 'Bikram Brar – AI Product Engineer & Product Manager',
+    template: '%s | Bikram Brar – AI Product Engineer & Product Manager',
   },
   description:
-    'Welcome to Bikram Brar’s personal portfolio site. Explore his AI projects, blog posts, and product management highlights.',
+    'Bikram Brar is an AI Product Engineer & Product Manager with deep expertise in building AI-powered solutions and leading product strategy.',
   openGraph: {
-    title: 'Bikram Brar Portfolio',
-    description: 'Explore Bikram’s AI projects, blog posts, and background.',
+    title: 'Bikram Brar – AI Product Engineer & Product Manager',
+    description:
+      'Explore Bikram’s AI projects, product management experience, and blog posts on technology and innovation.',
     url: baseUrl,
-    siteName: 'Bikram Brar Portfolio',
+    siteName: 'Bikram Brar – AI Product Engineer & Product Manager',
     locale: 'en_US',
     type: 'website',
   },
@@ -49,15 +57,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* NextThemes will add/remove .dark on <html> 
-         but we also do body-level classes for the main site styling. */}
       <body
         className={cx(
           'min-h-screen',
-          'bg-white text-neutral-800',       // Light default
-          'dark:bg-black dark:text-neutral-100', // Dark overrides
+          'bg-white text-neutral-800',
+          'dark:bg-black dark:text-neutral-100',
           'antialiased overflow-x-hidden',  
-          GeistSans.variable, GeistMono.variable
+          GeistSans.variable,
+          GeistMono.variable
         )}
         suppressHydrationWarning
       >

@@ -1,16 +1,19 @@
-// app/projects/page.tsx
+/**
+ * page.tsx (Projects Index)
+ * Title: Projects – Bikram Brar
+ * Description: Showcases Bikram’s AI and software projects, including app prototypes and R&D.
+ */
+
 import React from 'react'
-// Next.js 15 "metadata" can stay here as a server export:
-export const metadata = {
-  title: 'Projects',
+import type { Metadata } from 'next'
+export const metadata: Metadata = {
+  title: 'Projects – Bikram Brar',
+  description:
+    'Explore Bikram Brar’s AI-driven product development and software engineering projects.',
 }
 
 import ProjectsClient from './ProjectsClient'
 
-/**
- * Server Component that returns a client child.
- * This avoids running Framer Motion on the server.
- */
 export default function ProjectsPage() {
   return (
     <div className="container mx-auto max-w-4xl py-8 px-4">

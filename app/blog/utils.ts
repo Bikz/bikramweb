@@ -1,3 +1,9 @@
+/**
+ * utils.ts (Blog Utilities)
+ * Title: Blog Utilities
+ * Description: Helper functions for reading MDX blog posts, frontmatter, and date formatting.
+ */
+
 import fs from 'fs'
 import path from 'path'
 
@@ -19,7 +25,7 @@ function parseFrontmatter(fileContent: string) {
   frontMatterLines.forEach((line) => {
     let [key, ...valueArr] = line.split(': ')
     let value = valueArr.join(': ').trim()
-    value = value.replace(/^['"](.*)['"]$/, '$1') // Remove quotes
+    value = value.replace(/^['"](.*)['"]$/, '$1')
     metadata[key.trim() as keyof Metadata] = value
   })
 

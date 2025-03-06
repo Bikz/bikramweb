@@ -1,3 +1,9 @@
+/**
+ * footer.tsx
+ * Title: Footer Component
+ * Description: A simple site footer with social links and copyright.
+ */
+
 'use client'
 
 import React, { useRef } from 'react'
@@ -21,7 +27,6 @@ function ArrowIcon() {
 }
 
 export default function Footer() {
-  // Use a ref so it's stable across renders (no mismatch)
   const currentYearRef = useRef(new Date().getFullYear())
 
   return (

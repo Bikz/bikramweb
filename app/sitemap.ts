@@ -1,4 +1,9 @@
-// Added static export configuration for sitemap
+/**
+ * sitemap.ts
+ * Title: Sitemap
+ * Description: Generates a static sitemap with blog post URLs and other routes for SEO.
+ */
+
 export const dynamic = "force-static"
 export const revalidate = 0
 

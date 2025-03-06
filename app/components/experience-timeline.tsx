@@ -1,7 +1,7 @@
 /**
  * experience-timeline.tsx
- * A timeline component that shows work experience with logos,
- * bullet points with data highlights, and highlight transitions.
+ * Title: Experience Timeline
+ * Description: A timeline component showing work experience with bullet points, logos, and highlight transitions.
  */
 
 'use client'
@@ -32,7 +32,7 @@ const timelineData: TimelineItem[] = [
       '**Integrated cutting-edge AI** (RAG, GPT APIs) to deliver innovative features.',
     ],
     logo: '/companies/independent.png',
-    transitionHighlight: true,  // Now highlighting the newest role
+    transitionHighlight: true,
   },
   {
     title: 'Senior Product Manager',
@@ -78,7 +78,7 @@ const timelineData: TimelineItem[] = [
       'Supported open banking initiatives, driving a **15%** increase in digital adoption.',
     ],
     logo: '/companies/bmo.png',
-    transitionHighlight: false, // remove highlight from oldest
+    transitionHighlight: false,
   },
 ]
 

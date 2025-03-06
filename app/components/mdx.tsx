@@ -1,4 +1,8 @@
-// app/components/mdx.tsx
+/**
+ * mdx.tsx
+ * Title: Custom MDX Rendering
+ * Description: Renders MDX content with sugar-high syntax highlighting and Next.js server components.
+ */
 
 import React from 'react'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -59,10 +63,6 @@ const components = {
   h6: createHeading(6),
 }
 
-/**
- * Renders the MDX content from the server.
- * Since we're using RSC version, this component should be server-side.
- */
 export function CustomMDX({ source }: { source: string }) {
   return (
     <MDXRemote

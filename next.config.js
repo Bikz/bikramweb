@@ -1,3 +1,9 @@
+/**
+ * next.config.js
+ * Title: Next.js Configuration
+ * Description: Configuration for Next.js output, image settings, and webpack fallback.
+ */
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
@@ -11,11 +17,7 @@ const nextConfig = {
     ],
   },
   webpack: (config) => {
-    // Leave fallback for fs/path if you still need it (e.g. "fs" calls in server code):
     config.resolve.fallback = { fs: false, path: false }
-
-    // IMPORTANT: Do NOT manually alias 'react', 'react-dom', 'react/jsx-runtime', etc.
-    // Next.js 13+ automatically handles these in React 17/18.
     return config
   },
 }

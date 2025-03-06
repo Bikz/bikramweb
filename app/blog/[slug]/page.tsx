@@ -1,4 +1,9 @@
-// app/blog/[slug]/page.tsx
+/**
+ * page.tsx ([slug] Blog Post)
+ * Title: Single Blog Post Page
+ * Description: Dynamically rendered MDX post based on slug param in Next.js 15.
+ */
+
 import React from 'react';
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -6,12 +11,7 @@ import { baseUrl } from 'app/sitemap'
 import { getBlogPosts, formatDate } from 'app/blog/utils'
 import { CustomMDX } from 'app/components/mdx'
 
-/**
- * If you use dynamic routes, you might also be generating static params
- * so we keep this function async for compatibility.
- */
 export async function generateStaticParams() {
-  // Hard-coded list of blog post slugs
   return [
     { slug: 'vim' },
     { slug: 'spaces-vs-tabs' },
@@ -19,11 +19,6 @@ export async function generateStaticParams() {
   ];
 }
 
-/**
- * In Next.js 15, `generateMetadata` can be async to match
- * the new type definitions, but the key is just destructuring
- * { params } as a plain object, not a Promise.
- */
 export async function generateMetadata(
   props: {
     params: Promise<{ slug: string }>
@@ -59,11 +54,6 @@ export async function generateMetadata(
   }
 }
 
-/**
- * The page component must also be async if it uses `params` or other
- * request-based data so that the types match Next.js 15's updated definitions.
- * Again, just accept { params, searchParams } as a normal object.
- */
 export default async function Page(
   props: { params: Promise<{ slug: string }> }
 ) {

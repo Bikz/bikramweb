@@ -1,3 +1,9 @@
+/**
+ * TravelGallery.tsx
+ * Title: Travel Gallery
+ * Description: Displays a grid of travel images from various destinations.
+ */
+
 'use client'
 import React from 'react'
 import Image from 'next/image'

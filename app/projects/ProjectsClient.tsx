@@ -1,14 +1,15 @@
-// app/projects/ProjectsClient.tsx
+/**
+ * ProjectsClient.tsx
+ * Title: Projects Client Component
+ * Description: Framer Motion-based client-side component to showcase project cards.
+ */
+
 'use client'
 
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-/**
- * A client component that safely imports Framer Motion
- * and shows all your project links/animations.
- */
 export default function ProjectsClient() {
   return (
     <section className="animate-fadeIn">
@@ -21,7 +22,6 @@ export default function ProjectsClient() {
       </p>
 
       <div className="space-y-4">
-        {/* Mysti Health */}
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -36,7 +36,6 @@ export default function ProjectsClient() {
           </Link>
         </motion.div>
 
-        {/* Dayplan App */}
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -51,7 +50,6 @@ export default function ProjectsClient() {
           </Link>
         </motion.div>
 
-        {/* Repo Prompter */}
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
