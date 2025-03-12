@@ -98,14 +98,18 @@ export default function HeroSection() {
           that bring real utility to the world.
         </motion.p>
 
-        <motion.h2 
+        <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-lg font-semibold mb-2 text-neutral-900 dark:text-white text-center"
+          className="flex items-center justify-center mb-4"
         >
-          Stuff I've Built
-        </motion.h2>
+          <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-gray-400 dark:to-gray-600 mr-3"></div>
+          <h2 className="text-lg font-semibold text-neutral-900 dark:text-white text-center">
+            Stuff I've Built
+          </h2>
+          <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-gray-400 dark:to-gray-600 ml-3"></div>
+        </motion.div>
        
         <motion.div 
           variants={containerVariants}
