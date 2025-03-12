@@ -31,17 +31,17 @@ export function BlogPosts({ blogs }: { blogs: any[] }) {
             whileHover={{ x: 8 }}
             className="group flex items-start bg-white/40 dark:bg-gray-900/40 backdrop-blur-sm p-4 rounded-lg border border-gray-200/30 dark:border-gray-800/30 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-200 shadow-sm hover:shadow"
           >
-            {/* Date column with timeline effect */}
-            <div className="relative min-w-[150px] pr-6 text-right">
-              <p className="font-medium text-neutral-600 dark:text-neutral-400 tabular-nums whitespace-nowrap">
-                {formatDate(post.metadata.publishedAt, false)}
-              </p>
-              {/* Vertical timeline */}
-              {index < sorted.length - 1 && (
-                <div className="absolute top-8 bottom-[-32px] right-3 w-[2px] bg-gradient-to-b from-gray-300 to-transparent dark:from-gray-700"></div>
-              )}
-              {/* Timeline dot */}
-              <div className="absolute right-[11px] top-[9px] w-[8px] h-[8px] rounded-full bg-gray-400 dark:bg-gray-600 group-hover:bg-gray-600 dark:group-hover:bg-gray-400 transition-colors"></div>
+            {/* Date column with timeline dot */}
+            <div className="w-[140px] mr-6 flex flex-col">
+              <div className="flex items-center">
+                {/* Timeline dot */}
+                <div className="flex-shrink-0 w-[6px] h-[6px] mr-3 rounded-full bg-gray-400 dark:bg-gray-600 group-hover:bg-gray-600 dark:group-hover:bg-gray-400 transition-colors"></div>
+                
+                {/* Date */}
+                <p className="font-medium text-neutral-600 dark:text-neutral-400 tabular-nums whitespace-nowrap text-sm">
+                  {formatDate(post.metadata.publishedAt, false)}
+                </p>
+              </div>
             </div>
             
             {/* Content column */}
@@ -57,12 +57,27 @@ export function BlogPosts({ blogs }: { blogs: any[] }) {
             </div>
             
             {/* Arrow icon */}
-            <div className="ml-2 pt-1 text-gray-400 dark:text-gray-600 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-200">
+            <div className="ml-4 pt-1 text-gray-400 dark:text-gray-600 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-200">
               <FaArrowRight />
             </div>
           </motion.div>
         </Link>
       ))}
+      
+      {/* View More link */}
+      <div className="flex justify-end mt-4">
+        <Link href="/blog" className="inline-flex">
+          <motion.div 
+            whileHover={{ x: 4 }}
+            className="group flex items-center py-2 px-3 text-sm"
+          >
+            <p className="font-medium text-neutral-700 dark:text-neutral-300 mr-2">
+              View More Posts
+            </p>
+            <FaArrowRight className="text-xs text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors" />
+          </motion.div>
+        </Link>
+      </div>
     </div>
   )
 }
