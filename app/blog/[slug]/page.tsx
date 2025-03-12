@@ -8,9 +8,9 @@ import React from 'react';
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { baseUrl } from 'app/sitemap'
-import { getBlogPosts, formatDate } from 'app/blog/utils'
+import { getBlogPosts } from 'app/blog/utils'
 import { serialize } from 'next-mdx-remote/serialize'
-import MDXClientWrapper from 'app/components/MDXClientWrapper'
+import BlogPostClient from './BlogPostClient'
 
 export async function generateStaticParams() {
   return [
@@ -21,11 +21,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  props: {
-    params: Promise<{ slug: string }>
-  }
+  { params }: { params: { slug: string } }
 ): Promise<Metadata> {
-  const params = await props.params;
   const { slug } = params;
   const post = getBlogPosts().find((p) => p.slug === slug)
   if (!post) notFound()
@@ -55,10 +52,8 @@ export async function generateMetadata(
   }
 }
 
-export default async function Page(
-  props: { params: Promise<{ slug: string }> }
-) {
-  const { slug } = await props.params;
+export default async function Page({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const post = getBlogPosts().find((p) => p.slug === slug);
   
   if (!post) notFound();
@@ -66,20 +61,5 @@ export default async function Page(
   // Serialize MDX content for client-side rendering
   const mdxSource = await serialize(post.content);
   
-  return (
-    <div className="container mx-auto max-w-4xl py-8 px-4">
-      <header className="mb-10">
-        <h1 className="text-3xl font-bold mb-4">{post.metadata.title}</h1>
-        <div className="flex items-center text-gray-500 mb-6">
-          <span>{formatDate(post.metadata.publishedAt)}</span>
-          <span className="mx-2">•</span>
-          <span className="italic">Written by Bikram Brar</span>
-        </div>
-        <div className="w-24 h-1 bg-gray-200 rounded"></div>
-      </header>
-      <article className="prose prose-lg dark:prose-invert max-w-none">
-        <MDXClientWrapper mdxSource={mdxSource} />
-      </article>
-    </div>
-  );
+  return <BlogPostClient post={post} mdxSource={mdxSource} />;
 }
