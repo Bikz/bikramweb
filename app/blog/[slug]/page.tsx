@@ -12,7 +12,17 @@ import { getBlogPosts } from 'app/blog/utils'
 import { serialize } from 'next-mdx-remote/serialize'
 import BlogPostClient from './BlogPostClient'
 
-export async function generateStaticParams() {
+// Define proper types for Next.js 
+type PageParams = {
+  slug: string;
+}
+
+type PageProps = {
+  params: PageParams;
+  searchParams: Record<string, string | string[] | undefined>;
+}
+
+export async function generateStaticParams(): Promise<PageParams[]> {
   return [
     { slug: 'building-2fa-engine' },
     { slug: 'ai-finance-blockchain' },
@@ -21,7 +31,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  { params }: { params: { slug: string } }
+  { params }: PageProps
 ): Promise<Metadata> {
   const { slug } = params;
   const post = getBlogPosts().find((p) => p.slug === slug)
@@ -52,7 +62,7 @@ export async function generateMetadata(
   }
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params, searchParams }: PageProps) {
   const { slug } = params;
   const post = getBlogPosts().find((p) => p.slug === slug);
   
