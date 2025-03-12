@@ -60,7 +60,7 @@ export default function UserJourneySection() {
   });
 
   return (
-    <section className="max-w-4xl mx-auto px-4 py-24 relative">
+    <section className="max-w-4xl mx-auto px-6 py-16 relative">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

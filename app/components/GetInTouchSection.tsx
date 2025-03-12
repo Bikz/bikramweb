@@ -13,13 +13,13 @@ import { FaEnvelope, FaLinkedin } from "react-icons/fa";
 
 export default function GetInTouchSection() {
   return (
-    <section className="max-w-4xl mx-auto px-4 py-24 relative">
+    <section className="w-full relative">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="mb-8 text-center"
+        className="mb-10 text-center"
       >
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-2">
           Get in Touch
