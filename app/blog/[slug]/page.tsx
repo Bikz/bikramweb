@@ -14,10 +14,9 @@ import MDXClientWrapper from 'app/components/MDXClientWrapper'
 
 export async function generateStaticParams() {
   return [
-    { slug: 'vim' },
-    { slug: 'spaces-vs-tabs' },
-    { slug: 'static-typing' },
     { slug: 'building-2fa-engine' },
+    { slug: 'ai-finance-blockchain' },
+    { slug: 'future-of-nfts' }
   ];
 }
 
@@ -69,10 +68,15 @@ export default async function Page(
   
   return (
     <div className="container mx-auto max-w-4xl py-8 px-4">
-      <h1 className="text-3xl font-bold mb-2">{post.metadata.title}</h1>
-      <div className="text-gray-500 mb-8">
-        {formatDate(post.metadata.publishedAt)}
-      </div>
+      <header className="mb-10">
+        <h1 className="text-3xl font-bold mb-4">{post.metadata.title}</h1>
+        <div className="flex items-center text-gray-500 mb-6">
+          <span>{formatDate(post.metadata.publishedAt)}</span>
+          <span className="mx-2">•</span>
+          <span className="italic">Written by Bikram Brar</span>
+        </div>
+        <div className="w-24 h-1 bg-gray-200 rounded"></div>
+      </header>
       <article className="prose prose-lg dark:prose-invert max-w-none">
         <MDXClientWrapper mdxSource={mdxSource} />
       </article>
