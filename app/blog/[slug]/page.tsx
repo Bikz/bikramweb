@@ -9,13 +9,15 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { baseUrl } from 'app/sitemap'
 import { getBlogPosts, formatDate } from 'app/blog/utils'
-import { CustomMDX } from 'app/components/mdx'
+import { serialize } from 'next-mdx-remote/serialize'
+import MDXClientWrapper from 'app/components/MDXClientWrapper'
 
 export async function generateStaticParams() {
   return [
     { slug: 'vim' },
     { slug: 'spaces-vs-tabs' },
     { slug: 'static-typing' },
+    { slug: 'building-2fa-engine' },
   ];
 }
 
@@ -58,10 +60,22 @@ export default async function Page(
   props: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await props.params;
+  const post = getBlogPosts().find((p) => p.slug === slug);
+  
+  if (!post) notFound();
+  
+  // Serialize MDX content for client-side rendering
+  const mdxSource = await serialize(post.content);
+  
   return (
     <div className="container mx-auto max-w-4xl py-8 px-4">
-      <h1 className="text-2xl font-bold">Blog post: {slug}</h1>
-      <p>This is a placeholder blog post for {slug}.</p>
+      <h1 className="text-3xl font-bold mb-2">{post.metadata.title}</h1>
+      <div className="text-gray-500 mb-8">
+        {formatDate(post.metadata.publishedAt)}
+      </div>
+      <article className="prose prose-lg dark:prose-invert max-w-none">
+        <MDXClientWrapper mdxSource={mdxSource} />
+      </article>
     </div>
   );
 }

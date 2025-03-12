@@ -1,0 +1,73 @@
+/**
+ * Custom styling for sugar-high syntax highlighting
+ * 
+ * These styles will override the default sugar-high styles
+ * to provide better contrast in dark mode
+ */
+
+/* Base code styling */
+code {
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+/* Light mode */
+:root {
+  --sh-class: #2d5e9d;
+  --sh-identifier: #0550ae;
+  --sh-sign: #8996a3;
+  --sh-property: #953800;
+  --sh-entity: #2d5e9d;
+  --sh-jsxliterals: #6e6e6e;
+  --sh-string: #258200;
+  --sh-keyword: #af00db;
+  --sh-comment: #747474;
+  --sh-plain: #000000;
+}
+
+/* Dark mode */
+.dark {
+  --sh-class: #61afef;
+  --sh-identifier: #79b8ff; 
+  --sh-sign: #79b8ff;
+  --sh-property: #e06c75;
+  --sh-entity: #9cdcfe;
+  --sh-jsxliterals: #bbb;
+  --sh-string: #9ae96f;
+  --sh-keyword: #d19cf8;
+  --sh-comment: #67769c;
+  --sh-plain: #e1e1e1;
+}
+
+/* sugar-high specific classes */
+.sh__class { color: var(--sh-class); }
+.sh__identifier { color: var(--sh-identifier); }
+.sh__sign { color: var(--sh-sign); }
+.sh__property { color: var(--sh-property); }
+.sh__entity { color: var(--sh-entity); }
+.sh__jsxliteral { color: var(--sh-jsxliterals); }
+.sh__string { color: var(--sh-string); }
+.sh__keyword { color: var(--sh-keyword); }
+.sh__comment { color: var(--sh-comment); }
+.sh__plain { color: var(--sh-plain); }
+
+/* Inline code styling */
+:not(pre) > code {
+  background-color: rgb(242, 242, 242);
+  color: rgb(53, 53, 53);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  font-size: 0.875em;
+}
+
+.dark :not(pre) > code {
+  background-color: rgba(36, 42, 54, 0.7);
+  color: rgb(220, 220, 220);
+}
+
+/* Make sure code blocks take full width on small screens */
+pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+} 
