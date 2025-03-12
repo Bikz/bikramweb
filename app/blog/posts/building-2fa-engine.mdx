@@ -1,0 +1,284 @@
+---
+title: 'Building my own Two-Factor Authentication Engine with Node.js, MySQL and SES'
+publishedAt: '2025-02-10'
+summary: 'Learn how to build your own custom 2FA that's secure, time-boxed, and integrated into your existing MySQL database using Node.js.'
+---
+
+Two-factor authentication (2FA) is a cornerstone of modern web security. You'll find hundreds of paid 2FA services, SMS gateways, authenticator-app integrations, and specialized vendor solutions. These are helpful and convenient—particularly if you need to push out a polished, enterprise-level solution. But if you're comfortable building backend code, you can roll your own custom 2FA that's secure, time-boxed, and integrated into your existing database. That's exactly what I've done recently. This post walks through why I decided to build a custom 2FA flow, how I structured my MySQL user accounts, and the code that drives my email-based two-factor authentication engine.
+
+---
+
+## Why Build a Custom 2FA?
+
+Before diving into the technical details, let's tackle the question: why not just pay for a third-party or buy an off-the-shelf solution?
+1. **Cost Savings** – Managed 2FA solutions (especially SMS-based or aggregator-based) can quickly become expensive. My use case doesn't require thousands of messages per day, so I didn't need a giant throughput pipeline. I already run an email service for sending notifications, so piggybacking 2FA codes onto email was cost-effective.
+2. **Complete Control Over User Flow** – Commercial 2FA services typically give you a standard "pick your 2FA method" process or redirect to a third-party widget. I wanted an experience fully integrated with my Node.js application and custom forms. Being able to do that yourself means you tweak the final user flow in any way you like—e.g., including custom disclaimers, theming, extra logic on partial logins, etc.
+3. **No Vendor Lock-In** – A lot of times, third-party 2FA services create a direct dependency on their platform, so if you ever want to leave, you need to do a big migration. By controlling the code and schema, your data and logic remain portable. You can always swap out your email transport layer if you wish.
+4. **Learning & Ownership** – From a purely technical standpoint, building your own 2FA solution can be fun. It's a chance to refine your knowledge of cryptography, hashing strategies (for TOTP or codes), time-based flows, and user security best practices. If you ever need to pivot to other authentication features, you'll have the code and the domain expertise in-house.
+
+---
+
+## Overview of My 2FA Flow
+
+I wanted the experience to be straightforward:
+1. A user logs in with email (or username) + password.
+2. If their credentials are valid, the server checks if 2FA is enabled for that user.
+   - For me, "2FA enabled" is indicated by a column or an existing "verifiedEmail" state in the database.
+3. The server either:
+   - (A) If the user has never verified or doesn't have 2FA turned on, it'll require an "email verification code" once for full account activation.
+   - (B) If the user is fully verified (2FA turned on for all future logins), it sends out a new one-time passcode to their email on every login attempt.
+4. The user enters the 6-digit code from their inbox. My server checks:
+   - Is the code still unused?
+   - Was it created within the last 15 minutes?
+5. If validated, they're in. If not, they get an error (and the code is either expired or marked invalid).
+
+This approach merges "email-based 2FA for each login" with "email verification" under the hood—storing short-lived numeric codes in a table. The user sees no difference except they're prompted for a 6-digit code if 2FA is mandatory on every login.
+
+---
+
+## My Database Schema
+
+I use a Prisma schema for my Node/TypeScript stack, but you can design a similar table in raw SQL. Essentially, I keep:
+
+```sql
+CREATE TABLE `VerifyCodes` (
+  `id` VARCHAR(191) NOT NULL,
+  `code` VARCHAR(6) NOT NULL,
+  `used` BOOLEAN NOT NULL DEFAULT false,
+  `userId` VARCHAR(191) NOT NULL,
+  `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  `updatedAt` DATETIME(3) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+```
+
+- `code`: The 6-digit numeric code, stored in plaintext.
+- `used`: Whether the code was already consumed.
+- `userId`: Links to my Users table.
+- `createdAt`: For time-limiting code validity.
+- `updatedAt`: Let Prisma handle timestamps on create/update.
+
+Meanwhile, in my Users table, I have columns like:
+
+```sql
+CREATE TABLE `Users` (
+  `id` VARCHAR(191) NOT NULL,
+  `email` VARCHAR(128) NOT NULL,
+  `password` VARCHAR(191) NOT NULL,
+  `username` VARCHAR(191) NOT NULL,
+  `emailVerified` BOOLEAN NOT NULL DEFAULT false,
+  `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  `updatedAt` DATETIME(3) NOT NULL,
+  ...
+);
+```
+
+- `emailVerified` helps me know if the user has done an initial email check.
+- If I want them to do 2FA every time they log in, I check for `emailVerified===true` in the login flow and then request the 6-digit code each time.
+
+---
+
+## Generating & Storing Codes
+
+In my Node.js code, I have a function that:
+1. Creates a random integer between 100000 and 999999.
+2. Stores it in the database with userId and sets used = false.
+
+Here's a simplified version in TypeScript:
+
+```typescript
+async function createEmailVerificationCode(userId: string): Promise<string | null> {
+  try {
+    const code = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit
+    await prisma.verifyCodes.create({
+      data: {
+        code,
+        user: { connect: { id: userId } } // linking to user
+      }
+    });
+    return code;
+  } catch (error) {
+    console.error("Error creating email verification code:", error);
+    return null;
+  }
+}
+```
+
+Security Tip: Usually it's okay to store these short OTP codes in plaintext for 15 minutes, but if I wanted extra security, I could store a hash of the code. That would require me to hash and compare the code upon verification. Because the code expires quickly, plaintext is acceptable for smaller projects.
+
+---
+
+## Sending Codes via Email
+
+Once the code is generated, I dispatch an email through Nodemailer (or any email service). My function calls might look like:
+
+```typescript
+async function sendVerificationEmail(user: User) {
+  // Don't proceed if user is already verified
+  if (user.emailVerified) return;
+
+  const code = await createEmailVerificationCode(user.id);
+  if (!code) return;
+
+  // Construct your email subject, text, or HTML
+  const subject = "Verify your email with MyApp";
+  const bodyText = `Your verification code is ${code}, valid for 15 minutes.`;
+
+  await sendEmail({
+    to: user.email,
+    subject,
+    text: bodyText,
+  });
+}
+```
+
+I also have a different function if I want a 2FA code on every login:
+
+```typescript
+async function sendLoginVerificationEmail(userId: string) {
+  // only do this if user is already emailVerified
+  // ...
+  const code = await createEmailVerificationCode(userId);
+  // build email body
+  // ...
+  sendEmail(...);
+}
+```
+
+The difference is mostly about the email subject line ("verify your email" vs. "login code"). Internally, they still do the same "create code, store it, email it."
+
+---
+
+## Verifying the Codes
+
+When the user types in a code, I do a DB check:
+- Is there a record in VerifyCodes matching code: 123456, userId, used = false?
+- Was it created in the last 15 minutes?
+
+Example:
+
+```typescript
+async function verifyEmailCode(userId: string, code: string): Promise<boolean> {
+  const now = Date.now();
+  const CODE_EXPIRATION_MINUTES = 15;
+  const cutoff = new Date(now - CODE_EXPIRATION_MINUTES * 60_000);
+
+  // find a code that is not used and was created after the cutoff
+  const match = await prisma.verifyCodes.findFirst({
+    where: {
+      userId,
+      code,
+      used: false,
+      createdAt: { gte: cutoff }
+    }
+  });
+
+  if (!match) {
+    return false; // invalid code
+  }
+
+  // Mark code as used
+  await prisma.verifyCodes.update({
+    where: { id: match.id },
+    data: { used: true }
+  });
+
+  // If this was initial email verification, mark user as verified
+  // e.g. update user row
+  await prisma.user.update({
+    where: { id: userId },
+    data: { emailVerified: true } 
+  });
+
+  return true;
+}
+```
+
+If this code is used for ongoing 2FA in the login flow, I skip the `emailVerified: true` update and just proceed to finalize the login session if the code is valid.
+
+---
+
+## Integrating with Login Flow
+
+In a typical username/password login route, I do:
+1. Validate user's password. If correct, retrieve user record from DB.
+2. If `user.emailVerified === false`, ask them for a code. Or if `user.emailVerified === true` but I want mandatory 2FA, also ask them for a code.
+3. If they haven't provided a code, generate code & email it, then respond with "Please enter your 2FA code."
+4. If they do provide a code, run `verifyEmailCode(...)`.
+5. If that passes, create a session token or JWT. If it fails, say "Invalid code."
+
+This can be done in a single route or multiple steps. In code, you may see something like:
+
+```typescript
+if (user.emailVerified) {
+  // 2FA code is needed
+  if (!req.body.verificationCode) {
+    // no code provided yet, so generate and ask user to provide it
+    await sendLoginVerificationEmail(user.id);
+    return res.status(401).json({
+      message: "A 2FA code has been sent to your email.",
+      needsCode: true
+    });
+  } else {
+    // check if code is correct
+    const valid = await verifyEmailCode(user.id, req.body.verificationCode);
+    if (!valid) {
+      return res.status(401).json({ message: "Invalid or expired 2FA code." });
+    }
+  }
+} else {
+  // Not verified at all, so do the initial verification code flow
+  // ...
+}
+
+// If we get here, the user is authorized
+// Create session or JWT
+return res.status(200).json({ success: true });
+```
+
+---
+
+## Security Considerations
+
+### 1. Expiration Enforcement
+
+I rely on `createdAt >= cutoff` (the last 15 minutes). This is straightforward, but you could also store an explicit `expiresAt` column in the table.
+
+### 2. Single Use
+
+Marking the code as `used = true` ensures no code replays. If user tries the same code a second time, it won't pass.
+
+### 3. Rate Limiting
+
+If a malicious user requests infinite codes, you might want a rate-limiting approach. For example, track how many codes a single account can create in a short window. If they exceed it, block further requests for a certain cooldown period.
+
+### 4. Hashing Codes
+
+Some might store `sha256(code)` instead of the actual code. Then, upon verifying, you hash the input again and compare. This means if your DB is leaked, an attacker can't immediately see the code. Because these codes expire quickly, plaintext is typically acceptable for smaller projects—but hashing is still a nice option.
+
+---
+
+## Why Not a 3rd-Party 2FA Service?
+
+While vendor solutions like Authy, Twilio Verify, or TOTP-based libraries exist, I decided on a simpler approach for my scenario:
+- **Email-based**: My users are guaranteed to have a verified email. They're also typically comfortable checking their inbox for codes. Because my system is small-scale, the cost of an external aggregator or SMS gateway would be overkill.
+- **No monthly fees**: Some 2FA solutions charge monthly or per verification. I already run an email service for my app, so there's no additional cost overhead to sending 6-digit codes.
+- **Full integration**: I handle the entire flow in the same codebase. Debugging is simpler—no separate dashboards or partial vendor logs. If a user complains about not receiving a code, I can quickly check logs in my own system and my email logs, all in one place.
+- **Extendable**: If, in the future, I want a TOTP app approach (Google Authenticator, Authy, etc.), I already have code knowledge to store secrets and compare codes. The database approach is flexible enough to integrate TOTPs or push notifications. There's no vendor lock-in or rewriting my entire user flow.
+
+---
+
+## Final Thoughts
+
+Rolling your own 2FA engine with Node.js, MySQL (or any SQL store), and an email pipeline is more than feasible. You gain:
+- Cost control (just your email costs)
+- Flexibility to shape the user experience
+- Direct ownership of data and code
+
+It's obviously more set-up overhead than using a third-party library, and you need to be comfortable with the ongoing security and maintenance. But if you want deeper control or to learn how 2FA works at a fundamental level, building your own is a satisfying approach.
+
+In short: If your project is small or your user base is moderate, there's real value in a custom solution. If you need advanced features (like SMS codes, advanced device checks, biometric integration), or you handle extremely large scale, you can always integrate an external identity provider later. But for me, having my own 2FA engine has been a fulfilling journey, giving me total control and helping me reduce costs at the same time.
+
+---
+
+If you have any questions about the code or want more details on how to handle an all-out TOTP or push-based 2FA, feel free to reach out. Happy coding, and stay secure! 

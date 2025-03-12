@@ -1,3 +1,9 @@
+/**
+ * ThemeToggle.tsx
+ * Title: Theme Toggle
+ * Description: A button that toggles between dark and light mode using next-themes.
+ */
+
 'use client'
 
 import { useTheme } from 'next-themes'
@@ -47,23 +53,17 @@ export default function ThemeToggle() {
   const { resolvedTheme, theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
-  // To avoid hydration mismatch, wait until after mount to display
   useEffect(() => {
     setMounted(true)
   }, [])
 
   if (!mounted) return null
 
-  // If the user hasn't explicitly chosen 'light' or 'dark',
-  // and defaultTheme="system", then 'theme' is "system",
-  // so we rely on `resolvedTheme`.
   const isDark = theme === 'system' ? resolvedTheme === 'dark' : theme === 'dark'
 
   return (
     <button
       onClick={() => {
-        // If we are in dark mode, switch to light
-        // Otherwise, switch to dark
         setTheme(isDark ? 'light' : 'dark')
       }}
       className="ml-4 p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 
