@@ -1,82 +1,91 @@
 /**
- * page.tsx (RepoPrompter Project)
- * Title: RepoPrompter – Bikram Brar
- * Description: Electron app that helps developers turn code repositories into context-aware prompts for LLMs.
+ * page.tsx (Repoprompter Project)
+ * Title: Repoprompter – Bikram Brar
+ * Description: Electron app that helps developers turn code repositories into optimized prompts for LLMs.
  */
 
 import React from 'react'
-import Image from 'next/image'
 import type { Metadata } from 'next'
+import ProjectDetailClient from '../ProjectDetailClient'
 
 export const metadata: Metadata = {
-  title: 'RepoPrompter – Bikram Brar',
-  description:
-    'An Electron app that generates optimized LLM prompts from code repositories and applies AI-suggested changes easily.',
+  title: 'Repoprompter – Bikram Brar',
+  description: 'Electron app that helps developers turn code repositories into optimized prompts for LLMs and apply AI changes.',
 }
 
-export default function RepoPrompterPage() {
+export default function RepoprompterPage() {
+  const projectData = {
+    title: "Repoprompter",
+    description: "Electron app that helps developers turn code repositories into optimized prompts for LLMs and apply AI changes.",
+    status: "Open Source",
+    categories: [
+      { name: "AI", color: "bg-black/10 text-gray-800 dark:bg-white/10 dark:text-gray-200 backdrop-blur-sm" },
+      { name: "Desktop", color: "bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm" }
+    ],
+    sections: [
+      {
+        title: "Project Overview",
+        content: "Repoprompter is a developer productivity tool that bridges the gap between your codebase and large language models (LLMs). It intelligently analyzes your repository structure, identifies relevant code files, and generates optimized prompts that provide the right context for LLMs to understand your project. This enables you to get more accurate suggestions, code completions, and architectural advice from AI models."
+      },
+      {
+        title: "The Problem It Solves",
+        content: "Developers often waste time crafting the perfect prompts for AI tools, manually copying relevant code snippets, and explaining project structure. Even then, the prompts often hit token limits or lack crucial context. Repoprompter automates this entire process, intelligently selecting and formatting the most relevant parts of your codebase for AI consumption."
+      },
+      {
+        title: "Key Features",
+        content: (
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Smart repository scanning and file relevance ranking</li>
+            <li>Automated prompt generation with customizable templates</li>
+            <li>Direct integration with leading AI services (OpenAI, Anthropic, etc.)</li>
+            <li>Code snippet optimization to maximize token efficiency</li>
+            <li>Context-aware dependency inclusion for better code understanding</li>
+            <li>Inline AI suggestions with one-click application</li>
+            <li>Cross-platform support (macOS, Windows, Linux)</li>
+            <li>GitHub integration for seamless workflow</li>
+          </ul>
+        )
+      },
+      {
+        title: "Technology Stack",
+        content: (
+          <div className="space-y-4">
+            <p>Repoprompter is built using modern web technologies packaged as a desktop application:</p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li><strong>Framework:</strong> Electron for cross-platform desktop application</li>
+              <li><strong>Frontend:</strong> React with TypeScript, styled with TailwindCSS</li>
+              <li><strong>Code Parsing:</strong> Tree-sitter for accurate code understanding</li>
+              <li><strong>AI Integration:</strong> Custom API clients for various LLM providers</li>
+              <li><strong>Repository Analysis:</strong> Proprietary algorithms for context relevance</li>
+              <li><strong>State Management:</strong> Redux with middleware for async operations</li>
+            </ul>
+          </div>
+        )
+      },
+      {
+        title: "Open Source Collaboration",
+        content: "Repoprompter is an open-source project that welcomes contributions from the developer community. Whether you're interested in improving the prompt optimization algorithms, adding support for additional programming languages, or enhancing the user interface, there are many ways to get involved. The project follows a standard GitHub contribution workflow with issues, pull requests, and code reviews."
+      }
+    ],
+    links: [
+      {
+        label: "GitHub Repository",
+        url: "https://github.com/bikrambrar/repoprompter",
+      },
+      {
+        label: "Documentation",
+        url: "https://repoprompter.dev/docs",
+      },
+      {
+        label: "Download App",
+        url: "https://repoprompter.dev/download",
+      }
+    ]
+  };
+
   return (
-    <div className="container mx-auto max-w-4xl py-8 px-4">
-      <section className="animate-fadeIn">
-        <h1 className="mb-6 text-2xl font-semibold tracking-tighter">
-          Repoprompter
-        </h1>
-        <p className="mb-4">
-          Repoprompter is an Electron app that helps developers turn their code
-          repositories into rich, context-aware prompts for Large Language
-          Models. Users can select a repository, then easily choose specific
-          folders and files to create optimized prompts for sharing with LLM
-          models.
-        </p>
-        <p className="mb-4">
-          The app also allows users to paste back markdown git-diffs or entire
-          files, automatically updating the code files and making it super easy
-          to improve code with AI. This is particularly useful with models like
-          OpenAI o1-pro which doesn&apos;t have API access.
-        </p>
-
-        <h2 className="text-lg font-medium mt-8 mb-2">Key Features</h2>
-        <ul className="list-disc list-inside mb-4">
-          <li>Repository scanning &amp; selective file inclusion</li>
-          <li>Optimized prompt generation for LLMs</li>
-          <li>Automatic code updates from git-diff responses</li>
-          <li>Cross-platform support for Mac and Windows</li>
-        </ul>
-
-        <h2 className="text-lg font-medium mt-8 mb-2">Tech Stack</h2>
-        <ul className="list-disc list-inside mb-4">
-          <li>Electron with React and Vite</li>
-          <li>Cross-platform build for Mac and Windows</li>
-        </ul>
-
-        <h2 className="text-lg font-medium mt-8 mb-2">Preview</h2>
-        <div className="relative w-full h-80 md:h-96 bg-neutral-100 dark:bg-neutral-800 mb-6">
-          <Image
-            src="/projects/repoprompter.png"
-            alt="Repoprompter App screenshot"
-            fill
-            className="object-cover rounded"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
-
-        <h2 className="text-lg font-medium mt-8 mb-2">Try Repoprompter</h2>
-        <p className="mb-4">
-          Looking to streamline your AI-assisted coding workflow? Repoprompter
-          makes it easy to create context-rich prompts from your codebase and
-          apply AI-suggested changes with minimal friction.
-        </p>
-        <div className="flex justify-center mt-10 mb-4">
-          <a 
-            href="https://repoprompter.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-4 py-2 text-sm bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-medium rounded-lg transition-colors duration-200"
-          >
-            Check Out Repoprompter
-          </a>
-        </div>
-      </section>
+    <div className="container mx-auto max-w-5xl py-12 px-4">
+      <ProjectDetailClient {...projectData} />
     </div>
   )
 }

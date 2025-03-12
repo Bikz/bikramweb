@@ -1,79 +1,86 @@
 /**
  * page.tsx (Dayplan App Project)
  * Title: Dayplan App – Bikram Brar
- * Description: Overview of the SwiftUI-based productivity app using voice input + AI prioritization.
+ * Description: SwiftUI productivity app using voice input + AI to organize and prioritize tasks.
  */
 
 import React from 'react'
-import Image from 'next/image'
 import type { Metadata } from 'next'
+import ProjectDetailClient from '../ProjectDetailClient'
 
 export const metadata: Metadata = {
   title: 'Dayplan App – Bikram Brar',
-  description:
-    'Learn about the SwiftUI-based Dayplan App that leverages AI for voice-to-task prioritization and scheduling.',
+  description: 'SwiftUI productivity app that uses voice input + AI to organize and prioritize tasks.',
 }
 
 export default function DayplanAppPage() {
+  const projectData = {
+    title: "Dayplan App",
+    description: "SwiftUI productivity app that uses voice input + AI to organize and prioritize tasks.",
+    status: "Beta",
+    categories: [
+      { name: "AI", color: "bg-black/10 text-gray-800 dark:bg-white/10 dark:text-gray-200 backdrop-blur-sm" },
+      { name: "Mobile", color: "bg-black/5 text-gray-700 dark:bg-white/5 dark:text-gray-100 backdrop-blur-sm" }
+    ],
+    sections: [
+      {
+        title: "Project Overview",
+        content: "Dayplan is a revolutionary productivity app that combines the ease of voice input with the power of AI to transform how you plan and manage your day. Simply speak your tasks, meetings, and ideas, and Dayplan intelligently organizes everything into a structured, prioritized schedule that aligns with your personal productivity patterns."
+      },
+      {
+        title: "Key Features",
+        content: (
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Voice-to-task conversion with natural language understanding</li>
+            <li>AI-powered task categorization and prioritization</li>
+            <li>Smart scheduling that adapts to your productivity patterns</li>
+            <li>Context-aware reminders and notifications</li>
+            <li>Calendar integration with Apple Calendar and Google Calendar</li>
+            <li>Beautifully designed timeline interface with focus mode</li>
+            <li>Comprehensive analytics to help you understand your productivity</li>
+          </ul>
+        )
+      },
+      {
+        title: "Development Journey",
+        content: "Dayplan started as a personal project to solve my own productivity challenges. I found myself constantly juggling between notes apps, calendar apps, and to-do lists, and wanted a more integrated solution. The development process began with extensive research on productivity methodologies and user behaviors, followed by rapid prototyping to test different input methods and visualization approaches."
+      },
+      {
+        title: "Technology Stack",
+        content: (
+          <div className="space-y-4">
+            <p>Dayplan is built using the latest Apple technologies:</p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li><strong>Frontend:</strong> SwiftUI with Combine framework</li>
+              <li><strong>Speech Processing:</strong> AVFoundation and Speech frameworks</li>
+              <li><strong>AI/ML:</strong> Core ML for on-device task analysis</li>
+              <li><strong>Natural Language:</strong> Custom NLP model for task identification and prioritization</li>
+              <li><strong>Backend:</strong> Firebase for authentication and data sync</li>
+              <li><strong>Design:</strong> Custom UI components with fluid animations</li>
+            </ul>
+          </div>
+        )
+      },
+      {
+        title: "Current Status",
+        content: "Dayplan is currently in closed beta with a select group of productivity enthusiasts and professionals. The feedback has been overwhelmingly positive, with users reporting significant improvements in their daily organization and focus. The app is scheduled for public release in Q3 2024, with plans for an Android version to follow."
+      }
+    ],
+    links: [
+      {
+        label: "Beta Program",
+        url: "https://dayplan.app/beta",
+      },
+      {
+        label: "Project Website",
+        url: "https://dayplan.app",
+      }
+    ]
+  };
+
   return (
-    <div className="container mx-auto max-w-4xl py-8 px-4">
-      <section className="animate-fadeIn">
-        <h1 className="mb-6 text-2xl font-semibold tracking-tighter">
-          Dayplan App
-        </h1>
-        <p className="mb-4">
-          Dayplan is a SwiftUI-based productivity app that transforms voice
-          input into prioritized tasks. Say your ideas or to-dos out loud, and
-          the app automatically assigns priorities, estimated durations, and
-          suggested time blocks.
-        </p>
-        <p className="mb-4">
-          The goal is to help busy individuals quickly offload thoughts into an
-          organized, actionable plan without the friction of manual task entry
-          and sorting.
-        </p>
-
-        <h2 className="text-lg font-medium mt-8 mb-2">Key Features</h2>
-        <ul className="list-disc list-inside mb-4">
-          <li>Voice-to-task AI, reducing manual typing</li>
-          <li>Automatic prioritization & scheduling</li>
-          <li>Sleek SwiftUI interface for iOS</li>
-        </ul>
-
-        <h2 className="text-lg font-medium mt-8 mb-2">Tech Stack</h2>
-        <ul className="list-disc list-inside mb-4">
-          <li>SwiftUI for iOS front-end</li>
-          <li>OpenAI GPT for language processing</li>
-        </ul>
-
-        <h2 className="text-lg font-medium mt-8 mb-2">Preview</h2>
-        <div className="relative w-full h-80 md:h-96 bg-neutral-100 dark:bg-neutral-800 mb-6">
-          <Image
-            src="/projects/dayplan.png"
-            alt="Dayplan App screenshot"
-            fill
-            className="object-cover rounded"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
-
-        <h2 className="text-lg font-medium mt-8 mb-2">Try Dayplan</h2>
-        <p className="mb-4">
-          Interested in transforming how you manage your daily tasks? Dayplan is
-          designed to make your life easier by turning your spoken thoughts into
-          an organized plan of action.
-        </p>
-        <div className="flex justify-center mt-10 mb-4">
-          <a 
-            href="https://trydayplan.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-4 py-2 text-sm bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-medium rounded-lg transition-colors duration-200"
-          >
-            Check Out Dayplan
-          </a>
-        </div>
-      </section>
+    <div className="container mx-auto max-w-5xl py-12 px-4">
+      <ProjectDetailClient {...projectData} />
     </div>
   )
 }
