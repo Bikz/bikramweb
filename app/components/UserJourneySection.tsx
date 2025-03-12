@@ -61,22 +61,16 @@ export default function UserJourneySection() {
 
   return (
     <section className="max-w-4xl mx-auto px-4 py-24 relative">
-      {/* Decorative elements */}
-      <div className="absolute top-10 -left-20 w-40 h-40 bg-gradient-to-br from-black/5 to-transparent rounded-full dark:from-white/5 blur-xl"></div>
-      <div className="absolute bottom-20 -right-10 w-32 h-32 bg-gradient-to-tr from-black/3 to-transparent rounded-full dark:from-white/3 blur-xl"></div>
-      
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="mb-12 flex items-center justify-center"
+        className="mb-12 text-center"
       >
-        <div className="w-10 h-px bg-gray-300 dark:bg-gray-700 mr-3"></div>
         <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
           My Approach to Building Products
         </h2>
-        <div className="w-10 h-px bg-gray-300 dark:bg-gray-700 ml-3"></div>
       </motion.div>
 
       <motion.div 
@@ -86,8 +80,6 @@ export default function UserJourneySection() {
         transition={{ duration: 0.7 }}
         className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-8 border border-gray-200/50 dark:border-gray-800/50 shadow-lg relative overflow-hidden mb-8"
       >
-        <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-gray-100/40 to-transparent rounded-full dark:from-gray-800/40"></div>
-        
         <div className="relative w-full h-[400px] overflow-hidden">
           <svg
             width="100%"

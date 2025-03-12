@@ -101,11 +101,9 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-lg font-semibold mb-2 text-neutral-900 dark:text-white flex items-center"
+          className="text-lg font-semibold mb-2 text-neutral-900 dark:text-white text-center"
         >
-          <div className="w-8 h-px bg-gray-300 dark:bg-gray-700 mr-3"></div>
           Stuff I've Built
-          <div className="w-8 h-px bg-gray-300 dark:bg-gray-700 ml-3"></div>
         </motion.h2>
        
         <motion.div 

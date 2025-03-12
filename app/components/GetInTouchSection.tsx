@@ -1,89 +1,67 @@
 /**
  * GetInTouchSection.tsx
- * Title: Get In Touch Section
- * Description: Displays a short description and two CTA buttons (Email, LinkedIn)
- *              for users to reach out about new opportunities with glassmorphism styling.
+ * ---------------------------------------
+ * Title: Call to Action
+ * Description: Contact info and call to action for getting in touch.
  */
 
-'use client'
+"use client";
 
-import React from 'react'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
+import React from "react";
+import { motion } from "framer-motion";
+import { FaEnvelope, FaLinkedin } from "react-icons/fa";
 
 export default function GetInTouchSection() {
   return (
-    <section className="mt-4 mb-16 relative">
-      {/* Decorative elements */}
-      <div className="absolute -bottom-10 right-10 w-40 h-40 bg-gradient-to-tr from-black/5 to-transparent rounded-full dark:from-white/5 blur-xl"></div>
-      
+    <section className="max-w-4xl mx-auto px-4 py-24 relative">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="mb-12 flex items-center justify-center"
+        className="mb-8 text-center"
       >
-        <div className="w-10 h-px bg-gray-300 dark:bg-gray-700 mr-3"></div>
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
+        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-2">
           Get in Touch
         </h2>
-        <div className="w-10 h-px bg-gray-300 dark:bg-gray-700 ml-3"></div>
+        <p className="text-gray-600 dark:text-gray-400">
+          I'm always open to new opportunities and interesting projects.
+        </p>
       </motion.div>
-      
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
+        transition={{ duration: 0.7 }}
+        className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-8 border border-gray-200/50 dark:border-gray-800/50 shadow-lg relative text-center"
       >
-        <motion.p 
-          className="text-center max-w-2xl mx-auto mb-8 text-gray-700 dark:text-gray-300 leading-relaxed bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-200/50 dark:border-gray-800/50 relative"
-        >
-          <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-gray-100/40 to-transparent rounded-full dark:from-gray-800/40"></div>
-          <span className="relative">
-            I'm open to joining an early-stage startup or taking on a Product Leader /
-            Product Engineer role in a fast-growing team. If you're looking for someone
-            passionate about AI, user empathy, and building frictionless solutions,
-            I'd love to connect.
-          </span>
-        </motion.p>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <Link
-            href="mailto:mail@bikrambrar.com"
-            className="
-              px-6 py-3 text-sm font-medium
-              text-white bg-gray-800 dark:bg-gray-700 rounded-lg shadow-md
-              hover:bg-gray-700 dark:hover:bg-gray-600 transition-all duration-300
-              backdrop-blur-sm border border-transparent
-              hover:scale-105
-            "
+        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+          Whether you're looking to discuss a potential project, collaboration, or 
+          just want to say hi, feel free to reach out. I'm particularly interested 
+          in projects where I can leverage my expertise in full stack development, 
+          product management, or AI/ML implementation.
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-4">
+          <a
+            href="mailto:contact@bikrambrar.com"
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors shadow-md"
           >
-            Email Me
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/bikrambrar/"
+            <FaEnvelope className="text-lg" />
+            <span>Email Me</span>
+          </a>
+          <a
+            href="https://linkedin.com/in/bikrambrar"
             target="_blank"
             rel="noopener noreferrer"
-            className="
-              px-6 py-3 text-sm font-medium
-              text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 rounded-lg
-              bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm shadow-md 
-              hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300
-              hover:scale-105
-            "
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors shadow-md"
           >
-            LinkedIn
-          </Link>
-        </motion.div>
+            <FaLinkedin className="text-lg" />
+            <span>LinkedIn</span>
+          </a>
+        </div>
       </motion.div>
     </section>
-  )
+  );
 }
