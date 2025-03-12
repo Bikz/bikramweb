@@ -63,24 +63,16 @@ export default function BlogPageClient({ posts }: { posts: any[] }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-16 relative"
+        className="relative mb-20 pt-10"
       >
-        <div className="flex items-center justify-center mb-4">
-          <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-gray-400 dark:to-gray-600 mr-3"></div>
-          <h1 className="text-3xl font-bold text-neutral-900 dark:text-white">
-            Thoughts & Insights
-          </h1>
-          <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-gray-400 dark:to-gray-600 ml-3"></div>
-        </div>
-        
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto bg-white/40 dark:bg-gray-900/40 backdrop-blur-sm p-4 rounded-xl border border-gray-200/30 dark:border-gray-800/30"
-        >
+        <h1 className="text-5xl font-bold mb-6 text-gray-900 dark:text-white tracking-tight">
+          Blog
+        </h1>
+        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
           I write about AI, blockchain, software engineering, and building digital products that matter.
-        </motion.p>
+        </p>
+        
+        <div className="h-px w-40 bg-gradient-to-r from-gray-400 to-transparent dark:from-gray-600 mt-8"></div>
       </motion.div>
       
       {posts.length === 0 ? (

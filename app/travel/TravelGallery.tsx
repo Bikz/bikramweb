@@ -54,27 +54,28 @@ export default function TravelGallery({ photos }: TravelGalleryProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative"
+        className="relative mb-20 pt-10"
       >
-        <div className="flex items-center justify-center mb-8">
-          <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-gray-400 dark:to-gray-600 mr-3"></div>
-          <h1 className="text-2xl font-semibold text-neutral-900 dark:text-white text-center">
-            Travel Gallery
-          </h1>
-          <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-gray-400 dark:to-gray-600 ml-3"></div>
-        </div>
+        <h1 className="text-5xl font-bold mb-6 text-gray-900 dark:text-white tracking-tight">
+          Travel
+        </h1>
+        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
+          Capturing moments and experiences from around the world through photography and cultural exploration.
+        </p>
         
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 dark:border-gray-800/50 shadow-lg mb-10"
-        >
-          <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-            Traveling is one of my biggest passions. I love immersing myself in new
-            cultures and exploring iconic landmarks around the world.
-          </p>
-        </motion.div>
+        <div className="h-px w-40 bg-gradient-to-r from-gray-400 to-transparent dark:from-gray-600 mt-8"></div>
+      </motion.div>
+      
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 dark:border-gray-800/50 shadow-lg mb-10"
+      >
+        <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          Traveling is one of my biggest passions. I love immersing myself in new
+          cultures and exploring iconic landmarks around the world.
+        </p>
       </motion.div>
       
       <motion.div 
