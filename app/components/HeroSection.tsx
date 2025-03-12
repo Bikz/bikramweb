@@ -10,6 +10,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import InteractiveGrid from '../InteractiveGrid'
+import { FaArrowRight } from 'react-icons/fa'
 
 // Animation variants
 const containerVariants = {
@@ -121,17 +122,18 @@ export default function HeroSection() {
                 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm
                 hover:scale-105 hover:shadow-xl transition-all duration-300
                 mx-2 sm:mx-0
+                h-[220px] flex flex-col
               "
             >
               <div className="absolute top-0 right-0 w-full h-full overflow-hidden rounded-xl">
                 <div className="absolute -right-10 -top-10 w-32 h-32 bg-gradient-to-br from-gray-100/40 to-transparent rounded-full dark:from-gray-800/40 group-hover:scale-125 transition-transform duration-700"></div>
               </div>
               
-              <div className="relative">
+              <div className="relative flex flex-col h-full">
                 <h3 className="text-lg font-bold mb-2 text-neutral-900 dark:text-white group-hover:translate-x-1 transition-transform duration-300">
                   Mysti Health
                 </h3>
-                <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed">
+                <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed flex-grow">
                   A personal AI health agent that syncs with Apple/Google Health
                   and provides personalized recommendations.
                 </p>
@@ -151,17 +153,18 @@ export default function HeroSection() {
                 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm
                 hover:scale-105 hover:shadow-xl transition-all duration-300
                 mx-2 sm:mx-0
+                h-[220px] flex flex-col
               "
             >
               <div className="absolute top-0 right-0 w-full h-full overflow-hidden rounded-xl">
                 <div className="absolute -right-10 -top-10 w-32 h-32 bg-gradient-to-br from-gray-100/40 to-transparent rounded-full dark:from-gray-800/40 group-hover:scale-125 transition-transform duration-700"></div>
               </div>
               
-              <div className="relative">
+              <div className="relative flex flex-col h-full">
                 <h3 className="text-lg font-bold mb-2 text-neutral-900 dark:text-white group-hover:translate-x-1 transition-transform duration-300">
                   Dayplan App
                 </h3>
-                <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed">
+                <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed flex-grow">
                   A SwiftUI productivity app that uses voice input + AI
                   to automatically organize and prioritize tasks.
                 </p>
@@ -181,17 +184,18 @@ export default function HeroSection() {
                 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm
                 hover:scale-105 hover:shadow-xl transition-all duration-300
                 mx-2 sm:mx-0
+                h-[220px] flex flex-col
               "
             >
               <div className="absolute top-0 right-0 w-full h-full overflow-hidden rounded-xl">
                 <div className="absolute -right-10 -top-10 w-32 h-32 bg-gradient-to-br from-gray-100/40 to-transparent rounded-full dark:from-gray-800/40 group-hover:scale-125 transition-transform duration-700"></div>
               </div>
               
-              <div className="relative">
+              <div className="relative flex flex-col h-full">
                 <h3 className="text-lg font-bold mb-2 text-neutral-900 dark:text-white group-hover:translate-x-1 transition-transform duration-300">
                   Repoprompter
                 </h3>
-                <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed">
+                <p className="text-sm text-neutral-800 dark:text-neutral-300 leading-relaxed flex-grow">
                   An Electron app that helps developers create optimized LLM prompts
                   from code repositories and apply AI changes.
                 </p>
@@ -201,6 +205,21 @@ export default function HeroSection() {
               </div>
             </Link>
           </motion.div>
+        </motion.div>
+        
+        {/* View More Projects button */}
+        <motion.div 
+          variants={itemVariants}
+          className="mt-8"
+        >
+          <Link href="/projects" className="inline-flex">
+            <motion.div 
+              whileHover={{ x: 4 }}
+              className="group flex items-center py-2 px-3 text-sm font-medium text-neutral-700 dark:text-neutral-300 transition-colors"
+            >
+              View More Projects <FaArrowRight className="ml-2 text-xs text-neutral-500 dark:text-neutral-400 group-hover:ml-3 transition-all duration-300" />
+            </motion.div>
+          </Link>
         </motion.div>
       </motion.div>
     </section>
