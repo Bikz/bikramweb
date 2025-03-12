@@ -1,7 +1,7 @@
 /**
  * nav.tsx
  * Title: Navbar Component
- * Description: Responsive site navigation with hamburger menu and route links.
+ * Description: Responsive site navigation with hamburger menu, route links, and glassmorphism styling.
  */
 
 'use client'
@@ -9,6 +9,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { cx } from '../lib/utils'
+import { motion } from 'framer-motion'
 
 const navItems = [
   { path: '/', label: 'home' },
@@ -25,19 +26,30 @@ export function Navbar() {
     <header
       className="
         sticky top-0 z-50 
-        bg-white dark:bg-black 
-        border-b border-neutral-200 dark:border-neutral-800
+        bg-white/80 dark:bg-black/80 backdrop-blur-md
+        border-b border-neutral-200/50 dark:border-neutral-800/50
       "
     >
-      <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <Link href="/" className="text-lg font-semibold transition-all">
+      {/* Subtle decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-br from-black/3 to-transparent rounded-full dark:from-white/3"></div>
+        <div className="absolute top-3 right-1/4 w-16 h-16 rounded-full border border-gray-200/30 dark:border-gray-800/30"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between relative">
+        <motion.div 
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4 }}
+          className="flex items-center space-x-2 relative"
+        >
+          <Link href="/" className="text-lg font-semibold transition-all hover:text-neutral-600 dark:hover:text-neutral-300">
             Bikram Brar
           </Link>
-        </div>
+        </motion.div>
 
         <button
-          className="md:hidden p-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-900"
+          className="md:hidden p-2 rounded-lg hover:bg-neutral-100/80 dark:hover:bg-neutral-900/80 backdrop-blur-sm transition-all duration-200"
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label="Toggle Menu"
         >
@@ -60,32 +72,49 @@ export function Navbar() {
           </svg>
         </button>
 
-        <nav className="hidden md:flex space-x-4">
-          {navItems.map(({ path, label }) => (
-            <Link
+        <nav className="hidden md:flex space-x-1">
+          {navItems.map(({ path, label }, index) => (
+            <motion.div
               key={path}
-              href={path}
-              className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 py-1 px-2"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
             >
-              {label}
-            </Link>
+              <Link
+                href={path}
+                className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 py-2 px-3 rounded-md hover:bg-black/5 dark:hover:bg-white/5 backdrop-blur-sm"
+              >
+                {label}
+              </Link>
+            </motion.div>
           ))}
         </nav>
       </div>
 
       {isOpen && (
-        <nav className="md:hidden flex flex-col px-4 pb-2 space-y-2 bg-white dark:bg-black border-t border-neutral-200 dark:border-neutral-800">
-          {navItems.map(({ path, label }) => (
-            <Link
+        <motion.nav 
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden flex flex-col px-6 py-3 space-y-3 bg-white/90 dark:bg-black/90 backdrop-blur-md border-t border-neutral-200/50 dark:border-neutral-800/50"
+        >
+          {navItems.map(({ path, label }, index) => (
+            <motion.div
               key={path}
-              href={path}
-              className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 py-1"
-              onClick={() => setIsOpen(false)}
+              initial={{ opacity: 0, x: -5 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.2, delay: index * 0.05 }}
             >
-              {label}
-            </Link>
+              <Link
+                href={path}
+                className="block transition-all hover:text-neutral-800 dark:hover:text-neutral-200 py-2 px-3 rounded-md hover:bg-black/5 dark:hover:bg-white/5 backdrop-blur-sm"
+                onClick={() => setIsOpen(false)}
+              >
+                {label}
+              </Link>
+            </motion.div>
           ))}
-        </nav>
+        </motion.nav>
       )}
     </header>
   )
