@@ -37,26 +37,6 @@ export default function ProjectDetailClient({
 }: ProjectDetailProps) {
   return (
     <section className="relative">
-      {/* Abstract shape decorations */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-to-br from-black/5 to-transparent rounded-full dark:from-white/5"></div>
-        <div className="absolute top-60 -right-40 w-80 h-80 bg-gradient-to-br from-black/5 to-transparent rounded-full dark:from-white/5"></div>
-        <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-gradient-to-br from-black/3 to-transparent rounded-full dark:from-white/3 blur-3xl"></div>
-        
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-          className="absolute right-1/3 top-1/4 w-40 h-40 rounded-full border border-gray-200 dark:border-gray-800"
-        />
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
-          transition={{ duration: 1.5, delay: 0.2 }}
-          className="absolute left-1/3 bottom-1/3 w-60 h-60 rounded-full border border-gray-200 dark:border-gray-800"
-        />
-      </div>
-
       {/* Project header */}
       <div className="mb-16">
         <motion.div

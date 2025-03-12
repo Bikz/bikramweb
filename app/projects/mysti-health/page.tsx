@@ -77,8 +77,24 @@ export default function MystiHealthPage() {
   };
 
   return (
-    <div className="container mx-auto max-w-5xl py-12 px-4">
-      <ProjectDetailClient {...projectData} />
-    </div>
+    <>
+      {/* Full-width decorative elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {/* Large gradient blobs */}
+        <div className="absolute -top-[5%] -left-[15%] w-[60vw] h-[60vw] max-w-[900px] max-h-[900px] bg-gradient-to-br from-black/3 to-transparent rounded-full dark:from-white/3 blur-3xl"></div>
+        <div className="absolute top-[30%] -right-[10%] w-[50vw] h-[50vw] max-w-[700px] max-h-[700px] bg-gradient-to-bl from-black/2 to-transparent rounded-full dark:from-white/2 blur-3xl"></div>
+        <div className="absolute bottom-[5%] left-[10%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-gradient-to-tr from-black/2 to-transparent rounded-full dark:from-white/2 blur-3xl"></div>
+        
+        {/* Decorative circles */}
+        <div className="absolute right-[20%] top-[15%] w-[25vw] h-[25vw] max-w-[350px] max-h-[350px] rounded-full border border-gray-200 dark:border-gray-800 opacity-25"></div>
+        <div className="absolute left-[25%] top-[45%] w-[20vw] h-[20vw] max-w-[300px] max-h-[300px] rounded-full border border-gray-200 dark:border-gray-800 opacity-20"></div>
+        <div className="absolute right-[30%] bottom-[15%] w-[15vw] h-[15vw] max-w-[200px] max-h-[200px] rounded-full border border-gray-200 dark:border-gray-800 opacity-30"></div>
+      </div>
+      
+      {/* Main content */}
+      <div className="container mx-auto max-w-5xl py-12 px-4 relative z-10">
+        <ProjectDetailClient {...projectData} />
+      </div>
+    </>
   )
 }
