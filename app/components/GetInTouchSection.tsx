@@ -46,7 +46,7 @@ export default function GetInTouchSection() {
         <div className="flex flex-wrap justify-center gap-4">
           <a
             href="mailto:contact@bikrambrar.com"
-            className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors shadow-md"
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors shadow-md hover:scale-105 transform duration-200"
           >
             <FaEnvelope className="text-lg" />
             <span>Email Me</span>
@@ -55,7 +55,7 @@ export default function GetInTouchSection() {
             href="https://linkedin.com/in/bikrambrar"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors shadow-md"
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-white/70 dark:bg-gray-800/60 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
           >
             <FaLinkedin className="text-lg" />
             <span>LinkedIn</span>
