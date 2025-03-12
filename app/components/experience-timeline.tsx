@@ -31,7 +31,7 @@ const timelineData: TimelineItem[] = [
       'Created apps (Mysti.ai, Dayplan App, RepoPrompter.com) that addressed personal pain points.',
       '**Integrated cutting-edge AI** (RAG, GPT APIs) to deliver innovative features.',
     ],
-    logo: '/companies/independent.png',
+    logo: '/companies/mysti.png',
     transitionHighlight: true,
   },
   {
@@ -55,7 +55,7 @@ const timelineData: TimelineItem[] = [
       'Unified Hard Rock’s hotels, cafes, and casinos under one loyalty program (600k+ downloads).',
       'Oversaw end-to-end product delivery for Hard Rock’s mobile app, increasing adoption by **20%**.',
     ],
-    logo: '/companies/hard-rock.png',
+    logo: '/companies/gale.png',
     transitionHighlight: false,
   },
   {
