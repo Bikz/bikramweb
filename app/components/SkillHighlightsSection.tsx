@@ -19,9 +19,12 @@ export default function SkillHighlightsSection() {
         transition={{ duration: 0.6 }}
         className="mb-12 text-center"
       >
-        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
+        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-2">
           What I Can Do
         </h2>
+        <p className="text-gray-600 dark:text-gray-400">
+          Skills spanning engineering and product management
+        </p>
       </motion.div>
       
       {/* Container for two columns */}

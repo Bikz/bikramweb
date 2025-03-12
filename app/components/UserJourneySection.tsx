@@ -68,9 +68,12 @@ export default function UserJourneySection() {
         transition={{ duration: 0.6 }}
         className="mb-12 text-center"
       >
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
+        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-2">
           My Approach to Building Products
         </h2>
+        <p className="text-gray-600 dark:text-gray-400">
+          From ideas to implementation to iteration
+        </p>
       </motion.div>
 
       <motion.div 
