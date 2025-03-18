@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Bikram Brar – AI Product Engineer & Product Manager',
     description:
-      'Explore Bikram’s AI projects, product management experience, and blog posts on technology and innovation.',
+      "Explore Bikram's AI projects, product management experience, and blog posts on technology and innovation.",
     url: baseUrl,
     siteName: 'Bikram Brar – AI Product Engineer & Product Manager',
     locale: 'en_US',
@@ -48,6 +48,25 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  // Favicon configuration
+  icons: {
+    icon: [
+      { url: '/global/favicon_io/favicon.ico' },
+      { url: '/global/favicon_io/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/global/favicon_io/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: {
+      url: '/global/favicon_io/apple-touch-icon.png',
+      sizes: '180x180',
+      type: 'image/png',
+    },
+    other: [
+      {
+        rel: 'manifest',
+        url: '/global/favicon_io/site.webmanifest',
+      },
+    ],
+  },
 }
 
 export default function RootLayout({
@@ -57,6 +76,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Legacy favicon support for browsers that don't use the metadata API */}
+        <link rel="icon" href="/global/favicon_io/favicon.ico" sizes="any" />
+        <link rel="icon" href="/global/favicon_io/favicon-16x16.png" type="image/png" sizes="16x16" />
+        <link rel="icon" href="/global/favicon_io/favicon-32x32.png" type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/global/favicon_io/apple-touch-icon.png" sizes="180x180" />
+        <link rel="manifest" href="/global/favicon_io/site.webmanifest" />
+      </head>
       <body
         className={cx(
           'min-h-screen',
