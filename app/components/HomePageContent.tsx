@@ -14,14 +14,14 @@ import GetInTouchSection from './GetInTouchSection'
 
 export default function HomePageContent({ blogs }: { blogs: any[] }) {
   return (
-    <div className="max-w-4xl mx-auto px-6 mt-16 mb-16">
+    <div className="max-w-4xl mx-auto px-6">
       {/* Work Experience */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="mb-16 py-16 relative"
+        className="py-16 relative"
       >
         <div className="mb-12 text-center">
           <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-2">
@@ -32,9 +32,7 @@ export default function HomePageContent({ blogs }: { blogs: any[] }) {
           </p>
         </div>
         
-        <div className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 dark:border-gray-800/50 shadow-lg">
-          <ExperienceTimeline />
-        </div>
+        <ExperienceTimeline />
       </motion.section>
 
       {/* Latest Blog Posts */}
@@ -43,7 +41,7 @@ export default function HomePageContent({ blogs }: { blogs: any[] }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="mb-16 py-16 relative"
+        className="py-16 relative"
       >
         <div className="mb-12 text-center">
           <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-2">
@@ -54,9 +52,7 @@ export default function HomePageContent({ blogs }: { blogs: any[] }) {
           </p>
         </div>
         
-        <div className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 dark:border-gray-800/50 shadow-lg">
-          <BlogPosts blogs={blogs} />
-        </div>
+        <BlogPosts blogs={blogs} />
       </motion.section>
 
       {/* Get in Touch Section */}
@@ -65,7 +61,7 @@ export default function HomePageContent({ blogs }: { blogs: any[] }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="mb-16 py-16 relative"
+        className="py-16 relative"
       >
         <GetInTouchSection />
       </motion.section>

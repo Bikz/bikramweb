@@ -19,7 +19,8 @@ export async function generateStaticParams() {
   return [
     { slug: 'building-2fa-engine' },
     { slug: 'ai-finance-blockchain' },
-    { slug: 'future-of-nfts' }
+    { slug: 'future-of-nfts' },
+    { slug: 'technological-singularity-revisited' }
   ];
 }
 

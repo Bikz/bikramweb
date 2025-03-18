@@ -25,7 +25,7 @@ export default function GetInTouchSection() {
           Get in Touch
         </h2>
         <p className="text-gray-600 dark:text-gray-400">
-          I'm always open to new opportunities and interesting projects.
+          I'm open to connecting and collaborating on interesting projects.
         </p>
       </motion.div>
 
@@ -34,18 +34,18 @@ export default function GetInTouchSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-8 border border-gray-200/50 dark:border-gray-800/50 shadow-lg relative text-center"
+        className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-8 border border-gray-200/50 dark:border-gray-800/50 shadow-md relative text-center"
       >
         <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
           Whether you're looking to discuss a potential project, collaboration, or 
           just want to say hi, feel free to reach out. I'm particularly interested 
-          in projects where I can leverage my expertise in full stack development, 
-          product management, or AI/ML implementation.
+          in projects where I can leverage my expertise in software development, 
+          product management, and AI/ML implementation.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">
           <a
-            href="mailto:contact@bikrambrar.com"
+            href="mailto:mail@bikrambrar.com"
             className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors shadow-md hover:scale-105 transform duration-200"
           >
             <FaEnvelope className="text-lg" />

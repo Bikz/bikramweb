@@ -14,7 +14,10 @@ import { motion } from 'framer-motion'
 const categories = {
   ai: { name: 'AI', color: 'bg-black/10 text-gray-800 dark:bg-white/10 dark:text-gray-200 backdrop-blur-sm' },
   mobile: { name: 'Mobile', color: 'bg-black/5 text-gray-700 dark:bg-white/5 dark:text-gray-100 backdrop-blur-sm' },
-  desktop: { name: 'Desktop', color: 'bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm' }
+  desktop: { name: 'Desktop', color: 'bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm' },
+  reactnative: { name: 'React Native', color: 'bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm' },
+  swiftui: { name: 'SwiftUI', color: 'bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm' },
+  electron: { name: 'Electron', color: 'bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm' }
 }
 
 // Project data
@@ -23,7 +26,7 @@ const projects = [
     id: 'mysti-health',
     title: 'Mysti Health',
     description: 'Personal AI health agent syncing with Apple/Google Health for personalized recommendations.',
-    categories: ['ai', 'mobile'],
+    categories: ['ai', 'mobile', 'reactnative'],
     featured: true,
     status: 'Released 2024',
     link: '/projects/mysti-health'
@@ -32,7 +35,7 @@ const projects = [
     id: 'dayplan-app',
     title: 'Dayplan App',
     description: 'SwiftUI productivity app that uses voice input + AI to organize and prioritize tasks.',
-    categories: ['ai', 'mobile'],
+    categories: ['ai', 'mobile', 'swiftui'],
     featured: false,
     status: 'Beta',
     link: '/projects/dayplan-app'
@@ -41,7 +44,7 @@ const projects = [
     id: 'repoprompter',
     title: 'Repoprompter',
     description: 'Electron app that helps developers turn code repositories into optimized prompts for LLMs and apply AI changes.',
-    categories: ['ai', 'desktop'],
+    categories: ['ai', 'desktop', 'electron'],
     featured: false,
     status: 'Open Source',
     link: '/projects/repoprompter'
@@ -107,7 +110,7 @@ export default function ProjectsClient() {
                 key={project.id}
                 variants={itemVariants}
                 whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
-                className="group relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl dark:shadow-2xl-dark border border-gray-100 dark:border-gray-800 transition-all duration-300"
+                className="group relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-md dark:shadow-2xl-dark border border-gray-100 dark:border-gray-800 transition-all duration-300"
               >
                 <Link href={project.link} className="block">
                   <div className="absolute top-0 right-0 w-full h-full overflow-hidden">
@@ -165,7 +168,7 @@ export default function ProjectsClient() {
                 translateY: -5,
                 transition: { duration: 0.3 }
               }}
-              className="group bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg dark:shadow-xl-dark border border-gray-100 dark:border-gray-800 transition-all duration-300"
+              className="group bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm rounded-xl overflow-hidden shadow-md dark:shadow-xl-dark border border-gray-100 dark:border-gray-800 transition-all duration-300"
             >
               <Link href={project.link} className="block p-6">
                 <div className="flex justify-between items-start mb-4">

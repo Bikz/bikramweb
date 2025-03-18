@@ -69,7 +69,7 @@ export default function BlogPageClient({ posts }: { posts: any[] }) {
           Blog
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
-          I write about AI, blockchain, software engineering, and building digital products that matter.
+          Just learning and trying things. I think about AI, blockchain, software, technological progress, and building digital products that make life easier.
         </p>
         
         <div className="h-px w-40 bg-gradient-to-r from-gray-400 to-transparent dark:from-gray-600 mt-8"></div>
@@ -104,7 +104,7 @@ export default function BlogPageClient({ posts }: { posts: any[] }) {
 
               <motion.div 
                 whileHover={{ y: -4 }}
-                className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm p-8 rounded-xl border border-gray-200/50 dark:border-gray-800/50 shadow-lg transition-all duration-300"
+                className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm p-8 rounded-xl border border-gray-200/50 dark:border-gray-800/50 shadow-md transition-all duration-300"
               >
                 <Link href={`/blog/${featuredPost.slug}`} className="block">
                   <h2 className="text-2xl font-bold text-neutral-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200 transition duration-300">
