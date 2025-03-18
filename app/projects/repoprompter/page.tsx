@@ -20,7 +20,8 @@ export default function RepoprompterPage() {
     status: "Open Source",
     categories: [
       { name: "AI", color: "bg-black/10 text-gray-800 dark:bg-white/10 dark:text-gray-200 backdrop-blur-sm" },
-      { name: "Desktop", color: "bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm" }
+      { name: "Desktop", color: "bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm" },
+      { name: "Electron", color: "bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm" }
     ],
     sections: [
       {
@@ -70,15 +71,11 @@ export default function RepoprompterPage() {
     links: [
       {
         label: "GitHub Repository",
-        url: "https://github.com/bikrambrar/repoprompter",
+        url: "https://github.com/Bikz/repoprompter",
       },
       {
-        label: "Documentation",
-        url: "https://repoprompter.dev/docs",
-      },
-      {
-        label: "Download App",
-        url: "https://repoprompter.dev/download",
+        label: "Website",
+        url: "https://repoprompter.com/",
       }
     ]
   };

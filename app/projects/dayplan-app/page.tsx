@@ -63,17 +63,13 @@ export default function DayplanAppPage() {
       },
       {
         title: "Current Status",
-        content: "Dayplan is currently in closed beta with a select group of productivity enthusiasts and professionals. The feedback has been overwhelmingly positive, with users reporting significant improvements in their daily organization and focus. The app is scheduled for public release in Q3 2024, with plans for an Android version to follow."
+        content: "Dayplan is currently in closed beta with a select group of productivity enthusiasts and professionals. The feedback has been overwhelmingly positive, with users reporting significant improvements in their daily organization and focus. The app is scheduled for public release in Q2 2025, with plans for an Android version to follow."
       }
     ],
     links: [
       {
-        label: "Beta Program",
-        url: "https://dayplan.app/beta",
-      },
-      {
         label: "Project Website",
-        url: "https://dayplan.app",
+        url: "https://trydayplan.com",
       }
     ]
   };

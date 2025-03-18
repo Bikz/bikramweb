@@ -69,7 +69,7 @@ export default function BlogPageClient({ posts }: { posts: any[] }) {
           Blog
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
-          I write about AI, blockchain, software engineering, and building digital products that matter.
+          Just learning and trying things. I think about AI, blockchain, software, technological progress, and building digital products that make life easier.
         </p>
         
         <div className="h-px w-40 bg-gradient-to-r from-gray-400 to-transparent dark:from-gray-600 mt-8"></div>

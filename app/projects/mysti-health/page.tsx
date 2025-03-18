@@ -46,11 +46,11 @@ export default function MystiHealthPage() {
           <div className="space-y-4">
             <p>Mysti Health is built with a modern technology stack focused on performance and privacy:</p>
             <ul className="list-disc pl-5 space-y-2">
-              <li><strong>Frontend:</strong> SwiftUI for iOS, Jetpack Compose for Android</li>
-              <li><strong>AI Processing:</strong> On-device ML models with CoreML and TensorFlow Lite</li>
-              <li><strong>Backend:</strong> Node.js with TypeScript, MongoDB Atlas</li>
-              <li><strong>Cloud Infrastructure:</strong> AWS Lambda, API Gateway</li>
-              <li><strong>Analytics:</strong> Privacy-focused analytics with Amplitude</li>
+              <li><strong>Frontend:</strong> React Native Expo with TypeScript</li>
+              <li><strong>AI Processing:</strong> Custom fine-tuned models with OpenAI</li>
+              <li><strong>Backend:</strong> Node.js with TypeScript</li>
+              <li><strong>Cloud Infrastructure:</strong> EC2, Cloudfront, Route 53, S3</li>
+              <li><strong>Analytics:</strong> Privacy focused - no tracking</li>
             </ul>
           </div>
         )
@@ -63,15 +63,15 @@ export default function MystiHealthPage() {
     links: [
       {
         label: "App Store",
-        url: "https://example.com/mystihealth-ios",
+        url: "https://mysti.ai",
       },
       {
         label: "Google Play",
-        url: "https://example.com/mystihealth-android",
+        url: "https://mysti.ai",
       },
       {
         label: "Project Website",
-        url: "https://mystihealth.app",
+        url: "https://mysti.ai",
       }
     ]
   };

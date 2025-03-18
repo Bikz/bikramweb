@@ -14,7 +14,10 @@ import { motion } from 'framer-motion'
 const categories = {
   ai: { name: 'AI', color: 'bg-black/10 text-gray-800 dark:bg-white/10 dark:text-gray-200 backdrop-blur-sm' },
   mobile: { name: 'Mobile', color: 'bg-black/5 text-gray-700 dark:bg-white/5 dark:text-gray-100 backdrop-blur-sm' },
-  desktop: { name: 'Desktop', color: 'bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm' }
+  desktop: { name: 'Desktop', color: 'bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm' },
+  reactnative: { name: 'React Native', color: 'bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm' },
+  swiftui: { name: 'SwiftUI', color: 'bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm' },
+  electron: { name: 'Electron', color: 'bg-black/15 text-gray-900 dark:bg-white/15 dark:text-gray-300 backdrop-blur-sm' }
 }
 
 // Project data
@@ -23,7 +26,7 @@ const projects = [
     id: 'mysti-health',
     title: 'Mysti Health',
     description: 'Personal AI health agent syncing with Apple/Google Health for personalized recommendations.',
-    categories: ['ai', 'mobile'],
+    categories: ['ai', 'mobile', 'reactnative'],
     featured: true,
     status: 'Released 2024',
     link: '/projects/mysti-health'
@@ -32,7 +35,7 @@ const projects = [
     id: 'dayplan-app',
     title: 'Dayplan App',
     description: 'SwiftUI productivity app that uses voice input + AI to organize and prioritize tasks.',
-    categories: ['ai', 'mobile'],
+    categories: ['ai', 'mobile', 'swiftui'],
     featured: false,
     status: 'Beta',
     link: '/projects/dayplan-app'
@@ -41,7 +44,7 @@ const projects = [
     id: 'repoprompter',
     title: 'Repoprompter',
     description: 'Electron app that helps developers turn code repositories into optimized prompts for LLMs and apply AI changes.',
-    categories: ['ai', 'desktop'],
+    categories: ['ai', 'desktop', 'electron'],
     featured: false,
     status: 'Open Source',
     link: '/projects/repoprompter'
