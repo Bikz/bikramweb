@@ -110,7 +110,7 @@ export default function ProjectsClient() {
                 key={project.id}
                 variants={itemVariants}
                 whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
-                className="group relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl dark:shadow-2xl-dark border border-gray-100 dark:border-gray-800 transition-all duration-300"
+                className="group relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-md dark:shadow-2xl-dark border border-gray-100 dark:border-gray-800 transition-all duration-300"
               >
                 <Link href={project.link} className="block">
                   <div className="absolute top-0 right-0 w-full h-full overflow-hidden">
@@ -168,7 +168,7 @@ export default function ProjectsClient() {
                 translateY: -5,
                 transition: { duration: 0.3 }
               }}
-              className="group bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg dark:shadow-xl-dark border border-gray-100 dark:border-gray-800 transition-all duration-300"
+              className="group bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm rounded-xl overflow-hidden shadow-md dark:shadow-xl-dark border border-gray-100 dark:border-gray-800 transition-all duration-300"
             >
               <Link href={project.link} className="block p-6">
                 <div className="flex justify-between items-start mb-4">

@@ -104,7 +104,7 @@ export default function BlogPageClient({ posts }: { posts: any[] }) {
 
               <motion.div 
                 whileHover={{ y: -4 }}
-                className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm p-8 rounded-xl border border-gray-200/50 dark:border-gray-800/50 shadow-lg transition-all duration-300"
+                className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm p-8 rounded-xl border border-gray-200/50 dark:border-gray-800/50 shadow-md transition-all duration-300"
               >
                 <Link href={`/blog/${featuredPost.slug}`} className="block">
                   <h2 className="text-2xl font-bold text-neutral-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200 transition duration-300">

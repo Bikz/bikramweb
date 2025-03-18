@@ -54,7 +54,7 @@ export default function TravelGallery({ photos }: TravelGalleryProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative mb-20 pt-10"
+        className="relative mb-10 pt-10"
       >
         <h1 className="text-5xl font-bold mb-6 text-gray-900 dark:text-white tracking-tight">
           Travel
@@ -66,29 +66,18 @@ export default function TravelGallery({ photos }: TravelGalleryProps) {
         <div className="h-px w-40 bg-gradient-to-r from-gray-400 to-transparent dark:from-gray-600 mt-8"></div>
       </motion.div>
       
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 dark:border-gray-800/50 shadow-lg mb-10"
-      >
-        <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-          Traveling is one of my biggest passions. I love immersing myself in new
-          cultures and exploring iconic landmarks around the world.
-        </p>
-      </motion.div>
-      
+      {/* Photo Gallery Grid */}
       <motion.div 
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10"
       >
         {photos.map((photo, idx) => (
           <motion.div
             key={idx}
             variants={itemVariants}
-            className="relative w-full h-64 group overflow-hidden rounded-xl border border-gray-200/30 dark:border-gray-800/30 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 shadow-sm hover:shadow-md"
+            className="relative w-full h-64 group overflow-hidden rounded-xl border border-gray-200/30 dark:border-gray-800/30 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 shadow-md hover:shadow-lg"
           >
             <Image
               src={photo.src}

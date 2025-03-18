@@ -57,7 +57,7 @@ export default function ProjectDetailClient({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl dark:shadow-2xl-dark border border-gray-100 dark:border-gray-800 p-10 mb-16"
+          className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-md dark:shadow-2xl-dark border border-gray-100 dark:border-gray-800 p-10 mb-16"
         >
           <div className="absolute top-0 right-0 w-full h-full overflow-hidden">
             <div className="absolute -right-20 -top-20 w-60 h-60 bg-gradient-to-br from-gray-100/40 to-transparent rounded-full dark:from-gray-800/40"></div>
@@ -99,7 +99,7 @@ export default function ProjectDetailClient({
               <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">{section.title}</h2>
             </div>
             
-            <div className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800 p-8">
+            <div className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-800 p-8">
               <div className="prose prose-gray dark:prose-invert max-w-none">
                 {typeof section.content === 'string' ? (
                   <p className="text-gray-600 dark:text-gray-300">{section.content}</p>
@@ -142,7 +142,7 @@ export default function ProjectDetailClient({
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                className="inline-flex items-center px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
               >
                 {link.icon && (
                   <span className="mr-2">{link.icon}</span>
