@@ -109,23 +109,27 @@ export default function ExperienceTimeline() {
     <div ref={containerRef} className="space-y-6 mt-4">
       {timelineData.map((item, index) => {
         const highlightClass = item.transitionHighlight
-          ? 'border-l-4 border-blue-600 bg-blue-50 dark:bg-neutral-900 dark:border-blue-400'
+          ? 'border-l-4 border-blue-600 dark:border-blue-400'
           : ''
         return (
           <div
             key={index}
             className={`
               timeline-item
-              p-4
+              p-6
               text-neutral-800 dark:text-neutral-100
-              rounded
+              rounded-xl
+              bg-white/60 dark:bg-gray-900/60 
+              backdrop-blur-sm 
+              border border-gray-200/50 dark:border-gray-800/50 
+              shadow-md
               ${highlightClass}
             `}
           >
-            <div className="flex flex-col md:flex-row items-start md:items-center md:justify-between gap-4 mb-2">
+            <div className="flex flex-col md:flex-row items-start md:items-center md:justify-between gap-4 mb-4">
               <div className="flex flex-row items-center gap-3">
                 {item.logo && (
-                  <div className="relative w-10 h-10">
+                  <div className="relative w-12 h-12">
                     <Image
                       src={item.logo}
                       alt={`${item.company || 'Independent'} logo`}
@@ -143,10 +147,10 @@ export default function ExperienceTimeline() {
                   </h3>
                 </div>
               </div>
-              <p className="text-sm whitespace-nowrap">{item.dateRange}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400 whitespace-nowrap">{item.dateRange}</p>
             </div>
 
-            <ul className="list-disc list-inside text-sm">
+            <ul className="list-disc list-inside text-sm space-y-2">
               {item.bullets.map((bullet, bIndex) => (
                 <li
                   key={bIndex}

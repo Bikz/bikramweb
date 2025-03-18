@@ -32,9 +32,7 @@ export default function HomePageContent({ blogs }: { blogs: any[] }) {
           </p>
         </div>
         
-        <div className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 dark:border-gray-800/50 shadow-lg">
-          <ExperienceTimeline />
-        </div>
+        <ExperienceTimeline />
       </motion.section>
 
       {/* Latest Blog Posts */}

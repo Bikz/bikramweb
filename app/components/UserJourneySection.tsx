@@ -81,7 +81,7 @@ export default function UserJourneySection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-8 border border-gray-200/50 dark:border-gray-800/50 shadow-lg relative overflow-hidden mb-8"
+        className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-8 border border-gray-200/50 dark:border-gray-800/50 shadow-md relative overflow-hidden mb-8"
       >
         <div className="relative w-full h-[400px] overflow-hidden">
           <svg
