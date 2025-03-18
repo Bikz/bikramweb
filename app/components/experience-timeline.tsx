@@ -24,12 +24,12 @@ type TimelineItem = {
 
 const timelineData: TimelineItem[] = [
   {
-    title: 'Independent Product Developer & AI Experimenter',
+    title: 'Independent Product & AI Developer',
     dateRange: 'Jan 2024 - Present',
     bullets: [
-      'Dedicated 2024 to deepening AI expertise and building real-world software solutions.',
-      'Created apps (Mysti.ai, Dayplan App, RepoPrompter.com) that addressed personal pain points.',
-      '**Integrated cutting-edge AI** (RAG, GPT APIs) to deliver innovative features.',
+      'Took a sabbatical to dive deep into Large Language Models (LLMs) and Generative AI, expanding my technical skillset beyond traditional product management.',
+      'Created Mysti.ai, a hybrid mobile app using React Native, Node.js, and TypeScript on AWS to help Canadians interpret blood test results with advanced LLM workflows.',
+      'Built tryDayplan.com, a personal AI planning & task prioritization app for iOS in Swift, demonstrating full-stack capabilities from UI/UX through development.'
     ],
     logo: '/companies/mysti.png',
     transitionHighlight: true,
@@ -39,21 +39,21 @@ const timelineData: TimelineItem[] = [
     company: 'ODAIA Intelligence',
     dateRange: 'Dec 2022 - Dec 2023',
     bullets: [
-      'Delivered first 3rd-party integration (Veeva CRM), boosting sales rep efficiency by **10–20%**.',
-      'Led development of a scheduling engine used by thousands of pharma sales reps weekly.',
-      'Built product capabilities that increased revenue and supported Series B funding.',
+      'Owned the user facing product roadmap for AI-powered solutions serving pharmaceutical sales teams, contributing to the company\'s growth from Series A to Series B.',
+      'Spearheaded the integration of GPT-based curated insights and advanced AI features that meaningfully improved sales rep efficiency across thousands of users.',
+      'Built meaningful key relationships with industry technology partners (Veeva, etc.) to deliver seamless integrations.'
     ],
     logo: '/companies/odaia.png',
     transitionHighlight: false,
   },
   {
-    title: 'Manager, Technology (Product)',
-    company: 'Gale Partners / Hard Rock',
+    title: 'Product Manager',
+    company: 'Gale Partners',
     dateRange: 'Dec 2020 - Nov 2022',
     bullets: [
-      'Consulted as a Product Manager across multiple clients (Hard Rock, CPPIB, Quest).',
-      'Unified Hard Rock’s hotels, cafes, and casinos under one loyalty program (600k+ downloads).',
-      'Oversaw end-to-end product delivery for Hard Rock’s mobile app, increasing adoption by **20%**.',
+      'Oversaw end-to-end mobile app development for Hard Rock\'s global loyalty program "Unity," connecting hotels, casinos, and cafes under one unified brand centric digital experience.',
+      'Implemented Salesforce solutions for HomeCare Assistance that dramatically improved customer experience and employee satisfaction.',
+      'Launched a transformative careers portal for CPPIB that significantly enhanced their recruitment process and candidate experience.'
     ],
     logo: '/companies/gale.png',
     transitionHighlight: false,
@@ -63,8 +63,7 @@ const timelineData: TimelineItem[] = [
     company: 'Empire Life',
     dateRange: 'Mar 2020 - Dec 2020',
     bullets: [
-      'Scaled up digital capabilities amidst COVID-19.',
-      'Created group benefits portal, achieving **30%** faster enrollment processes.',
+      'Scaled up digital capabilities amidst COVID-19 through supporting development of an employee benefits management portal, streamlining HR workflows.'
     ],
     logo: '/companies/empire.png',
     transitionHighlight: false,
@@ -74,8 +73,9 @@ const timelineData: TimelineItem[] = [
     company: 'Bank of Montreal',
     dateRange: 'Jun 2017 - Mar 2020',
     bullets: [
-      'Worked on new mobile banking app, peer-to-peer payments, and AI features.',
-      'Supported open banking initiatives, driving a **15%** increase in digital adoption.',
+      'Shaped the transformation of BMO\'s personal banking app through initiatives in AI-driven personal finance, open banking, and digital payments.',
+      'Developed deep customer empathy through extensive field research in branches and contact centers, balancing user needs with complex organizational requirements.',
+      'Built foundational product development skills in an Agile environment, creating epics and stories while learning to effectively prioritize feature backlogs.'
     ],
     logo: '/companies/bmo.png',
     transitionHighlight: false,
@@ -158,6 +158,9 @@ export default function ExperienceTimeline() {
           </div>
         )
       })}
+      <div className="text-sm text-gray-600 dark:text-gray-400 italic text-center mt-8">
+        For more specific details and metrics about my experience, please <a href="mailto:mail@bikrambrar.com" className="text-blue-600 dark:text-blue-400 hover:underline">email me</a> for a copy of my resume.
+      </div>
     </div>
   )
 }

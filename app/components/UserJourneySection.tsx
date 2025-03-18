@@ -26,7 +26,7 @@ export default function UserJourneySection() {
     { title: "Empathy Mapping", description: "Walk in user's shoes, gather insights." },
     { title: "Hypothesis Testing", description: "Prototype quickly, iterate on feedback." },
     { title: "Launch", description: "Ship MVP, gather real-world data." },
-    { title: "Iterate", description: "Refine solution, pivot as needed." },
+    { title: "Iteratation", description: "Refine solution, pivot as needed." },
   ];
 
   // Cubic Bézier control points for a smooth arc in a 640 x 400 SVG
@@ -173,13 +173,9 @@ export default function UserJourneySection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-gray-700 dark:text-gray-300 leading-relaxed text-center max-w-3xl mx-auto bg-white/40 dark:bg-gray-900/40 backdrop-blur-sm p-6 rounded-xl border border-gray-200/30 dark:border-gray-800/30"
+        className="text-gray-700 dark:text-gray-300 leading-relaxed text-center max-w-3xl mx-auto bg-white/40 dark:bg-gray-900/40 backdrop-blur-sm p-6 rounded-xl border border-gray-200/30 dark:border-gray-800/30 italic"
       >
-        Whether I'm coding from scratch or managing a large product launch, I start
-        by asking the right questions and walking in the user's shoes. This empathy-first
-        approach ensures we understand the "why" behind each pain point. Then we frame
-        the problem, hypothesize solutions, and test rapidly. Once live, we iterate based
-        on feedback—always centering on user needs and tangible impact.
+        My product philosophy begins with deep user empathy. Whether developing code or orchestrating complex launches, I immerse myself in the user experience to uncover the "why" behind each challenge. This foundation allows for precise problem framing and hypothesis development. I believe in rapid prototyping and validation, gathering meaningful feedback early and often. Post-launch, I focus on data-informed iteration that balances user delight with business impact—ensuring every product not only solves problems but creates genuine value in people's lives.
       </motion.p>
     </section>
   );

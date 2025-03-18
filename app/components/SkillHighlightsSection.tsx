@@ -44,15 +44,23 @@ export default function SkillHighlightsSection() {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-2 mr-3"></span>
-                <p className="text-gray-700 dark:text-gray-300">Full-stack in React, Next.js, Swift, Node, etc.</p>
+                <p className="text-gray-700 dark:text-gray-300"><span className="font-semibold">Programming</span>: JavaScript, TypeScript, React, Python, Go, Swift, Node.js</p>
               </li>
               <li className="flex items-start">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-2 mr-3"></span>
-                <p className="text-gray-700 dark:text-gray-300">Built AI products (Mysti Health, Dayplan, RepoPrompter)</p>
+                <p className="text-gray-700 dark:text-gray-300"><span className="font-semibold">AI Development</span>: LLM fine-tuning, RAG architectures, agentic workflows</p>
               </li>
               <li className="flex items-start">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-2 mr-3"></span>
-                <p className="text-gray-700 dark:text-gray-300">2024 dedicated to building advanced AI prototypes</p>
+                <p className="text-gray-700 dark:text-gray-300"><span className="font-semibold">Cloud & DevOps</span>: AWS services, Docker containers, CI/CD pipelines</p>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-2 mr-3"></span>
+                <p className="text-gray-700 dark:text-gray-300"><span className="font-semibold">Development Tools</span>: Git, Cursor, Replit, Linear, GitHub Actions</p>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-2 mr-3"></span>
+                <p className="text-gray-700 dark:text-gray-300"><span className="font-semibold">Web Technologies</span>: Next.js, RESTful APIs, responsive design</p>
               </li>
             </ul>
           </div>
@@ -73,15 +81,23 @@ export default function SkillHighlightsSection() {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-2 mr-3"></span>
-                <p className="text-gray-700 dark:text-gray-300">Owned product strategy at Series A AI startup</p>
+                <p className="text-gray-700 dark:text-gray-300"><span className="font-semibold">Product Strategy</span>: Roadmap development, OKRs, feature prioritization</p>
               </li>
               <li className="flex items-start">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-2 mr-3"></span>
-                <p className="text-gray-700 dark:text-gray-300">2 PM hires → built 2 product divisions, integrated with CRM</p>
+                <p className="text-gray-700 dark:text-gray-300"><span className="font-semibold">Technical Leadership</span>: Bridging business needs with engineering capabilities</p>
               </li>
               <li className="flex items-start">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-2 mr-3"></span>
-                <p className="text-gray-700 dark:text-gray-300">Led cross-functional teams, empathy-driven design</p>
+                <p className="text-gray-700 dark:text-gray-300"><span className="font-semibold">UX Research</span>: User interviews, persona development, usability testing</p>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-2 mr-3"></span>
+                <p className="text-gray-700 dark:text-gray-300"><span className="font-semibold">Analytics & Growth</span>: Metrics analysis, A/B testing, conversion optimization</p>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-2 mr-3"></span>
+                <p className="text-gray-700 dark:text-gray-300"><span className="font-semibold">Team Leadership</span>: Cross-functional collaboration, agile practices, mentorship</p>
               </li>
             </ul>
           </div>
